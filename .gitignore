@@ -52,3 +52,5 @@ ipch/
 *.log
 *.db-wal
 *.db-shm
+*.db-shm
+*.db-shm
