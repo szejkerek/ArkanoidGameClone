@@ -50,3 +50,5 @@ ipch/
 *.idb
 *.ilk
 *.log
+*.db-wal
+*.db-shm
