@@ -46,11 +46,3 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
-*.pdb
-*.idb
-*.ilk
-*.log
-*.db-wal
-*.db-shm
-*.db-shm
-*.db-shm
