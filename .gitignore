@@ -33,7 +33,6 @@
 
 # Visual Studio
 *.vcxproj*
-*.sln
 .vs/
 *_i.c
 *_p.c
@@ -61,4 +60,5 @@
 .builds
 *.pidb
 *.svclog
+*.tlog
 *.scc
