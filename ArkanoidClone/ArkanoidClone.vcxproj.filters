@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki zasobów\FPS_Profiler">
+      <UniqueIdentifier>{86fffd2c-b60e-4d64-b048-6d4b12d66752}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArkanoidClone.cpp">
@@ -28,6 +31,9 @@
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
+      <Filter>Pliki zasobów\FPS_Profiler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

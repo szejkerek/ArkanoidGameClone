@@ -48,3 +48,6 @@ ipch/
 *.ilk
 *.log
 
+
+Profiler/
+
