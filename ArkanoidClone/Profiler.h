@@ -17,7 +17,6 @@ public:
 
 private:
 
-	std::string currentDevice = "PC";
 
 	std::vector<int> allFps;
 	double lastMean = 0;
@@ -59,7 +58,6 @@ public:
 
 		std::filesystem::path current = std::filesystem::current_path();
 		current.append("Profiler");
-		current.append(currentDevice);
 		std::filesystem::create_directories(current);
 		std::filesystem::path firstFile = current;
 		firstFile.append("FPS_history.txt");
@@ -90,6 +88,8 @@ public:
 		}
 		builds.close();
 
+
+		std::cout << "Profiler saved to file!" << std::endl;
 	}
 
 private:
@@ -146,7 +146,6 @@ private:
 	{
 		std::filesystem::path current = std::filesystem::current_path();
 		current.append("Profiler");
-		current.append(currentDevice);
 		current.append("FPS_history.txt");
 		double fps, sd;
 		int sec;
@@ -164,7 +163,7 @@ private:
 		}
 		main.close();
 
-		if (fileFPS.size() > 3)
+		if (fileFPS.size() >= 3)
 		{
 			lastMean = (fileFPS[fileFPS.size()-1] + fileFPS[fileFPS.size() - 2] + fileFPS[fileFPS.size() - 3]) / 3;
 		}
@@ -174,12 +173,12 @@ private:
 	inline std::string CalculateFpsDrop() 
 	{
 		if (lastMean == 0)
-			return "no data";
+			return "no_data";
 		std::string drop = "";
 		int value = static_cast<int>((100 - ((mFps / lastMean) * 100)));
 		if (value > 0)
 			drop += "-";
-		else
+		else if (value < 0)
 			drop += "+";
 		drop += std::to_string(abs(value));
 		drop += "%";
