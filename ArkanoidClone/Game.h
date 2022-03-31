@@ -20,6 +20,7 @@ private:
 	//Varibles
 	Profiler profiler;
 	Ball ball;
+	Ball ball2;
 	
 	//Methods
 	void InitializeWindow(unsigned int width, unsigned int height, std::string title);

@@ -90,11 +90,18 @@ public:
 		}
 		builds.close();
 
-
-		std::cout << "Profiler saved to file!" << std::endl;
+		ShowFinalStats();
 	}
 
 private:
+
+	void ShowFinalStats() 
+	{
+		std::cout << "\nProfiler saved to file!" << std::endl;
+		std::cout << "Mean:\t\t" << mean << "fps\t" << CalculateFpsDrop(static_cast<unsigned int>(mean)) << std::endl;
+		std::cout << "SD:\t\t" << "(+/-" << sd << "fps)" << std::endl;
+		std::cout << "Build time:\t" << seconds << " seconds\n" << std::endl;
+	}
 
 	void AddToMean(int newFPS) {
 		double newMean;
@@ -124,7 +131,7 @@ private:
 
 	void ShowStats()
 	{
-		std::cout<<mFps<< "\t" << CalculateFpsDrop()<< std::endl;
+		std::cout<<mFps<< "\t" << CalculateFpsDrop(mFps)<< std::endl;
 	}
 
 	std::string CurrentDateTime() 
@@ -172,12 +179,12 @@ private:
 
 	}
 
-	inline std::string CalculateFpsDrop() 
+	inline std::string CalculateFpsDrop(unsigned int myFps) 
 	{
 		if (lastMean == 0)
 			return "no_data";
 		std::string drop = "";
-		int value = static_cast<int>((100 - ((mFps / lastMean) * 100)));
+		int value = static_cast<int>((100 - ((myFps / lastMean) * 100)));
 		if (value > 0)
 			drop += "-";
 		else if (value < 0)
