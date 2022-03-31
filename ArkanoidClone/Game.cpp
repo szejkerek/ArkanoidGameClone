@@ -1,10 +1,5 @@
 #include "Game.h"
 
-void Game::InitializeWindow(unsigned int width, unsigned int height, std::string title)
-{
-	window = new sf::RenderWindow(sf::VideoMode(width, height), title);
-}
-
 Game::Game()
 {
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
@@ -14,6 +9,16 @@ Game::Game()
 Game::~Game()
 {
 	delete window;
+}
+
+void Game::InitializeWindow(unsigned int width, unsigned int height, std::string title)
+{
+	window = new sf::RenderWindow(sf::VideoMode(width, height), title);
+}
+
+void Game::CalculateDeltaTime()
+{
+	deltaTime = clock.restart().asSeconds();
 }
 
 void Game::UpdateEvents()
@@ -34,31 +39,22 @@ void Game::UpdateEvents()
 void Game::Update()
 {
 	UpdateEvents();
-
-	ball.Update(0.00016f);
-	/*deltaTime = clock.restart().asSeconds();
-	
-
+	CalculateDeltaTime();
 	ball.Update(deltaTime);
-	ball.Draw(window);
-
-	
-
-	FPS.Update();*/
 }
 
 void Game::Render()
 {
 	window->clear();
-
+	//Draw items here
 	ball.Draw(window);
-
-
+	//
 	window->display();
 }
 
 void Game::Run()
 {
+	//Main game loop
 	while (window->isOpen())
 	{
 		Update();

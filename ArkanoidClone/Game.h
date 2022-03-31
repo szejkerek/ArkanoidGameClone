@@ -6,14 +6,20 @@
 class Game
 {
 private:
+	//Window Settings
 	const unsigned int screenWidth = 1200;
 	const unsigned int screenHeight = 925;
 	const std::string windowTitle = "ArkanoidClone";
-	Profiler profiler;
-	Ball ball;
+
 	//SFML Variables 
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
+	sf::Clock clock;
+	float deltaTime;
+
+	//Varibles
+	Profiler profiler;
+	Ball ball;
 	
 	//Methods
 	void InitializeWindow(unsigned int width, unsigned int height, std::string title);
@@ -26,6 +32,7 @@ public:
 	virtual ~Game();
 
 	//Methods
+	void CalculateDeltaTime();
 	void UpdateEvents();
 	void Update();
 	void Render();
