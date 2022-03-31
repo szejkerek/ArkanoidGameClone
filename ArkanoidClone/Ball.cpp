@@ -1,5 +1,4 @@
 #include "Ball.h"
-#include "Utility.h"
 
 Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 {
@@ -11,9 +10,9 @@ Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 	speed = _speed;
 }
 
-void Ball::Draw(sf::RenderWindow& renderer)
+void Ball::Draw(sf::RenderWindow* renderer)
 {
-	renderer.draw(circle);
+	renderer->draw(circle);
 }
 
 void Ball::Update(float dt)

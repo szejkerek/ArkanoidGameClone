@@ -7,7 +7,8 @@ void Game::InitializeWindow(unsigned int width, unsigned int height, std::string
 
 Game::Game()
 {
-	InitializeWindow(1200, 925, "ArkanoidClone");
+	InitializeWindow(screenWidth, screenHeight, windowTitle);
+	ball = Ball({ 0,0 }, { 4,2 }, 50);
 }
 
 Game::~Game()
@@ -22,7 +23,7 @@ void Game::UpdateEvents()
 	{
 		if (sfEvent.type == sf::Event::Closed)
 		{
-			//FPS.SaveProfile();
+			profiler.SaveProfile();
 			window->close();
 		}
 	}
@@ -33,6 +34,8 @@ void Game::UpdateEvents()
 void Game::Update()
 {
 	UpdateEvents();
+
+	ball.Update(0.00016f);
 	/*deltaTime = clock.restart().asSeconds();
 	
 
@@ -48,6 +51,7 @@ void Game::Render()
 {
 	window->clear();
 
+	ball.Draw(window);
 
 
 	window->display();
@@ -59,5 +63,6 @@ void Game::Run()
 	{
 		Update();
 		Render();
+		profiler.Update();
 	}
 }

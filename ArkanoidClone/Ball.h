@@ -10,8 +10,9 @@ private:
 	float speed;
 
 public:
+	Ball() {}
 	Ball(sf::Vector2f startingPosition, sf::Vector2f initialDirection,float ballSpeed);
-	void Draw(sf::RenderWindow& renderer);
+	void Draw(sf::RenderWindow* renderer);
 	void Update(float dt);
 
 };

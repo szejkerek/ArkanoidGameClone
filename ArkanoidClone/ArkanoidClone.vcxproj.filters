@@ -32,9 +32,6 @@
     <ClInclude Include="Ball.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="Profiler.h">
       <Filter>Pliki zasobów\FPS_Profiler</Filter>
     </ClInclude>
