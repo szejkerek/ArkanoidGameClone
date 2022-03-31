@@ -14,6 +14,7 @@ private:
 	//SFML Variables 
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
+	sf::Color backgroundColor = sf::Color::Black;
 	sf::Clock clock;
 	float deltaTime;
 

@@ -99,9 +99,9 @@ private:
 	{
 		std::cout << "\nProfiler saved to file!" << std::endl;
 		std::cout << "Mean:\t\t" << mean << "fps\t" << CalculateFpsDrop(static_cast<unsigned int>(mean)) << std::endl;
-		std::cout << "SD:\t\t" << "(+/-" << sd << "fps)    " << Conclusion() << std::endl;
+		std::cout << "SD:\t\t" << "(+/-" << sd << "fps)"<< std::endl;
 		std::cout << "Build time:\t" << seconds << " seconds" << std::endl;
-		std::cout << "Last mean:\t" << lastMean << "fps\n" << std::endl;
+		std::cout << "Last mean:\t" << lastMean << "fps    " << Conclusion()<< std::endl;
 	}
 
 	void AddToMean(int newFPS) {
@@ -121,7 +121,7 @@ private:
 		double upper = 0;
 		for (int fps: allFps)
 		{
-			upper += pow(fps - mean, 2);
+			upper += (fps - mean)*(fps - mean);
 		}
 
 		double _sd = upper / (allFps.size() - 1);

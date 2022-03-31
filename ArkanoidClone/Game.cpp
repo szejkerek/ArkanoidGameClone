@@ -24,8 +24,7 @@ void Game::CalculateDeltaTime()
 }
 
 void Game::UpdateEvents()
-{
-	
+{	
 	while (window->pollEvent(this->sfEvent))
 	{
 		if (sfEvent.type == sf::Event::Closed)
@@ -48,7 +47,7 @@ void Game::Update()
 
 void Game::Render()
 {
-	window->clear();
+	window->clear(backgroundColor);
 	//Draw items here
 	ball.Draw(window);
 	ball2.Draw(window);
