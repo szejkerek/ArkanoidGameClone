@@ -99,8 +99,9 @@ private:
 	{
 		std::cout << "\nProfiler saved to file!" << std::endl;
 		std::cout << "Mean:\t\t" << mean << "fps\t" << CalculateFpsDrop(static_cast<unsigned int>(mean)) << std::endl;
-		std::cout << "SD:\t\t" << "(+/-" << sd << "fps)" << std::endl;
-		std::cout << "Build time:\t" << seconds << " seconds\n" << std::endl;
+		std::cout << "SD:\t\t" << "(+/-" << sd << "fps)    " << Conclusion() << std::endl;
+		std::cout << "Build time:\t" << seconds << " seconds" << std::endl;
+		std::cout << "Last mean:\t" << lastMean << "fps\n" << std::endl;
 	}
 
 	void AddToMean(int newFPS) {
@@ -132,6 +133,7 @@ private:
 	void ShowStats()
 	{
 		std::cout<<mFps<< "\t" << CalculateFpsDrop(mFps)<< std::endl;
+
 	}
 
 	std::string CurrentDateTime() 
@@ -193,6 +195,18 @@ private:
 		drop += "%";
 
 		return drop;
+	}
+
+	std::string Conclusion()
+	{
+		if (mean + sd >= lastMean)
+		{
+			return "Good performance!";
+		}
+		else 
+		{
+			return "Bad preformacne";
+		}
 	}
 
 };
