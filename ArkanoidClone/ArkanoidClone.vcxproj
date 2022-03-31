@@ -157,9 +157,11 @@
   <ItemGroup>
     <ClCompile Include="ArkanoidClone.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Profiler.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>

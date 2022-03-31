@@ -24,6 +24,9 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -34,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="Profiler.h">
       <Filter>Pliki zasobów\FPS_Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

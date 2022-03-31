@@ -43,7 +43,6 @@ public:
 			{				
 				allFps.push_back(mFps);
 				AddToMean(mFps);
-				CalculateSD();
 				ShowStats();
 			}
 		
@@ -54,8 +53,11 @@ public:
 	void SaveProfile()
 	{
 		if (seconds <= secondsToWait + 2)
+		{
+			std::cout << "Couldn't save profiler to file. Profiler data was lost." << std::endl;
 			return;
-
+		}
+		CalculateSD();
 		std::filesystem::path current = std::filesystem::current_path();
 		current.append("Profiler");
 		std::filesystem::create_directories(current);
