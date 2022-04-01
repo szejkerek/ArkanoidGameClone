@@ -10,9 +10,9 @@ Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 	speed = _speed;
 }
 
-void Ball::Draw(sf::RenderWindow* renderer)
+void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	renderer->draw(circle);
+	target.draw(circle);
 }
 
 void Ball::Update(float dt)

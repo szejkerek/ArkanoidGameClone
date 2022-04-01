@@ -49,8 +49,8 @@ void Game::Render()
 {
 	window->clear(backgroundColor);
 	//Draw items here
-	ball.Draw(window);
-	ball2.Draw(window);
+	window->draw(ball);
+	window->draw(ball2);
 	//
 	window->display();
 }

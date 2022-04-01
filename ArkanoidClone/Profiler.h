@@ -199,13 +199,17 @@ private:
 
 	std::string Conclusion()
 	{
-		if (mean + sd >= lastMean)
+		if (mean + sd >= lastMean && mean - sd <= lastMean)
 		{
-			return "Good performance!";
+			return "GOOD performance!";
+		}
+		else if (mean - sd >= lastMean)
+		{
+			return "EXCELENT preformacne";
 		}
 		else 
 		{
-			return "Bad preformacne";
+			return "BAD preformacne";
 		}
 	}
 
