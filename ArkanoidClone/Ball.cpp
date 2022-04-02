@@ -1,5 +1,5 @@
 #include "Ball.h"
-#include "functions.h"
+#include "Utility.h"
 Ball::Ball()
 {
 	gameObject.setRadius(5);
@@ -12,7 +12,7 @@ Ball::Ball()
 
 Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 {
-	gameObject.setRadius(8);
+	gameObject.setRadius(25);
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::Magenta);
 	position = _position;
@@ -22,10 +22,10 @@ Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 
 void Ball::SetPlaygroundConstrains(sf::RectangleShape& _playground)
 {
-	maxLeft = _playground.getPosition().x;
-	maxUp = _playground.getPosition().y;
-	maxRight = _playground.getPosition().x + _playground.getSize().x;
-	maxDown = _playground.getPosition().y + _playground.getSize().y;
+	playground.maxLeft = _playground.getPosition().x;
+	playground.maxUp = _playground.getPosition().y;
+	playground.maxRight = _playground.getPosition().x + _playground.getSize().x - 2 * gameObject.getRadius();
+	playground.maxDown = _playground.getPosition().y + _playground.getSize().y - 2 * gameObject.getRadius();
 }
 
 void Ball::ChangeDirection(sf::Vector2f _direction)
@@ -42,29 +42,34 @@ void Ball::UpdateCollistions()
 void Ball::UpdateWallCollisions()
 {
 	sf::Vector2f changeX = { -1.f, 1.f };
-	sf::Vector2f changeY = {	1.f, -1.f };
+	sf::Vector2f changeY = { 1.f, -1.f };
 
-	if (GetPoistion().x <= maxLeft)
+	if (GetPoistion().x <= playground.maxLeft)
 	{
+		position.x = playground.maxLeft;
 		ChangeDirection(MultipyVectors(direction, changeX));
 	}
-	else if (GetPoistion().y <= maxUp)
+	else if (GetPoistion().y <= playground.maxUp)
 	{
+		position.y = playground.maxUp;
 		ChangeDirection(MultipyVectors(direction, changeY));
 	}
-	else if (gameObject.getPosition().x + gameObject.getRadius() >= maxRight)
+	else if (gameObject.getPosition().x >= playground.maxRight)
 	{
+		position.x = playground.maxRight;
 		ChangeDirection(MultipyVectors(direction, changeX));
 	}
-	else if (gameObject.getPosition().y+ gameObject.getRadius() >= maxDown)
+	else if (gameObject.getPosition().y >= playground.maxDown)
 	{
+		position.y = playground.maxDown;
 		ChangeDirection(MultipyVectors(direction, changeY));
 	}
 	
 }
 
-void Ball::UpdateBlockCollision()
+void Ball::UpdateBlockCollision() //(Block& block)
 {
+	//Block.CollisionDetected
 }
 
 void Ball::Move(float& dt)

@@ -162,7 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
-    <ClInclude Include="functions.h" />
+    <ClInclude Include="Utility.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Profiler.h" />

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Utility.h"
 
 class Ball : public sf::Drawable
 {
@@ -9,7 +10,8 @@ private:
 	sf::Vector2f direction;
 	sf::Vector2f position;
 	//Variables
-	float maxLeft, maxRight, maxUp, maxDown; //Wall constrains
+	ScreenRelativeConstrains playground;
+	
 	float speed;
 
 public:

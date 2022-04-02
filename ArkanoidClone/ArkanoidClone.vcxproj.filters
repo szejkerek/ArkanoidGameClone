@@ -44,7 +44,7 @@
     <ClInclude Include="Game.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="functions.h">
+    <ClInclude Include="Utility.h">
       <Filter>Pliki zasobów</Filter>
     </ClInclude>
   </ItemGroup>
