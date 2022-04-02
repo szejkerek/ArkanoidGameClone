@@ -16,21 +16,19 @@ public:
 	Profiler() : mFrame(0), mFps(0), seconds(0) { LoadProfile(); }
 
 private:
-
-
 	std::vector<int> allFps;
-	double lastMean = 0;
-
 	sf::RenderWindow window;
-	unsigned int mFrame;
-	unsigned int mFps;
 	sf::Clock mClock;
-	unsigned int seconds = 0;
-	unsigned int secondsToWait = 3;
 	double mean = 0;
 	double sd = 0;
+	double lastMean = 0;
+	unsigned int mFrame;
+	unsigned int mFps;
+	unsigned int seconds = 0;
+	unsigned int secondsToWait = 3;
 
 public:
+
 	void Update()
 	{
 		if (mClock.getElapsedTime().asSeconds() >= 1.f)

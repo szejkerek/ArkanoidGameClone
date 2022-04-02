@@ -1,67 +1,47 @@
 #include "Game.h"
+#include <iostream>
+Game::Game(){}
 
-Game::Game()
+Game::Game(const float& _deltaTime)
 {
-	InitializeWindow(screenWidth, screenHeight, windowTitle);
-	ball = Ball({ 0,0 }, { 4,2 }, 50);
-	ball2 = Ball({ 1250,925 }, { -4,-2 }, 50);
-}
-
-Game::~Game()
-{
-	delete window;
-}
-
-void Game::InitializeWindow(unsigned int width, unsigned int height, std::string title)
-{
-	window = new sf::RenderWindow(sf::VideoMode(width, height), title);
-	window->setVerticalSyncEnabled(false);
-}
-
-void Game::CalculateDeltaTime()
-{
-	deltaTime = clock.restart().asSeconds();
-}
-
-void Game::UpdateEvents()
-{	
-	while (window->pollEvent(this->sfEvent))
-	{
-		if (sfEvent.type == sf::Event::Closed)
-		{
-			profiler.SaveProfile();
-			window->close();
-		}
-	}
+	deltaTime = _deltaTime;
+	InitializePlayground();
+	InitializeBall();
 	
 }
 
-
-void Game::Update()
+void Game::InitializePlayground()
 {
-	UpdateEvents();
-	CalculateDeltaTime();
-	ball.Update(deltaTime);
-	ball2.Update(deltaTime);
+	playground = sf::RectangleShape({ 750.f,900.f });
+	playground.setFillColor(sf::Color::Black);
+	playground.setOutlineThickness(25.f);
+	playground.setOutlineColor(sf::Color::White);
+	playground.setPosition({100,0});
 }
 
-void Game::Render()
+void Game::InitializeBall()
 {
-	window->clear(backgroundColor);
-	//Draw items here
-	window->draw(ball);
-	window->draw(ball2);
-	//
-	window->display();
+	sf::Vector2f stratingPosition = { 200, 800 };
+	sf::Vector2f startingDireciton = { -5 , -2 };
+	float startingSpeed = 35.f;
+	ball = Ball(stratingPosition, startingDireciton, startingSpeed);
+	ball.SetPlaygroundConstrains(playground);
 }
 
-void Game::Run()
+
+Game::~Game()
 {
-	//Main game loop
-	while (window->isOpen())
-	{
-		Update();
-		Render();
-		profiler.Update();
-	}
+
 }
+
+void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(playground);
+	target.draw(ball);
+}
+
+void Game::Update( float& dt)
+{
+	ball.Update(dt);
+}
+

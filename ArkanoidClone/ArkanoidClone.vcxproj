@@ -158,10 +158,13 @@
     <ClCompile Include="ArkanoidClone.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="functions.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Program.h" />
     <ClInclude Include="Profiler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
