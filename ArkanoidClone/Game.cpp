@@ -7,7 +7,6 @@ Game::Game(const float& _deltaTime)
 	deltaTime = _deltaTime;
 	InitializePlayground();
 	InitializeBall();
-	
 }
 
 void Game::InitializePlayground()
@@ -37,11 +36,14 @@ Game::~Game()
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(playground);
+
 	target.draw(ball);
+
 }
 
 void Game::Update( float& dt)
 {
 	ball.Update(dt);
+	
 }
 

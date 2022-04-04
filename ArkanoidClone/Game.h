@@ -1,15 +1,17 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Ball.h"
+#include "Block.h"
 class Game :public sf::Drawable
 {
 private:
 	//Variables
-	float deltaTime;
+	float deltaTime = 0;
 
 	//GameObjects
 	sf::RectangleShape playground;
 	Ball ball;
+
 
 	//Methods
 	void InitializePlayground();
