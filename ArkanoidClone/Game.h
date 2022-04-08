@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "Ball.h"
 #include "Brick.h"
+#include "GoldBrick.h"
 class Game :public sf::Drawable
 {
 private:
@@ -11,7 +12,9 @@ private:
 	//GameObjects
 	sf::RectangleShape playground;
 	Ball ball;
-
+	GoldBrick gold;
+	GoldBrick gold1;
+	GoldBrick gold2;
 
 	//Methods
 	void InitializePlayground();

@@ -2,9 +2,10 @@
 #include "SFML/Graphics.hpp"
 class Brick : public sf::Drawable
 {
-private:
+protected:
 	//Game Objects
 	sf::RectangleShape gameObject;
+	sf::Texture texture;
 	//Variables
 	int hp;
 	int points;
@@ -14,11 +15,13 @@ private:
 
 public:
 	//Constructors & Destructors
-	Brick() {}
-	Brick(sf::Vector2f position);
+	Brick();
 
 	//Methods
 	virtual void OnCollisionEnter() = 0;
+	void SetPosition(sf::Vector2f _position);
+	void SetFillColor(sf::Color _color);
+	void SetTexture(sf::Texture _texture);
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

@@ -4,6 +4,9 @@ Game::Game(){}
 
 Game::Game(const float& _deltaTime)
 {
+	gold.SetPosition({ 450.f,450.f });
+	gold1.SetPosition({ 550.f,550.f });
+	gold2.SetPosition({ 650.f,650.f });
 	deltaTime = _deltaTime;
 	InitializePlayground();
 	InitializeBall();
@@ -35,10 +38,13 @@ Game::~Game()
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	
 	target.draw(playground);
 
 	target.draw(ball);
-
+	target.draw(gold);
+	target.draw(gold1);
+	target.draw(gold2);
 }
 
 void Game::Update( float& dt)

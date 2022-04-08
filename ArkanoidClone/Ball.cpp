@@ -12,7 +12,7 @@ Ball::Ball()
 
 Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 {
-	gameObject.setRadius(25);
+	gameObject.setRadius(15);
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::Magenta);
 	position = _position;
