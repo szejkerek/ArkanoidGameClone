@@ -1,27 +1,28 @@
 #pragma once
 #include <iostream>
-
+#include <string>
 #include "Brick.h"
 #include "SFML/Graphics.hpp"
+
 class Stage : sf::Drawable 
 {
 private:
 	//Game Objects
-	Brick* blocks[13][21];
+	//Brick* blocks[13][21];
+	int stageArray[13][21];
 	//Variables
-	std::string stageName;
-	int stageNumber;
+	int stageNumber = 1;
 	//Methods
-
+	void FillStageArray(std::vector<char> stageVector);
 
 public:
 	//Constructors & Destructors
-	Stage(int _stageNumber);
+	Stage() {}
+	Stage(int stageNumber);
 
-	//LoadingStageFromFile
-	void LoadMapFromFile();
-	bool ValidateFilename();
-	std::string GetFilename(int _stageNumber);
+	//FileManagement
+	void GenerateDefaultMapFile(std::string filename);
+	void LoadMapFromFileToArray(int _stageNumber);
 
 	//Methods 
 

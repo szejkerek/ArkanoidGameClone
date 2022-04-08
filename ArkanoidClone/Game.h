@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include "Brick.h"
 #include "GoldBrick.h"
+#include "Stage.h"
 class Game :public sf::Drawable
 {
 private:
@@ -12,9 +13,7 @@ private:
 	//GameObjects
 	sf::RectangleShape playground;
 	Ball ball;
-	GoldBrick gold;
-	GoldBrick gold1;
-	GoldBrick gold2;
+	Stage stage;
 
 	//Methods
 	void InitializePlayground();
@@ -23,7 +22,7 @@ private:
 public:
 	//Constructors & Destructors
 	Game();
-	Game(const float& deltaTime);
+	Game(float& deltaTime);
 	virtual ~Game();
 
 	//Methods
