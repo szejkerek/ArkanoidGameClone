@@ -13,7 +13,7 @@ Program::~Program()
 
 void Program::InitializeWindow(unsigned int width, unsigned int height, std::string title)
 {
-	window = new sf::RenderWindow(sf::VideoMode(width, height), title);
+	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
 	window->setVerticalSyncEnabled(false);
 }
 
@@ -46,7 +46,7 @@ void Program::Update()
 void Program::Render()
 {
 	window->clear(backgroundColor);
-	//Draw items here
+
 	window->draw(game);
 	//
 	window->display();

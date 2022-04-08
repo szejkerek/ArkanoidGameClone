@@ -6,7 +6,7 @@ inline sf::Vector2f MultipyVectors(sf::Vector2f vectorA, sf::Vector2f vectorB)
 	return  sf::Vector2f(vectorA.x * vectorB.x, vectorA.y * vectorB.y);
 }
 
-struct ScreenRelativeConstrains 
+struct PositionConstrains 
 {
 	float maxRight = 0;
 	float maxLeft = 0;

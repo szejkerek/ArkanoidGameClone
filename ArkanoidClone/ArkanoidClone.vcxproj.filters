@@ -16,6 +16,9 @@
     <Filter Include="Pliki zasobów\FPS_Profiler">
       <UniqueIdentifier>{86fffd2c-b60e-4d64-b048-6d4b12d66752}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki zasobów\Blocks">
+      <UniqueIdentifier>{c694c6e6-3e16-4bf3-80d2-9e3254cbab1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArkanoidClone.cpp">
@@ -30,10 +33,13 @@
     <ClCompile Include="Game.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
+    <ClCompile Include="Brick.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldBrick.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,10 +59,13 @@
     <ClInclude Include="Utility.h">
       <Filter>Pliki zasobów</Filter>
     </ClInclude>
-    <ClInclude Include="Block.h">
+    <ClInclude Include="Brick.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldBrick.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

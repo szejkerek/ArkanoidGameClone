@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Ball.h"
-#include "Block.h"
+#include "Brick.h"
 class Game :public sf::Drawable
 {
 private:

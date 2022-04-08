@@ -1,13 +1,13 @@
 #pragma once
 #include <iostream>
 
-#include "Block.h"
+#include "Brick.h"
 #include "SFML/Graphics.hpp"
 class Stage : sf::Drawable 
 {
 private:
 	//Game Objects
-	Block* blocks[13][21];
+	Brick* blocks[13][21];
 	//Variables
 	std::string stageName;
 	int stageNumber;
