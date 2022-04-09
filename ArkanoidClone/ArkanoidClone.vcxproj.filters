@@ -51,6 +51,9 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Pliki zasobów\Blocks\Virtual Brick</Filter>
     </ClCompile>
+    <ClCompile Include="Playground.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -75,6 +78,9 @@
       <Filter>Pliki zasobów\Main programs</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Playground.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

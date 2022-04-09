@@ -160,6 +160,7 @@
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GoldBrick.cpp" />
+    <ClCompile Include="Playground.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="GoldBrick.h" />
+    <ClInclude Include="Playground.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Game.h" />

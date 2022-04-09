@@ -12,7 +12,7 @@ Ball::Ball()
 
 Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 {
-	gameObject.setRadius(15);
+	gameObject.setRadius(7);
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::Magenta);
 	position = _position;
@@ -20,13 +20,11 @@ Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
 	speed = _speed;
 }
 
-void Ball::SetPlaygroundConstrains(sf::RectangleShape& _playground)
+void Ball::SetPlaygroundConstrains(PositionConstrains _playgroundConstrains)
 {
-	playground.maxLeft = _playground.getPosition().x;
-	playground.maxUp = _playground.getPosition().y;
-	playground.maxRight = _playground.getPosition().x + _playground.getSize().x - 2 * gameObject.getRadius();
-	playground.maxDown = _playground.getPosition().y + _playground.getSize().y - 2 * gameObject.getRadius();
+	playgroundConstrains = _playgroundConstrains;
 }
+
 
 void Ball::ChangeDirection(sf::Vector2f _direction)
 {
@@ -44,24 +42,24 @@ void Ball::UpdateWallCollisions()
 	sf::Vector2f changeX = { -1.f, 1.f };
 	sf::Vector2f changeY = { 1.f, -1.f };
 
-	if (GetPoistion().x <= playground.maxLeft)
+	if (GetPoistion().x <= playgroundConstrains.maxLeft)
 	{
-		position.x = playground.maxLeft;
+		position.x = playgroundConstrains.maxLeft;
 		ChangeDirection(MultipyVectors(direction, changeX));
 	}
-	else if (GetPoistion().y <= playground.maxUp)
+	else if (GetPoistion().y <= playgroundConstrains.maxUp)
 	{
-		position.y = playground.maxUp;
+		position.y = playgroundConstrains.maxUp;
 		ChangeDirection(MultipyVectors(direction, changeY));
 	}
-	else if (gameObject.getPosition().x >= playground.maxRight)
+	else if (gameObject.getPosition().x >= playgroundConstrains.maxRight)
 	{
-		position.x = playground.maxRight;
+		position.x = playgroundConstrains.maxRight;
 		ChangeDirection(MultipyVectors(direction, changeX));
 	}
-	else if (gameObject.getPosition().y >= playground.maxDown)
+	else if (gameObject.getPosition().y >= playgroundConstrains.maxDown)
 	{
-		position.y = playground.maxDown;
+		position.y = playgroundConstrains.maxDown;
 		ChangeDirection(MultipyVectors(direction, changeY));
 	}
 	
@@ -86,6 +84,11 @@ sf::Vector2f Ball::GetDirection()
 sf::Vector2f Ball::GetPoistion()
 {
 	return position;
+}
+
+float Ball::GetRadius()
+{
+	return gameObject.getRadius();
 }
 
 void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const

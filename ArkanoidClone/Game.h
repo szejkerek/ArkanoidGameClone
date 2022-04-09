@@ -4,6 +4,7 @@
 #include "Brick.h"
 #include "GoldBrick.h"
 #include "Stage.h"
+#include "Playground.h"
 class Game :public sf::Drawable
 {
 private:
@@ -11,12 +12,10 @@ private:
 	float deltaTime = 0;
 
 	//GameObjects
-	sf::RectangleShape playground;
+	Playground playground;
 	Ball ball;
-	Stage stage;
 
 	//Methods
-	void InitializePlayground();
 	void InitializeBall();
 
 public:
