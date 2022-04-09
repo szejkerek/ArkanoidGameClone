@@ -44,7 +44,6 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Game::Update( float& dt)
 {
-	ball.Update(dt);
-	
+	ball.Update(dt);	
 }
 

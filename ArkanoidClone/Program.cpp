@@ -14,6 +14,7 @@ Program::~Program()
 void Program::InitializeWindow(unsigned int width, unsigned int height, std::string title)
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
+	window->setPosition({ windowPositionOnScreen_X,windowPositionOnScreen_Y });
 	window->setVerticalSyncEnabled(false);
 }
 
