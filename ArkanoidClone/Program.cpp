@@ -41,6 +41,7 @@ void Program::Update()
 {
 	UpdateEvents();
 	CalculateDeltaTime();
+
 	game.Update(deltaTime);
 }
 

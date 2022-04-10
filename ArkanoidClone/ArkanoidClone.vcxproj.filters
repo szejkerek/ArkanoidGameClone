@@ -19,12 +19,6 @@
     <Filter Include="Pliki zasobów\Blocks">
       <UniqueIdentifier>{c694c6e6-3e16-4bf3-80d2-9e3254cbab1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pliki zasobów\Blocks\Virtual Brick">
-      <UniqueIdentifier>{15929a20-132b-4134-88e7-eb2e33454a9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Pliki zasobów\Blocks\GoldenBrick">
-      <UniqueIdentifier>{bdbb5c15-5d36-4473-aa5e-3c9252933c12}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Pliki zasobów\Main programs">
       <UniqueIdentifier>{501896ac-d7c9-46b5-8ff9-ab6fc36d509f}</UniqueIdentifier>
     </Filter>
@@ -32,9 +26,6 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp">
       <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="GoldBrick.cpp">
-      <Filter>Pliki zasobów\Blocks\GoldenBrick</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>Pliki źródłowe</Filter>
@@ -48,11 +39,14 @@
     <ClCompile Include="Game.cpp">
       <Filter>Pliki zasobów\Main programs</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Pliki zasobów\Blocks\Virtual Brick</Filter>
-    </ClCompile>
     <ClCompile Include="Playground.cpp">
       <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Bricks.cpp">
+      <Filter>Pliki zasobów\Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="IBrick.cpp">
+      <Filter>Pliki zasobów\Blocks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,12 +59,6 @@
     <ClInclude Include="Utility.h">
       <Filter>Pliki zasobów</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Pliki zasobów\Blocks\Virtual Brick</Filter>
-    </ClInclude>
-    <ClInclude Include="GoldBrick.h">
-      <Filter>Pliki zasobów\Blocks\GoldenBrick</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Pliki zasobów\Main programs</Filter>
     </ClInclude>
@@ -82,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="Playground.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Bricks.h">
+      <Filter>Pliki zasobów\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="IBrick.h">
+      <Filter>Pliki zasobów\Blocks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

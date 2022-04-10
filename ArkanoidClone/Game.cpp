@@ -4,6 +4,7 @@ Game::Game(){}
 
 Game::Game(float& _deltaTime)
 {
+	stage1 = Stage(1);
 	deltaTime = _deltaTime;
 	InitializeBall();
 }

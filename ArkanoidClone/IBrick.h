@@ -1,6 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-class Brick : public sf::Drawable
+class IBrick : public sf::Drawable
 {
 protected:
 	//Game Objects
@@ -15,13 +15,13 @@ protected:
 
 public:
 	//Constructors & Destructors
-	Brick();
+	IBrick();
 
 	//Methods
 	virtual void OnCollisionEnter() = 0;
 	void SetPosition(sf::Vector2f _position);
 	void SetFillColor(sf::Color _color);
-	void SetTexture(sf::Texture _texture);
+	virtual void SetTexture(sf::Texture _texture) = 0;
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

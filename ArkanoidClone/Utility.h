@@ -13,3 +13,15 @@ struct PositionConstrains
 	float maxUp = 0;
 	float maxDown = 0;
 };
+
+enum class ColorsEnum
+{
+	white,
+	orange,
+	turquoise,
+	green,
+	red,
+	blue,
+	pink,
+	yelow
+};
