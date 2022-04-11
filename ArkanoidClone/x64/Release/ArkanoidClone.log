@@ -1,15 +1,15 @@
-﻿  Bricks.cpp
+﻿  IBrick.cpp
   Trwa generowanie kodu
-  241 of 1359 functions (17.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    148 functions had inline decision re-evaluated but remain unchanged
+  19 of 1362 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    7 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
-IBrick.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
-IBrick.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
-Bricks.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
+Ball.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
+Game.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
+Game.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
 Playground.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
 Playground.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
 Playground.obj : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
 sfml-system.lib(sfml-system-2.dll) : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
-msvcprt.lib(MSVCP140.dll) : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
+LINK : warning LNK4020: rekord typu w elemencie „c:\projekty\studia\arkanoidclone\arkanoidclone\x64\release\vc143.pdb” jest uszkodzony; niektóre symbole i typy mogą być niedostępne z debugera
   ArkanoidClone.vcxproj -> C:\Projekty\Studia\ArkanoidClone\x64\Release\ArkanoidClone.exe

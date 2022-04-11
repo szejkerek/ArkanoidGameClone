@@ -18,28 +18,28 @@ ColorBrick::ColorBrick(ColorsEnum color)
 	switch (color)
 	{
 	case ColorsEnum::blue:
-		gameObject.setFillColor(sf::Color::Blue);
+		SetFillColor(sf::Color::Blue);
 		break;
 	case ColorsEnum::green:
-		gameObject.setFillColor(sf::Color::Green);
+		SetFillColor(sf::Color::Green);
 		break;
 	case ColorsEnum::orange:
-		gameObject.setFillColor(sf::Color::Color(255, 165, 0, 255));
+		SetFillColor(sf::Color::Color(255, 165, 0, 255));
 		break;
 	case ColorsEnum::pink:
-		gameObject.setFillColor(sf::Color::Magenta);
+		SetFillColor(sf::Color::Magenta);
 		break;
 	case ColorsEnum::red:
-		gameObject.setFillColor(sf::Color::Red);
+		SetFillColor(sf::Color::Red);
 		break;
 	case ColorsEnum::white:
-		gameObject.setFillColor(sf::Color::White);
+		SetFillColor(sf::Color::White);
 		break;
 	case ColorsEnum::turquoise:
-		gameObject.setFillColor(sf::Color::Color(48, 213, 200, 255));
+		SetFillColor(sf::Color::Color(48, 213, 200, 255));
 		break;
 	case ColorsEnum::yelow:
-		gameObject.setFillColor(sf::Color::Yellow);
+		SetFillColor(sf::Color::Yellow);
 		break;
 	default:
 		break;

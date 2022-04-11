@@ -3,16 +3,15 @@
 #include <iostream>
 class IBrick : public sf::Drawable
 {
+private:
 protected:
-	//Game Objects
 	sf::RectangleShape gameObject;
+	//Game Objects
 	sf::Texture texture;
 	//Variables
 	int hp;
 	int points;
-	sf::Vector2f position;
 	//Methods
-
 
 public:
 	//Constructors & Destructors
@@ -20,7 +19,10 @@ public:
 
 	//Methods
 	virtual void OnCollisionEnter() = 0;
+	void SetSize(sf::Vector2f _size);
+	sf::Vector2f GetSize();
 	void SetPosition(sf::Vector2f _position);
+	sf::Vector2f GetPosition();
 	void SetFillColor(sf::Color _color);
 	virtual void SetTexture(sf::Texture _texture) = 0;
 	//SFML Methods
