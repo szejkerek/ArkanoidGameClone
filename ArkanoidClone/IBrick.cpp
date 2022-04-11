@@ -2,7 +2,7 @@
 
 IBrick::IBrick(): hp(0), points(0)
 {
-	SetSize({ 55,28 }); //BLOCK SIZE
+	SetSize(size); //BLOCK SIZE
 	SetPosition({0,0});
 }
 

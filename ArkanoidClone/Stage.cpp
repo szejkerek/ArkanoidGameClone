@@ -7,6 +7,13 @@
 #include <regex>
 #include <filesystem>
 
+bool Stage::CalculateBricksPositions() 
+{
+	sf::Vector2f startingPosition = playgroundPosition;
+	sf::Vector2f offset = PixelSizes::GetInstance().brickSize;
+
+}
+
 void GenerateDefaultMapFile(std::string filename)
 {
 	std::filesystem::path path = std::filesystem::current_path().append("Stages");
@@ -29,7 +36,7 @@ void GenerateDefaultMapFile(std::string filename)
 	file.close();
 }
 
-Stage::Stage(int _stageNumber): stageNumber(_stageNumber)
+Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_stageNumber), playgroundPosition(_playgroundPosition)
 {
 	GenerateDefaultMapFile("default");
 	if (!LoadMapFromFileToArray())
@@ -37,12 +44,11 @@ Stage::Stage(int _stageNumber): stageNumber(_stageNumber)
 		playable = false;
 		return;
 	}
+
 	SetUpBlocks();
 
 	playable = true;
 }
-
-
 
 inline std::string GetFilename(int _stageNumber)
 {
@@ -53,6 +59,7 @@ inline std::string GetFilename(int _stageNumber)
 	}
 	return "Stage_1";
 }
+
 inline void Stage::FillStageArray(std::vector<char> stageVector)
 {
 	int vectorIndex = 0;
@@ -107,8 +114,8 @@ IBrick* Stage::ChooseBrick(char letter)
 		break;
 
 	default:
-		std::cout << "Couldt setup color" << std::endl;
-		return new ColorBrick(ColorsEnum::white);
+		std::cout << "ERROR, CHECK SYNTAX IN FILE Stage_"<< stageNumber << std::endl;
+		return nullptr;
 		break;
 	}
 }
@@ -174,10 +181,6 @@ bool Stage::SetUpBlocks()
 	}
 	return true;
 }
-
-
-
-
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

@@ -4,9 +4,9 @@ Game::Game(){}
 
 Game::Game(float& _deltaTime)
 {
-	stage1 = Stage(1);
 	deltaTime = _deltaTime;
 	InitializeBall();
+	InitializeStage();
 }
 
 void Game::InitializeBall()
@@ -16,6 +16,11 @@ void Game::InitializeBall()
 	float startingSpeed = 100.f;
 	ball = Ball(stratingPosition, startingDireciton, startingSpeed);
 	ball.SetPlaygroundConstrains(playground.GetPositionConstrains(ball));	
+}
+
+void Game::InitializeStage()
+{
+	stage1 = Stage(1, playground.GetPosition());
 }
 
 

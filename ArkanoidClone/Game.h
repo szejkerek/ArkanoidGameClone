@@ -17,6 +17,7 @@ private:
 
 	//Methods
 	void InitializeBall();
+	void InitializeStage();
 
 public:
 	//Constructors & Destructors

@@ -7,14 +7,6 @@
 class Program
 {
 private:
-	//Window Settings
-	const unsigned int screenWidth = 1300;
-	const unsigned int screenHeight = 990;
-
-	int windowPositionOnScreen_X = 310;
-	int windowPositionOnScreen_Y = 10;
-
-
 	const std::string windowTitle = "ArkanoidClone";
 
 	//SFML Variables 

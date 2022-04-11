@@ -1,7 +1,9 @@
 #include "Program.h"
-
+#include "Utility.h"
 Program::Program()
 {
+	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
+	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
 	game = Game(deltaTime);
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
 }
@@ -14,7 +16,7 @@ Program::~Program()
 void Program::InitializeWindow(unsigned int width, unsigned int height, std::string title)
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
-	window->setPosition({ windowPositionOnScreen_X,windowPositionOnScreen_Y });
+	window->setPosition(PixelSizes::GetInstance().windowPosition);
 	window->setVerticalSyncEnabled(false);
 }
 
