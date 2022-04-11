@@ -32,10 +32,14 @@ void GenerateDefaultMapFile(std::string filename)
 Stage::Stage(int _stageNumber): stageNumber(_stageNumber)
 {
 	GenerateDefaultMapFile("default");
-	if (LoadMapFromFileToArray())
+	if (!LoadMapFromFileToArray())
 	{
-
+		playable = false;
+		return;
 	}
+	SetUpBlocks();
+
+	playable = true;
 }
 
 
@@ -61,6 +65,51 @@ inline void Stage::FillStageArray(std::vector<char> stageVector)
 			
 			vectorIndex++;
 		}
+	}
+}
+
+IBrick* Stage::ChooseBrick(char letter)
+{
+	switch (letter)
+	{
+	case '*':
+		return nullptr;
+		break;
+	case 's':
+		return new SilverBrick(stageNumber);
+		break;
+	case 'x':
+		return new GoldBrick();
+		break;
+	case 'w':
+		return new ColorBrick(ColorsEnum::white);
+		break;
+	case 'o':
+		return new ColorBrick(ColorsEnum::orange);
+		break;
+	case 't':
+		return new ColorBrick(ColorsEnum::turquoise);
+		break;
+	case 'g':
+		return new ColorBrick(ColorsEnum::green);
+		break;
+	case 'r':
+		return new ColorBrick(ColorsEnum::red);
+		break;
+	case 'b':
+		return new ColorBrick(ColorsEnum::blue);
+		break;
+	case 'p':
+		return new ColorBrick(ColorsEnum::pink);
+		break;
+	case 'y':
+		return new ColorBrick(ColorsEnum::yelow);
+		break;
+
+	default:
+		std::cout << "Couldt setup color" << std::endl;
+		return new ColorBrick(ColorsEnum::white);
+		break;
 	}
 }
 
@@ -113,6 +162,20 @@ bool Stage::LoadMapFromFileToArray()
 	FillStageArray(ReadFile(stageNumber));
 	return ValidateStageArray(stageArray);
 }
+
+bool Stage::SetUpBlocks()
+{
+	for (int i = 0; i < 13; i++)
+	{
+		for (int j = 0; j < 21; j++)
+		{
+			blocks[i][j] = ChooseBrick(stageArray[i][j]);
+		}
+	}
+	return true;
+}
+
+
 
 
 

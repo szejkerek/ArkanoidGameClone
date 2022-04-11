@@ -16,6 +16,7 @@ private:
 	int stageNumber = 1;
 	//Methods
 	void FillStageArray(std::vector<char> stageVector);
+	IBrick* ChooseBrick(char letter);
 
 public:
 	//Constructors & Destructors
@@ -24,7 +25,7 @@ public:
 
 	//FileManagement
 	bool LoadMapFromFileToArray();
-
+	bool SetUpBlocks();
 
 	//Methods 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include <iostream>
 class IBrick : public sf::Drawable
 {
 protected:

@@ -2,6 +2,7 @@
 
 GoldBrick::GoldBrick()
 {
+
 }
 
 
@@ -13,6 +14,7 @@ SilverBrick::SilverBrick(int stageNumber)
 
 ColorBrick::ColorBrick(ColorsEnum color)
 {
+
 	switch (color)
 	{
 	case ColorsEnum::blue:
