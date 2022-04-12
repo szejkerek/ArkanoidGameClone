@@ -1,10 +1,9 @@
 #include "Program.h"
 #include "Utility.h"
-Program::Program()
+Program::Program(): game(deltaTime)
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
-	game = Game(deltaTime);
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
 }
 
@@ -17,7 +16,7 @@ void Program::InitializeWindow(unsigned int width, unsigned int height, std::str
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
 	window->setPosition(PixelSizes::GetInstance().windowPosition);
-	window->setVerticalSyncEnabled(false);
+	//window->setVerticalSyncEnabled(false);
 }
 
 void Program::CalculateDeltaTime()
@@ -52,7 +51,7 @@ void Program::Render()
 	window->clear(backgroundColor);
 
 	window->draw(game);
-	//
+	
 	window->display();
 }
 

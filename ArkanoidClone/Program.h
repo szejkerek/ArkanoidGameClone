@@ -21,7 +21,6 @@ private:
 	
 	//Game Objects
 	Game game;
-
 	
 	//Methods
 	void InitializeWindow(unsigned int width, unsigned int height, std::string title);
@@ -31,7 +30,7 @@ public:
 
 	//Constructors&Destructors
 	Program();
-	virtual ~Program();
+	~Program();
 
 	//Methods
 	void CalculateDeltaTime();

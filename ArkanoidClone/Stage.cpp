@@ -17,10 +17,11 @@ bool Stage::CalculateBricksPositions()
 		for (int j = 0; j < 21; j++)
 		{
 			if (bricks[i][j] != nullptr)
-				bricks[i][j]->SetPosition({startingPosition.x + i * offset.x,
-										   startingPosition.y + j * offset.y });
+				bricks[i][j]->SetPosition({startingPosition.x + offset.x * i,
+										   startingPosition.y + offset.y * j });
 		}
 	}
+
 	return true;
 }
 
@@ -34,7 +35,7 @@ void GenerateDefaultMapFile(std::string filename)
 
 	if(file) 
 	{
-		for (size_t i = 0; i < 21; i++)
+		for (int i = 0; i < 21; i++)
 		{
 			for (int j = 0; j < 13; j++)
 			{
@@ -48,15 +49,9 @@ void GenerateDefaultMapFile(std::string filename)
 
 Stage::~Stage()
 {
-	//delete bricks[0][0];
-	/*for (int i = 0; i < 13; i++)
-	{
-		for (int j = 0; j < 21; j++)
-		{
-			if (bricks[i][j] != nullptr)
-				delete bricks[i][j];
-		}
-	}*/
+	//IBrick* dupa = bricks[0][0];
+	delete bricks[0][0];
+
 }
 
 Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_stageNumber), playgroundPosition(_playgroundPosition)
@@ -87,15 +82,16 @@ inline std::string GetFilename(int _stageNumber)
 inline void Stage::FillStageArray(std::vector<char> stageVector)
 {
 	int vectorIndex = 0;
-	for (int i = 0; i < 13; i++)
+	for (int j = 0; j < 21; j++)
 	{
-		for (int j = 0; j < 21; j++)
+		for (int i = 0; i < 13; i++)
 		{
 			char letter = tolower( stageVector[vectorIndex] );
 			stageArray[i][j] = stageVector[vectorIndex];
-			
+			std::cout << stageArray[i][j] ;
 			vectorIndex++;
 		}
+		std::cout << std::endl;
 	}
 }
 
@@ -208,13 +204,17 @@ bool Stage::SetUpBlocks()
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
-	for (int i = 0; i < 13; i++)
+	if (!playable)
+		return;
+	for (int j = 0; j < 21; j++)
 	{
-		for (int j = 0; j < 21; j++)
+		for (int i = 0; i < 13; i++)
 		{
 			if (bricks[i][j] != nullptr)
+			{
 				target.draw(*bricks[i][j]);
+			}
+				
 		}
 	}
 

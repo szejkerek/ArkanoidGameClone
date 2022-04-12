@@ -2,13 +2,13 @@
 
 GoldBrick::GoldBrick()
 {
-
+	SetFillColor(sf::Color::Color(181,166,66,255));
 }
 
 
 SilverBrick::SilverBrick(int stageNumber)
 {
-
+	SetFillColor(sf::Color::Color(196,202,206));
 }
 
 

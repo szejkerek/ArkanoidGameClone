@@ -13,7 +13,7 @@ private:
 	//GameObjects
 	Playground playground;
 	Ball ball;
-	Stage stage1;
+	Stage* stage1;
 
 	//Methods
 	void InitializeBall();
@@ -21,7 +21,6 @@ private:
 
 public:
 	//Constructors & Destructors
-	Game();
 	Game(float& deltaTime);
 	virtual ~Game();
 

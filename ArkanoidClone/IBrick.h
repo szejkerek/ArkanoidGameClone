@@ -10,7 +10,7 @@ protected:
 	sf::Texture texture;
 
 	//Variables
-	sf::Vector2f size{58,22};
+	sf::Vector2f size = PixelSizes::GetInstance().brickSize;
 	int hp;
 	int points;
 

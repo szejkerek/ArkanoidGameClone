@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <iostream>
-Game::Game(){}
 
 Game::Game(float& _deltaTime)
 {
@@ -20,20 +19,20 @@ void Game::InitializeBall()
 
 void Game::InitializeStage()
 {
-	stage1 = Stage(1, playground.GetPosition());
+	stage1 = new Stage(1, playground.GetPosition());
 }
 
 
 Game::~Game()
 {
-
+	delete stage1;
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
 	target.draw(playground);
-	target.draw(stage1);
+	target.draw(*stage1);
 	target.draw(ball);
 }
 

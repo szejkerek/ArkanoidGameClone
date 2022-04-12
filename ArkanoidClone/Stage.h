@@ -25,9 +25,8 @@ private:
 
 public:
 	//Constructors & Destructors
-	Stage() {}
-	~Stage();
 	Stage(int stageNumber, sf::Vector2f _playgroundPosition);
+	~Stage();
 
 	//Methods 
 	bool CalculateBricksPositions();
