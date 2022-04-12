@@ -6,7 +6,6 @@ class IBrick : public sf::Drawable
 private:
 protected:
 	sf::RectangleShape gameObject;
-
 	//Game Objects
 	sf::Texture texture;
 
@@ -18,6 +17,7 @@ protected:
 	//Methods
 
 public:
+	
 	//Constructors & Destructors
 	IBrick();
 

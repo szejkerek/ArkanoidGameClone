@@ -12,6 +12,16 @@ bool Stage::CalculateBricksPositions()
 	sf::Vector2f startingPosition = playgroundPosition;
 	sf::Vector2f offset = PixelSizes::GetInstance().brickSize;
 
+	for (int i = 0; i < 13; i++)
+	{
+		for (int j = 0; j < 21; j++)
+		{
+			if (bricks[i][j] != nullptr)
+				bricks[i][j]->SetPosition({startingPosition.x + i * offset.x,
+										   startingPosition.y + j * offset.y });
+		}
+	}
+	return true;
 }
 
 void GenerateDefaultMapFile(std::string filename)
@@ -36,6 +46,19 @@ void GenerateDefaultMapFile(std::string filename)
 	file.close();
 }
 
+Stage::~Stage()
+{
+	//delete bricks[0][0];
+	/*for (int i = 0; i < 13; i++)
+	{
+		for (int j = 0; j < 21; j++)
+		{
+			if (bricks[i][j] != nullptr)
+				delete bricks[i][j];
+		}
+	}*/
+}
+
 Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_stageNumber), playgroundPosition(_playgroundPosition)
 {
 	GenerateDefaultMapFile("default");
@@ -46,6 +69,7 @@ Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_s
 	}
 
 	SetUpBlocks();
+	CalculateBricksPositions();
 
 	playable = true;
 }
@@ -176,7 +200,7 @@ bool Stage::SetUpBlocks()
 	{
 		for (int j = 0; j < 21; j++)
 		{
-			blocks[i][j] = ChooseBrick(stageArray[i][j]);
+			bricks[i][j] = ChooseBrick(stageArray[i][j]);
 		}
 	}
 	return true;
@@ -184,4 +208,14 @@ bool Stage::SetUpBlocks()
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+
+	for (int i = 0; i < 13; i++)
+	{
+		for (int j = 0; j < 21; j++)
+		{
+			if (bricks[i][j] != nullptr)
+				target.draw(*bricks[i][j]);
+		}
+	}
+
 }

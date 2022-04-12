@@ -5,11 +5,11 @@
 #include "Bricks.h"
 #include "SFML/Graphics.hpp"
 
-class Stage : sf::Drawable 
+class Stage: public sf::Drawable 
 {
 private:
 	//Game Objects
-	IBrick* blocks[13][21];
+	IBrick* bricks[13][21];
 
 	//Variables
 	sf::Vector2f playgroundPosition;
@@ -26,6 +26,7 @@ private:
 public:
 	//Constructors & Destructors
 	Stage() {}
+	~Stage();
 	Stage(int stageNumber, sf::Vector2f _playgroundPosition);
 
 	//Methods 

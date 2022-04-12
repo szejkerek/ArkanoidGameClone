@@ -33,7 +33,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	
 	target.draw(playground);
-
+	target.draw(stage1);
 	target.draw(ball);
 }
 
