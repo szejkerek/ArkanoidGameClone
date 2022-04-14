@@ -12,9 +12,9 @@ bool Stage::CalculateBricksPositions()
 	sf::Vector2f startingPosition = playgroundPosition;
 	sf::Vector2f offset = PixelSizes::GetInstance().brickSize;
 
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < BRICK_COLUMNS; i++)
 	{
-		for (int j = 0; j < 21; j++)
+		for (int j = 0; j < BRICK_ROWS; j++)
 		{
 			if (bricks[i][j] != nullptr)
 				bricks[i][j]->SetPosition({startingPosition.x + offset.x * i,
@@ -35,9 +35,9 @@ void GenerateDefaultMapFile(std::string filename)
 
 	if(file) 
 	{
-		for (int i = 0; i < 21; i++)
+		for (int i = 0; i < BRICK_ROWS; i++)
 		{
-			for (int j = 0; j < 13; j++)
+			for (int j = 0; j < BRICK_COLUMNS; j++)
 			{
 				file << "* ";
 			}
@@ -49,8 +49,13 @@ void GenerateDefaultMapFile(std::string filename)
 
 Stage::~Stage()
 {
-	//IBrick* dupa = bricks[0][0];
-	delete bricks[0][0];
+	for (int i = 0; i < BRICK_COLUMNS; i++)
+	{
+		for (int j = 0; j < BRICK_ROWS; j++)
+		{
+			delete bricks[i][j];
+		}
+	}
 
 }
 
@@ -82,16 +87,15 @@ inline std::string GetFilename(int _stageNumber)
 inline void Stage::FillStageArray(std::vector<char> stageVector)
 {
 	int vectorIndex = 0;
-	for (int j = 0; j < 21; j++)
+
+	for (int j = 0; j < BRICK_ROWS; j++)
 	{
-		for (int i = 0; i < 13; i++)
+		for (int i = 0; i < BRICK_COLUMNS; i++)
 		{
 			char letter = tolower( stageVector[vectorIndex] );
 			stageArray[i][j] = stageVector[vectorIndex];
-			std::cout << stageArray[i][j] ;
 			vectorIndex++;
 		}
-		std::cout << std::endl;
 	}
 }
 
@@ -140,6 +144,26 @@ IBrick* Stage::ChooseBrick(char letter)
 	}
 }
 
+void FillWithVoid(std::vector<char>& tempVector)
+{
+	if (tempVector.size() > BRICK_COLUMNS * BRICK_ROWS)
+	{
+		std::cout << "Error: Loaded stage was too large." << std::endl;
+		while (tempVector.size() != BRICK_COLUMNS * BRICK_ROWS)
+		{
+			tempVector.pop_back();
+		}
+	}
+	else if(tempVector.size() < BRICK_COLUMNS * BRICK_ROWS)
+	{
+		std::cout << "Error: Loaded stage was too small." << std::endl;
+		while (tempVector.size() != BRICK_COLUMNS * BRICK_ROWS)
+		{
+			tempVector.push_back('*');
+		}
+	}
+}
+
 std::vector<char> ReadFile(int _stageNumber)
 {
 	std::vector<char> tempVector; 
@@ -148,7 +172,7 @@ std::vector<char> ReadFile(int _stageNumber)
 
 	if (!std::filesystem::exists(path))
 	{
-		std::cout << "Couldnt find folder Stage" << std::endl;
+		std::cout << "Error: Couldnt find folder Stage" << std::endl;
 		return tempVector;
 	}
 
@@ -162,16 +186,19 @@ std::vector<char> ReadFile(int _stageNumber)
 		}
 	}
 	file.close();
+
+	FillWithVoid(tempVector);
+
 	return tempVector;
 }
 
-bool ValidateStageArray(char _stageArray[13][21])
+bool ValidateStageArray(char _stageArray[BRICK_COLUMNS][BRICK_ROWS])
 {
 	std::regex validate("[sxwotgrbpy\\*]");
 	std::vector<char> validSymbols{ '*','s','x','w','o','t','g','r','b','p','y' };
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < BRICK_COLUMNS; i++)
 	{
-		for (int j = 0; j < 21; j++)
+		for (int j = 0; j < BRICK_ROWS; j++)
 		{
 			std::string s(1, _stageArray[i][j]);
 			if (!std::regex_match( s , validate))
@@ -192,9 +219,9 @@ bool Stage::LoadMapFromFileToArray()
 
 bool Stage::SetUpBlocks()
 {
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < BRICK_COLUMNS; i++)
 	{
-		for (int j = 0; j < 21; j++)
+		for (int j = 0; j < BRICK_ROWS; j++)
 		{
 			bricks[i][j] = ChooseBrick(stageArray[i][j]);
 		}
@@ -206,9 +233,9 @@ void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (!playable)
 		return;
-	for (int j = 0; j < 21; j++)
+	for (int j = 0; j < BRICK_ROWS; j++)
 	{
-		for (int i = 0; i < 13; i++)
+		for (int i = 0; i < BRICK_COLUMNS; i++)
 		{
 			if (bricks[i][j] != nullptr)
 			{
@@ -218,4 +245,17 @@ void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		}
 	}
 
+}
+
+void Stage::UpdatePlayableBricks()
+{
+	playableBricks.clear();
+	for (int i = 0; i < BRICK_COLUMNS; i++)
+	{
+		for (int j = 0; j < BRICK_ROWS; j++)
+		{
+			if (bricks[i][j] != nullptr)
+				playableBricks.push_back(bricks[i][j]);
+		}
+	}
 }

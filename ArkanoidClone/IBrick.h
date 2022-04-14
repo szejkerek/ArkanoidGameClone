@@ -28,6 +28,7 @@ public:
 	virtual void SetTexture(sf::Texture _texture) = 0;
 	sf::Vector2f GetSize();
 	sf::Vector2f GetPosition();
+	PositionConstrains GetConstrains();
 
 	//Getters&Setters
 	virtual void OnCollisionEnter() = 0;

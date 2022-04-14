@@ -26,6 +26,16 @@ inline sf::Vector2f IBrick::GetPosition()
 	return gameObject.getPosition();
 }
 
+PositionConstrains IBrick::GetConstrains()
+{
+	PositionConstrains brickConstrains;
+	brickConstrains.maxUp = GetPosition().y;
+	brickConstrains.maxLeft = GetPosition().x;
+	brickConstrains.maxDown = GetPosition().y + GetSize().y;
+	brickConstrains.maxRight = GetPosition().x + GetSize().x;
+	return PositionConstrains();
+}
+
 void IBrick::SetFillColor(sf::Color _color)
 {
 	gameObject.setFillColor(_color);
