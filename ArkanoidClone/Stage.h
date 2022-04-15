@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <set>
 #include "IBrick.h"
 #include "Bricks.h"
 #include "SFML/Graphics.hpp"
@@ -10,10 +11,13 @@
 
 class Stage: public sf::Drawable 
 {
+public:
+	//Game Objects
+	std::set<IBrick*> playableBricks;	  //vector with just bricks
 private:
 	//Game Objects
-	IBrick* bricks[BRICK_COLUMNS][BRICK_ROWS];
-	std::vector<IBrick*> playableBricks;
+	IBrick* bricks[BRICK_COLUMNS][BRICK_ROWS]; //array with bricks and nullptr
+	//std::vector<IBrick*> playableBricks;	  //vector with just bricks
 
 	//Variables	
 	sf::Vector2f playgroundPosition;
@@ -22,13 +26,12 @@ private:
 	int stageNumber;
 
 	//Methods
-	void FillStageArray(std::vector<char> stageVector);
 	IBrick* ChooseBrick(char letter);
+	void FillStageArray(std::vector<char> stageVector);
 	bool LoadMapFromFileToArray();
 	bool SetUpBlocks();
 
 	bool CalculateBricksPositions();
-	//bool PlaceBricks();
 	
 public:
 	//Constructors & Destructors
@@ -36,7 +39,9 @@ public:
 	~Stage();
 
 	//Methods 
-	void UpdatePlayableBricks();
+	void FillPlayableSet();
+
+	//Getters&Setters
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

@@ -12,11 +12,14 @@ private:
 
 	//GameObjects
 	Playground playground;
-	Ball ball;
+	Ball* ball;
+	Ball* ball1;
+	Ball* ball2;
+
 	Stage* stage1;
 
 	//Methods
-	void InitializeBall();
+	Ball* InitializeBall(sf::Vector2f startingDireciton);
 	void InitializeStage();
 
 public:

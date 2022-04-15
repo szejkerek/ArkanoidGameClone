@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Utility.h"
+#include <iostream>
 class IBrick : public sf::Drawable
 {
 private:
@@ -20,6 +21,7 @@ public:
 	
 	//Constructors & Destructors
 	IBrick();
+	~IBrick() { std::cout << "Brick destructor" << std::endl; }
 
 	//Methods
 	void SetPosition(sf::Vector2f _position);
@@ -29,6 +31,7 @@ public:
 	sf::Vector2f GetSize();
 	sf::Vector2f GetPosition();
 	PositionConstrains GetConstrains();
+	sf::Vector2f GetCenterPoint();
 
 	//Getters&Setters
 	virtual void OnCollisionEnter() = 0;

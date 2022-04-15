@@ -1,18 +1,9 @@
 #include "Ball.h"
 #include "Utility.h"
-Ball::Ball()
-{
-	gameObject.setRadius(5);
-	gameObject.setPosition(0,0);
-	gameObject.setFillColor(sf::Color::White);
-	position = { 0, 0 };
-	direction = {-1,-1};
-	speed = 1;
-}
 
-Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed)
+Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed, Stage* _stage): currentStage(_stage)
 {
-	gameObject.setRadius(7);
+	gameObject.setRadius(PixelSizes::GetInstance().ballRadius);
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::White);
 	position = _position;
@@ -34,7 +25,7 @@ void Ball::ChangeDirection(sf::Vector2f _direction)
 void Ball::UpdateCollistions()
 {
 	UpdateWallCollisions();
-	UpdateBlockCollision();
+	UpdateBricksCollision();
 }
 
 void Ball::UpdateWallCollisions()
@@ -65,9 +56,77 @@ void Ball::UpdateWallCollisions()
 	
 }
 
-void Ball::UpdateBlockCollision() //(Block& block)
+void Ball::UpdateBrickCollision(IBrick* brick)
 {
-	//Block.CollisionDetected
+	sf::Vector2f changeX = { -1.f, 1.f };
+	sf::Vector2f changeY = { 1.f, -1.f };
+
+	sf::Vector2f ballPosition = GetPoistion();
+	PositionConstrains brickConstrains = brick->GetConstrains();
+
+	sf::Vector2f brickCeneter = brick->GetCenterPoint();
+
+	
+	if (ballPosition.x > brickConstrains.maxLeft && ballPosition.x < brickConstrains.maxRight) // Pionowy tunel
+	{
+		if (ballPosition.y < brickCeneter.y && ballPosition.y > brickConstrains.maxUp) //UpperHalf
+		{
+			std::cout << "Upper"<<std::endl;
+			position.y = brickConstrains.maxUp;
+			ChangeDirection(MultipyVectors(direction, changeY));
+
+		}
+		else if (ballPosition.y > brickCeneter.y && ballPosition.y < brickConstrains.maxDown) //BottomHalf
+		{
+			std::cout << "Bottom" << std::endl;
+			position.y = brickConstrains.maxDown;
+			ChangeDirection(MultipyVectors(direction, changeY));
+		}
+	}
+	else if (ballPosition.y < brickConstrains.maxDown && ballPosition.y > brickConstrains.maxUp) // Poziomy tunel
+	{
+		if (ballPosition.x < brickCeneter.x && ballPosition.x > brickConstrains.maxLeft) //LeftHalf
+		{
+			std::cout << "Left" << std::endl;
+			position.x = brickConstrains.maxLeft;
+			ChangeDirection(MultipyVectors(direction, changeX));
+		}
+		else if (ballPosition.x > brickCeneter.x && ballPosition.x < brickConstrains.maxRight) //RightHalf
+		{
+			std::cout << "Right" << std::endl;
+			position.x = brickConstrains.maxRight;
+			ChangeDirection(MultipyVectors(direction, changeX));
+		}
+	}
+
+	/*if (GetPoistion().x <= brick->GetConstrains().maxLeft)
+	{
+		position.x = playgroundConstrains.maxLeft;
+		ChangeDirection(MultipyVectors(direction, changeX));
+	}
+	else if (GetPoistion().y <= brick->GetConstrains().maxUp)
+	{
+		position.y = playgroundConstrains.maxUp;
+		ChangeDirection(MultipyVectors(direction, changeY));
+	}
+	else if (gameObject.getPosition().x >= brick->GetConstrains().maxRight)
+	{
+		position.x = playgroundConstrains.maxRight;
+		ChangeDirection(MultipyVectors(direction, changeX));
+	}
+	else if (gameObject.getPosition().y >= brick->GetConstrains().maxDown)
+	{
+		position.y = playgroundConstrains.maxDown;
+		ChangeDirection(MultipyVectors(direction, changeY));
+	}*/
+}
+
+void Ball::UpdateBricksCollision()
+{
+	for (auto& brick: currentStage->playableBricks)
+	{
+		UpdateBrickCollision(brick);
+	}
 }
 
 void Ball::Move(float& dt)
@@ -100,5 +159,4 @@ void Ball::Update(float& dt)
 {
 	UpdateCollistions();
 	Move(dt);
-	
 }

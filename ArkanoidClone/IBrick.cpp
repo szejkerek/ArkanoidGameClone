@@ -33,7 +33,14 @@ PositionConstrains IBrick::GetConstrains()
 	brickConstrains.maxLeft = GetPosition().x;
 	brickConstrains.maxDown = GetPosition().y + GetSize().y;
 	brickConstrains.maxRight = GetPosition().x + GetSize().x;
-	return PositionConstrains();
+	return brickConstrains;
+}
+
+sf::Vector2f IBrick::GetCenterPoint()
+{
+	float x = GetPosition().x + (GetSize().x / 2);
+	float y = GetPosition().y + (GetSize().y / 2);
+	return {x,y};
 }
 
 void IBrick::SetFillColor(sf::Color _color)
