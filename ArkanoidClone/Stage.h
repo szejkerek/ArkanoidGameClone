@@ -28,9 +28,7 @@ private:
 	bool SetUpBlocks();
 
 	bool CalculateBricksPositions();
-	bool PlaceBricks();
-	void DrawBricks();
-
+	//bool PlaceBricks();
 	
 public:
 	//Constructors & Destructors
@@ -38,7 +36,7 @@ public:
 	~Stage();
 
 	//Methods 
-	//void UpdatePlayableBricks();
+	void UpdatePlayableBricks();
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

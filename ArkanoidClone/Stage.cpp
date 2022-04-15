@@ -7,6 +7,8 @@
 #include <regex>
 #include <filesystem>
 
+
+
 bool Stage::CalculateBricksPositions() 
 {
 	sf::Vector2f startingPosition = playgroundPosition;
@@ -70,6 +72,7 @@ Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_s
 
 	SetUpBlocks();
 	CalculateBricksPositions();
+	UpdatePlayableBricks();
 
 	playable = true;
 }
@@ -233,16 +236,10 @@ void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (!playable)
 		return;
-	for (int j = 0; j < BRICK_ROWS; j++)
+
+	for (auto& brick : playableBricks)
 	{
-		for (int i = 0; i < BRICK_COLUMNS; i++)
-		{
-			if (bricks[i][j] != nullptr)
-			{
-				target.draw(*bricks[i][j]);
-			}
-				
-		}
+		target.draw(*brick);
 	}
 
 }

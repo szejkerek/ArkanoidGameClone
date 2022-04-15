@@ -1,10 +1,6 @@
 ﻿  ArkanoidClone.cpp
-  Ball.cpp
-  IBrick.cpp
   Game.cpp
-  Bricks.cpp
-  Playground.cpp
-  Stage.cpp
   Program.cpp
+  Stage.cpp
   Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

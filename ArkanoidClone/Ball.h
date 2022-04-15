@@ -1,11 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Utility.h"
+//#include "Stage.h"
 
 class Ball : public sf::Drawable
 {
 private:
 	//Game Objects
+	//sf::Stage* currentStage;
 	sf::CircleShape gameObject;
 	sf::Vector2f direction;
 	sf::Vector2f position;
