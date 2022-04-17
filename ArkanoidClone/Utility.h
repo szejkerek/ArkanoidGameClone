@@ -7,6 +7,19 @@ inline sf::Vector2f MultipyVectors(sf::Vector2f vectorA, sf::Vector2f vectorB)
 	return  sf::Vector2f(vectorA.x * vectorB.x, vectorA.y * vectorB.y);
 }
 
+inline float DotProduct(sf::Vector2f& vectorA, sf::Vector2f& vectorB)
+{
+	return  (vectorA.x * vectorB.x + vectorA.y * vectorB.y);
+}
+
+inline sf::Vector2f NormalizeVector(sf::Vector2f vector)
+{
+	float magnitude = std::sqrt(DotProduct(vector, vector));
+	if (magnitude > 0)
+		vector = vector / magnitude;
+	return vector;
+}
+
 struct PositionConstrains 
 {
 	float maxRight = 0;
@@ -44,7 +57,8 @@ public:
 #pragma endregion
 public:
 	float ballRadius = 7.f;
-	sf::Vector2f brickSize{55,28};
+	//sf::Vector2f brickSize{55,28};
+	sf::Vector2f brickSize{110,56};
 	sf::Vector2f playgroundSize{ 713.f,858.f };
 	sf::Vector2f playgroundPosition{ 183,62 };
 	sf::Vector2i windowPosition{ 310,10 };

@@ -4,9 +4,10 @@
 #include <iostream>
 class IBrick : public sf::Drawable
 {
+public:
+	sf::RectangleShape gameObject;
 private:
 protected:
-	sf::RectangleShape gameObject;
 	//Game Objects
 	sf::Texture texture;
 

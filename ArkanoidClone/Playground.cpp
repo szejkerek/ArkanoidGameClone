@@ -17,10 +17,10 @@ Playground::Playground()
 
 PositionConstrains Playground::GetPositionConstrains(Ball& ball)
 {
-	playgroundConstrains.maxLeft = gameObject.getPosition().x;
-	playgroundConstrains.maxUp = gameObject.getPosition().y;
-	playgroundConstrains.maxRight = gameObject.getPosition().x + gameObject.getSize().x - 2 * ball.GetRadius();
-	playgroundConstrains.maxDown = gameObject.getPosition().y + gameObject.getSize().y - 2 * ball.GetRadius();
+	playgroundConstrains.maxLeft = gameObject.getPosition().x + ball.GetRadius();
+	playgroundConstrains.maxUp = gameObject.getPosition().y+ ball.GetRadius();
+	playgroundConstrains.maxRight = gameObject.getPosition().x + gameObject.getSize().x -   ball.GetRadius();
+	playgroundConstrains.maxDown = gameObject.getPosition().y + gameObject.getSize().y -  ball.GetRadius();
 	return playgroundConstrains;
 }
 

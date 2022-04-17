@@ -19,8 +19,9 @@ private:
 	void UpdateCollistions();
 	void UpdateWallCollisions();
 	void UpdateBricksCollision();
-	void UpdateBrickCollision(IBrick* brick);
+	void UpdateBrickCollision(IBrick* brick ,sf::FloatRect& overlap);
 	void Move(float& deltaTime);
+	void Move(sf::Vector2f moveToVector);
 
 public:
 	//Constructors & Destructors
@@ -32,7 +33,7 @@ public:
 
 	//Getters & Setters
 	sf::Vector2f GetDirection();
-	sf::Vector2f GetPoistion();
+	sf::Vector2f GetPosition();
 	float GetRadius();
 
 	//SFML Methods

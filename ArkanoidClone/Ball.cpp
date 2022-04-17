@@ -4,6 +4,7 @@
 Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed, Stage* _stage): currentStage(_stage)
 {
 	gameObject.setRadius(PixelSizes::GetInstance().ballRadius);
+	gameObject.setOrigin(GetRadius(), GetRadius());
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::White);
 	position = _position;
@@ -33,12 +34,12 @@ void Ball::UpdateWallCollisions()
 	sf::Vector2f changeX = { -1.f, 1.f };
 	sf::Vector2f changeY = { 1.f, -1.f };
 
-	if (GetPoistion().x <= playgroundConstrains.maxLeft)
+	if (GetPosition().x <= playgroundConstrains.maxLeft)
 	{
 		position.x = playgroundConstrains.maxLeft;
 		ChangeDirection(MultipyVectors(direction, changeX));
 	}
-	else if (GetPoistion().y <= playgroundConstrains.maxUp)
+	else if (GetPosition().y <= playgroundConstrains.maxUp)
 	{
 		position.y = playgroundConstrains.maxUp;
 		ChangeDirection(MultipyVectors(direction, changeY));
@@ -56,76 +57,50 @@ void Ball::UpdateWallCollisions()
 	
 }
 
-void Ball::UpdateBrickCollision(IBrick* brick)
+sf::Vector3f CalculateCorrectionVector(sf::FloatRect overlap, sf::Vector2f collisionVector)
 {
-	sf::Vector2f changeX = { -1.f, 1.f };
-	sf::Vector2f changeY = { 1.f, -1.f };
+	sf::Vector3f correctionVector(0, 0, 0); // x,y - from where ball collide  // z - depth of penetration
+	if (overlap.width < overlap.height)
+	{
+		correctionVector.x = (collisionVector.x < 0) ? 1.f : -1.f;
+		correctionVector.z = overlap.width;
+	}
+	else
+	{
+		correctionVector.y = (collisionVector.y < 0) ? 1.f : -1.f;
+		correctionVector.z = overlap.height;
+	}
+	return correctionVector;
+}
 
-	sf::Vector2f ballPosition = GetPoistion();
-	PositionConstrains brickConstrains = brick->GetConstrains();
+inline sf::Vector2f ReflectedVector(sf::Vector2f& currentDirection, sf::Vector2f& normal)
+{
+	return -2.f * DotProduct(currentDirection, normal) * normal + currentDirection;
+}
 
-	sf::Vector2f brickCeneter = brick->GetCenterPoint();
+void Ball::UpdateBrickCollision(IBrick* brick, sf::FloatRect& _overlap)
+{
+	sf::Vector2f collisionVector = brick->GetCenterPoint() - GetPosition();
+	sf::Vector3f correctionVector = CalculateCorrectionVector(_overlap, collisionVector);
 
+	sf::Vector2f normal(correctionVector.x, correctionVector.y);
+	Move(normal * correctionVector.z);   //Move ball outside brick
 	
-	if (ballPosition.x > brickConstrains.maxLeft && ballPosition.x < brickConstrains.maxRight) // Pionowy tunel
-	{
-		if (ballPosition.y < brickCeneter.y && ballPosition.y > brickConstrains.maxUp) //UpperHalf
-		{
-			std::cout << "Upper"<<std::endl;
-			position.y = brickConstrains.maxUp;
-			ChangeDirection(MultipyVectors(direction, changeY));
-
-		}
-		else if (ballPosition.y > brickCeneter.y && ballPosition.y < brickConstrains.maxDown) //BottomHalf
-		{
-			std::cout << "Bottom" << std::endl;
-			position.y = brickConstrains.maxDown;
-			ChangeDirection(MultipyVectors(direction, changeY));
-		}
-	}
-	else if (ballPosition.y < brickConstrains.maxDown && ballPosition.y > brickConstrains.maxUp) // Poziomy tunel
-	{
-		if (ballPosition.x < brickCeneter.x && ballPosition.x > brickConstrains.maxLeft) //LeftHalf
-		{
-			std::cout << "Left" << std::endl;
-			position.x = brickConstrains.maxLeft;
-			ChangeDirection(MultipyVectors(direction, changeX));
-		}
-		else if (ballPosition.x > brickCeneter.x && ballPosition.x < brickConstrains.maxRight) //RightHalf
-		{
-			std::cout << "Right" << std::endl;
-			position.x = brickConstrains.maxRight;
-			ChangeDirection(MultipyVectors(direction, changeX));
-		}
-	}
-
-	/*if (GetPoistion().x <= brick->GetConstrains().maxLeft)
-	{
-		position.x = playgroundConstrains.maxLeft;
-		ChangeDirection(MultipyVectors(direction, changeX));
-	}
-	else if (GetPoistion().y <= brick->GetConstrains().maxUp)
-	{
-		position.y = playgroundConstrains.maxUp;
-		ChangeDirection(MultipyVectors(direction, changeY));
-	}
-	else if (gameObject.getPosition().x >= brick->GetConstrains().maxRight)
-	{
-		position.x = playgroundConstrains.maxRight;
-		ChangeDirection(MultipyVectors(direction, changeX));
-	}
-	else if (gameObject.getPosition().y >= brick->GetConstrains().maxDown)
-	{
-		position.y = playgroundConstrains.maxDown;
-		ChangeDirection(MultipyVectors(direction, changeY));
-	}*/
+	ChangeDirection(ReflectedVector(direction, normal));
 }
 
 void Ball::UpdateBricksCollision()
 {
+	sf::FloatRect overlap;
+	sf::FloatRect ballBounds = gameObject.getTransform().transformRect(gameObject.getLocalBounds());
+
 	for (auto& brick: currentStage->playableBricks)
 	{
-		UpdateBrickCollision(brick);
+		if (brick->gameObject.getGlobalBounds().intersects(ballBounds, overlap))
+		{
+			UpdateBrickCollision(brick, overlap);
+			break;
+		}
 	}
 }
 
@@ -135,12 +110,18 @@ void Ball::Move(float& dt)
 	gameObject.setPosition(position);
 }
 
+void Ball::Move(sf::Vector2f moveToVector)
+{
+	position += moveToVector;
+	gameObject.setPosition(position);
+}
+
 sf::Vector2f Ball::GetDirection()
 {
 	return direction;
 }
 
-sf::Vector2f Ball::GetPoistion()
+sf::Vector2f Ball::GetPosition()
 {
 	return position;
 }
@@ -157,6 +138,8 @@ void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Ball::Update(float& dt)
 {
+	//std::cout << gameObject.getTransform().transformRect(gameObject.getLocalBounds()).left<<std::endl;
+	//std::cout << gameObject.getGlobalBounds().width << std::endl;
 	UpdateCollistions();
 	Move(dt);
 }

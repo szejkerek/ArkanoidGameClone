@@ -15,11 +15,12 @@ private:
 	Ball* ball;
 	Ball* ball1;
 	Ball* ball2;
+	Ball* ball3;
 
 	Stage* stage1;
 
 	//Methods
-	Ball* InitializeBall(sf::Vector2f startingDireciton);
+	Ball* InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton);
 	void InitializeStage();
 
 public:
