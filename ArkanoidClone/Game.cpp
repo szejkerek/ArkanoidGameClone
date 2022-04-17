@@ -14,7 +14,7 @@ Game::Game(float& _deltaTime)
 Ball* Game::InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton)
 {
 	//sf::Vector2f stratingPosition = { 200, 800 };
-	float startingSpeed = 0.25;
+	float startingSpeed = 25.f;
 	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1);
 	_ball->SetPlaygroundConstrains(playground.GetPositionConstrains(*_ball));
 	return _ball;
