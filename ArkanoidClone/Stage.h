@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <set>
 #include "IBrick.h"
 #include "Bricks.h"
 #include "SFML/Graphics.hpp"
@@ -13,11 +12,10 @@ class Stage: public sf::Drawable
 {
 public:
 	//Game Objects
-	std::set<IBrick*> playableBricks;	  //vector with just bricks
+	std::vector<IBrick*> playableBricks;	  //vector with just bricks
 private:
 	//Game Objects
 	IBrick* bricks[BRICK_COLUMNS][BRICK_ROWS]; //array with bricks and nullptr
-	//std::vector<IBrick*> playableBricks;	  //vector with just bricks
 
 	//Variables	
 	sf::Vector2f playgroundPosition;
@@ -40,6 +38,7 @@ public:
 
 	//Methods 
 	void FillPlayableSet();
+	void CollisionDetected(IBrick* brickToDelete);
 
 	//Getters&Setters
 

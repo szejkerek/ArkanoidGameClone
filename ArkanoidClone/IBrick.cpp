@@ -1,6 +1,6 @@
 #include "Bricks.h"
 
-IBrick::IBrick(): hp(0), points(0)
+IBrick::IBrick(): points(0)
 {
 	SetSize(size); //BLOCK SIZE
 	SetPosition({0,0});

@@ -250,7 +250,25 @@ void Stage::FillPlayableSet()
 		for (int j = 0; j < BRICK_ROWS; j++)
 		{
 			if (bricks[i][j] != nullptr)
-				playableBricks.insert(bricks[i][j]);
+				playableBricks.push_back(bricks[i][j]);
 		}
 	}
+}
+
+void Stage::CollisionDetected(IBrick* brickToDelete)
+{
+	for (int i = 0; i < BRICK_COLUMNS; i++)
+	{
+		for (int j = 0; j < BRICK_ROWS; j++)
+		{
+			if (bricks[i][j] == brickToDelete)
+			{
+				if(bricks[i][j]->OnCollisionEnter())
+					bricks[i][j] = nullptr;
+			}
+				
+		}
+	}
+
+	FillPlayableSet();
 }

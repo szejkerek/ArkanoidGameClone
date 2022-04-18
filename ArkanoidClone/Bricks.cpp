@@ -5,12 +5,35 @@ GoldBrick::GoldBrick()
 	SetFillColor(sf::Color::Color(181,166,66,255));
 }
 
+bool GoldBrick::OnCollisionEnter()
+{
+	return false; //Never gets destroyed
+}
 
-SilverBrick::SilverBrick(int stageNumber)
+bool DecideIfBrickDestroyed(int hp)
+{
+	return (hp <= 0);
+}
+
+bool SilverBrick::OnCollisionEnter()
+{
+	hp--;
+	return DecideIfBrickDestroyed(hp);
+}
+bool ColorBrick::OnCollisionEnter()
+{
+	return true; //Always gets destroyed
+}
+
+inline int CalculateHealth(int stageNumber)
+{
+	return 2 + (stageNumber >> 3); //2hp at the beginning, then each 8lvls +1hp
+}
+
+SilverBrick::SilverBrick(int stageNumber): hp(CalculateHealth(stageNumber))
 {
 	SetFillColor(sf::Color::Color(196,202,206));
 }
-
 
 ColorBrick::ColorBrick(ColorsEnum color)
 {

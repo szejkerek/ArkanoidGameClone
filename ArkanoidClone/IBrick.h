@@ -6,17 +6,13 @@ class IBrick : public sf::Drawable
 {
 public:
 	sf::RectangleShape gameObject;
-private:
 protected:
 	//Game Objects
 	sf::Texture texture;
 
 	//Variables
 	sf::Vector2f size = PixelSizes::GetInstance().brickSize;
-	int hp;
 	int points;
-
-	//Methods
 
 public:
 	
@@ -35,7 +31,7 @@ public:
 	sf::Vector2f GetCenterPoint();
 
 	//Getters&Setters
-	virtual void OnCollisionEnter() = 0;
+	virtual bool OnCollisionEnter() = 0;  //Returns true when brick is to be destroyed
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

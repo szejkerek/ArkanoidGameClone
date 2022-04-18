@@ -98,7 +98,9 @@ void Ball::UpdateBricksCollision()
 	{
 		if (brick->gameObject.getGlobalBounds().intersects(ballBounds, overlap))
 		{
-			UpdateBrickCollision(brick, overlap);
+			UpdateBrickCollision(brick, overlap);//Calculate movement
+
+			currentStage->CollisionDetected(brick);//Handle internal brick logic
 			break;
 		}
 	}

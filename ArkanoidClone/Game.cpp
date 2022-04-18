@@ -14,7 +14,7 @@ Game::Game(float& _deltaTime)
 Ball* Game::InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton)
 {
 	//sf::Vector2f stratingPosition = { 200, 800 };
-	float startingSpeed = 25.f;
+	float startingSpeed = 20.f;
 	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1);
 	_ball->SetPlaygroundConstrains(playground.GetPositionConstrains(*_ball));
 	return _ball;
@@ -48,7 +48,6 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Game::Update( float& dt)
 {
-	stage1->FillPlayableSet(); // Add this to OnCollision 
 	ball->Update(dt);	
 	ball1->Update(dt);	
 	ball2->Update(dt);	
