@@ -3,11 +3,14 @@
 
 Game::Game(float& _deltaTime)
 {
+	sf::Vector2f vec(1234231,65312);
+	std::cout << NormalizeVector(vec).x << " " << NormalizeVector(vec).y << std::endl;
+
 	deltaTime = _deltaTime;
 	InitializeStage();
 	ball = InitializeBall({482,475}, {15, -15});
 	ball1 = InitializeBall({ 600,358 }, { -10,20 });
-	ball2 = InitializeBall({ 562,510 }, { 10,-20 });
+	ball2 = InitializeBall({ 562,510 }, { 10, -20 });
 	ball3 = InitializeBall({ 655,422 }, { -15, 15 });
 }
 

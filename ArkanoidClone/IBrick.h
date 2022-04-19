@@ -18,7 +18,7 @@ public:
 	
 	//Constructors & Destructors
 	IBrick();
-	~IBrick() { std::cout << "Brick destructor" << std::endl; }
+	~IBrick() {}
 
 	//Methods
 	void SetPosition(sf::Vector2f _position);

@@ -4,17 +4,17 @@
 #include "Ball.h"
 class Playground: public sf::Drawable
 {
+	//Variables
 	sf::RectangleShape gameObject;
-
 	PositionConstrains playgroundConstrains;
 
+	//Methods
 	void InitialazePlayground();
 
 public:
 	Playground();
-	PositionConstrains GetPositionConstrains(Ball& ball);
 	sf::Vector2f GetPosition();
-
+	PositionConstrains GetPositionConstrains(Ball& ball);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

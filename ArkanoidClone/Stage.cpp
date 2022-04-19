@@ -7,6 +7,36 @@
 #include <regex>
 #include <filesystem>
 
+void GenerateDefaultMapFile(std::string);
+
+Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition) : stageNumber(_stageNumber), playgroundPosition(_playgroundPosition)
+{
+	GenerateDefaultMapFile("default");
+	if (!LoadMapFromFileToArray())
+	{
+		playable = false;
+		return;
+	}
+
+	SetUpBlocks();
+	CalculateBricksPositions();
+	FillPlayableSet();
+
+	playable = true;
+}
+
+Stage::~Stage()
+{
+	for (int i = 0; i < BRICK_COLUMNS; i++)
+	{
+		for (int j = 0; j < BRICK_ROWS; j++)
+		{
+			delete bricks[i][j];
+		}
+	}
+
+}
+
 bool Stage::CalculateBricksPositions() 
 {
 	sf::Vector2f startingPosition = playgroundPosition;
@@ -47,33 +77,6 @@ void GenerateDefaultMapFile(std::string filename)
 	file.close();
 }
 
-Stage::~Stage()
-{
-	for (int i = 0; i < BRICK_COLUMNS; i++)
-	{
-		for (int j = 0; j < BRICK_ROWS; j++)
-		{
-			delete bricks[i][j];
-		}
-	}
-
-}
-
-Stage::Stage(int _stageNumber, sf::Vector2f _playgroundPosition): stageNumber(_stageNumber), playgroundPosition(_playgroundPosition)
-{
-	GenerateDefaultMapFile("default");
-	if (!LoadMapFromFileToArray())
-	{
-		playable = false;
-		return;
-	}
-
-	SetUpBlocks();
-	CalculateBricksPositions();
-	FillPlayableSet();
-
-	playable = true;
-}
 
 inline std::string GetFilename(int _stageNumber)
 {
@@ -97,51 +100,6 @@ inline void Stage::FillStageArray(std::vector<char> stageVector)
 			stageArray[i][j] = stageVector[vectorIndex];
 			vectorIndex++;
 		}
-	}
-}
-
-IBrick* Stage::ChooseBrick(char letter)
-{
-	switch (letter)
-	{
-	case '*':
-		return nullptr;
-		break;
-	case 's':
-		return new SilverBrick(stageNumber);
-		break;
-	case 'x':
-		return new GoldBrick();
-		break;
-	case 'w':
-		return new ColorBrick(ColorsEnum::white);
-		break;
-	case 'o':
-		return new ColorBrick(ColorsEnum::orange);
-		break;
-	case 't':
-		return new ColorBrick(ColorsEnum::turquoise);
-		break;
-	case 'g':
-		return new ColorBrick(ColorsEnum::green);
-		break;
-	case 'r':
-		return new ColorBrick(ColorsEnum::red);
-		break;
-	case 'b':
-		return new ColorBrick(ColorsEnum::blue);
-		break;
-	case 'p':
-		return new ColorBrick(ColorsEnum::pink);
-		break;
-	case 'y':
-		return new ColorBrick(ColorsEnum::yelow);
-		break;
-
-	default:
-		std::cout << "ERROR, CHECK SYNTAX IN FILE Stage_"<< stageNumber << std::endl;
-		return nullptr;
-		break;
 	}
 }
 
@@ -230,18 +188,6 @@ bool Stage::SetUpBlocks()
 	return true;
 }
 
-void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	if (!playable)
-		return;
-
-	for (auto& brick : playableBricks)
-	{
-		target.draw(*brick);
-	}
-
-}
-
 void Stage::FillPlayableSet()
 {
 	playableBricks.clear();
@@ -271,4 +217,61 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 	}
 
 	FillPlayableSet();
+}
+
+IBrick* Stage::ChooseBrick(char letter)
+{
+	switch (letter)
+	{
+	case '*':
+		return nullptr;
+		break;
+	case 's':
+		return new SilverBrick(stageNumber);
+		break;
+	case 'x':
+		return new GoldBrick();
+		break;
+	case 'w':
+		return new ColorBrick(ColorsEnum::white);
+		break;
+	case 'o':
+		return new ColorBrick(ColorsEnum::orange);
+		break;
+	case 't':
+		return new ColorBrick(ColorsEnum::turquoise);
+		break;
+	case 'g':
+		return new ColorBrick(ColorsEnum::green);
+		break;
+	case 'r':
+		return new ColorBrick(ColorsEnum::red);
+		break;
+	case 'b':
+		return new ColorBrick(ColorsEnum::blue);
+		break;
+	case 'p':
+		return new ColorBrick(ColorsEnum::pink);
+		break;
+	case 'y':
+		return new ColorBrick(ColorsEnum::yelow);
+		break;
+
+	default:
+		std::cout << "ERROR, CHECK SYNTAX IN FILE Stage_" << stageNumber << std::endl;
+		return nullptr;
+		break;
+	}
+}
+
+void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	if (!playable)
+		return;
+
+	for (auto& brick : playableBricks)
+	{
+		target.draw(*brick);
+	}
+
 }

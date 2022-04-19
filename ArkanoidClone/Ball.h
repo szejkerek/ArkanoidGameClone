@@ -25,7 +25,7 @@ private:
 
 public:
 	//Constructors & Destructors
-	Ball(sf::Vector2f startingPosition, sf::Vector2f initialDirection,float ballSpeed, Stage* _stage);
+	Ball(sf::Vector2f& startingPosition, sf::Vector2f& initialDirection,float ballSpeed, Stage* _stage);
 	void SetPlaygroundConstrains(PositionConstrains _playgroundConstrains);
 
 	//Methods

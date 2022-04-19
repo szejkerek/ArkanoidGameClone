@@ -1,7 +1,7 @@
 #include "Ball.h"
 #include "Utility.h"
 
-Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed, Stage* _stage): currentStage(_stage)
+Ball::Ball(sf::Vector2f& _position, sf::Vector2f& _direction, float _speed, Stage* _stage): currentStage(_stage)
 {
 	gameObject.setRadius(PixelSizes::GetInstance().ballRadius);
 	gameObject.setOrigin(GetRadius(), GetRadius());
@@ -10,23 +10,6 @@ Ball::Ball(sf::Vector2f _position, sf::Vector2f _direction, float _speed, Stage*
 	position = _position;
 	direction = _direction;
 	speed = _speed;
-}
-
-void Ball::SetPlaygroundConstrains(PositionConstrains _playgroundConstrains)
-{
-	playgroundConstrains = _playgroundConstrains;
-}
-
-
-void Ball::ChangeDirection(sf::Vector2f _direction)
-{
-	direction = _direction;
-}
-
-void Ball::UpdateCollistions()
-{
-	UpdateWallCollisions();
-	UpdateBricksCollision();
 }
 
 void Ball::UpdateWallCollisions()
@@ -57,7 +40,7 @@ void Ball::UpdateWallCollisions()
 	
 }
 
-sf::Vector3f CalculateCorrectionVector(sf::FloatRect overlap, sf::Vector2f collisionVector)
+sf::Vector3f CalculateCorrectionVector(sf::FloatRect& overlap, sf::Vector2f& collisionVector)
 {
 	sf::Vector3f correctionVector(0, 0, 0); // x,y - from where ball collide  // z - depth of penetration
 	if (overlap.width < overlap.height)
@@ -106,6 +89,22 @@ void Ball::UpdateBricksCollision()
 	}
 }
 
+void Ball::SetPlaygroundConstrains(PositionConstrains _playgroundConstrains)
+{
+	playgroundConstrains = _playgroundConstrains;
+}
+
+void Ball::ChangeDirection(sf::Vector2f _direction)
+{
+	direction = _direction;
+}
+
+void Ball::UpdateCollistions()
+{
+	UpdateWallCollisions();
+	UpdateBricksCollision();
+}
+
 void Ball::Move(float& dt)
 {
 	position += direction * speed * dt;
@@ -140,8 +139,6 @@ void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Ball::Update(float& dt)
 {
-	//std::cout << gameObject.getTransform().transformRect(gameObject.getLocalBounds()).left<<std::endl;
-	//std::cout << gameObject.getGlobalBounds().width << std::endl;
 	UpdateCollistions();
 	Move(dt);
 }
