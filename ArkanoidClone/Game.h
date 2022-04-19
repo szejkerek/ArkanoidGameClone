@@ -4,6 +4,7 @@
 #include "Bricks.h"
 #include "Stage.h"
 #include "Playground.h"
+#include "Vaus.h"
 class Game :public sf::Drawable
 {
 private:
@@ -13,9 +14,7 @@ private:
 	//GameObjects
 	Playground playground;
 	Ball* ball;
-	Ball* ball1;
-	Ball* ball2;
-	Ball* ball3;
+	Vaus* vaus;
 
 	Stage* stage1;
 

@@ -1,23 +1,16 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(float& _deltaTime)
+Game::Game(float& _deltaTime):deltaTime(_deltaTime)
 {
-	sf::Vector2f vec(1234231,65312);
-	std::cout << NormalizeVector(vec).x << " " << NormalizeVector(vec).y << std::endl;
-
-	deltaTime = _deltaTime;
 	InitializeStage();
-	ball = InitializeBall({482,475}, {15, -15});
-	ball1 = InitializeBall({ 600,358 }, { -10,20 });
-	ball2 = InitializeBall({ 562,510 }, { 10, -20 });
-	ball3 = InitializeBall({ 655,422 }, { -15, 15 });
+	ball = InitializeBall({222,575}, NormalizeVector( { 81, 49 } ));
+	vaus = new Vaus();
 }
 
 Ball* Game::InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton)
 {
-	//sf::Vector2f stratingPosition = { 200, 800 };
-	float startingSpeed = 20.f;
+	float startingSpeed = 200.f;
 	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1);
 	_ball->SetPlaygroundConstrains(playground.GetPositionConstrains(*_ball));
 	return _ball;
@@ -33,9 +26,7 @@ Game::~Game()
 {
 	delete stage1;
 	delete ball;
-	delete ball1;
-	delete ball2;
-	delete ball3;
+	delete vaus;
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -44,16 +35,12 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(playground);
 	target.draw(*stage1);
 	target.draw(*ball);
-	target.draw(*ball1);
-	target.draw(*ball2);
-	target.draw(*ball3);
+	target.draw(*vaus);
 }
 
 void Game::Update( float& dt)
 {
 	ball->Update(dt);	
-	ball1->Update(dt);	
-	ball2->Update(dt);	
-	ball3->Update(dt);	
+	vaus->Update(dt);
 }
 

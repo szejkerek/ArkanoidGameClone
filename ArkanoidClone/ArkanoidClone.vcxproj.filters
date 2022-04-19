@@ -48,6 +48,9 @@
     <ClCompile Include="IBrick.cpp">
       <Filter>Pliki zasobów\Blocks</Filter>
     </ClCompile>
+    <ClCompile Include="Vaus.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="IBrick.h">
       <Filter>Pliki zasobów\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Vaus.h">
+      <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
