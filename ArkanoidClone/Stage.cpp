@@ -88,7 +88,7 @@ inline std::string GetFilename(int _stageNumber)
 	return "Stage_1";
 }
 
-inline void Stage::FillStageArray(std::vector<char> stageVector)
+inline void Stage::FillStageArray(const std::vector<char>& stageVector)
 {
 	int vectorIndex = 0;
 

@@ -16,6 +16,7 @@ void Program::InitializeWindow(unsigned int width, unsigned int height, std::str
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
 	window->setPosition(PixelSizes::GetInstance().windowPosition);
+	//window->setFramerateLimit(144); - ENABLE THIS ON FINAL BUILD
 	//window->setVerticalSyncEnabled(false);
 }
 

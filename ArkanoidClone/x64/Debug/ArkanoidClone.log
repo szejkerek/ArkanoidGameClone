@@ -1,2 +1,10 @@
-﻿  Vaus.cpp
-  ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe
+﻿  ArkanoidClone.cpp
+  Ball.cpp
+  IBrick.cpp
+  Game.cpp
+  Bricks.cpp
+  Playground.cpp
+  Stage.cpp
+  Program.cpp
+  Generowanie kodu...
+  ArkanoidClone.vcxproj -> C:\Projekty\Studia\ArkanoidClone\x64\Debug\ArkanoidClone.exe

@@ -5,8 +5,9 @@
 #include "Bricks.h"
 #include "SFML/Graphics.hpp"
 
-#define BRICK_ROWS 25
-#define BRICK_COLUMNS 13
+
+static constexpr int BRICK_ROWS = 25;
+static constexpr int BRICK_COLUMNS = 13;
 
 class Stage: public sf::Drawable 
 {
@@ -25,7 +26,7 @@ private:
 
 	//Methods
 	IBrick* ChooseBrick(char letter);
-	void FillStageArray(std::vector<char> stageVector);
+	void FillStageArray(const std::vector<char>& stageVector);
 	bool LoadMapFromFileToArray();
 	bool SetUpBlocks();
 
@@ -39,8 +40,6 @@ public:
 	//Methods 
 	void FillPlayableSet();
 	void CollisionDetected(IBrick* brickToDelete);
-
-	//Getters&Setters
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

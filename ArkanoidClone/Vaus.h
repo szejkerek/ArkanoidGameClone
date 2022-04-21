@@ -4,12 +4,13 @@ class Vaus: public sf::Drawable
 {
 	//GameObjects
 	sf::RectangleShape hitbox;
-
+	
 	//Variables
 	sf::Vector2f direction;
 	sf::Vector2f position;
 	float speed = 110.f;
 	void Move(float& dt);
+
 public:
 	Vaus();
 
