@@ -1,9 +1,11 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "VausPart.h"
 class Vaus: public sf::Drawable
 {
 	//GameObjects
 	sf::RectangleShape hitbox;
+	CentralPart* central;
 	
 	//Variables
 	sf::Vector2f direction;
@@ -13,6 +15,7 @@ class Vaus: public sf::Drawable
 
 public:
 	Vaus();
+	~Vaus();
 
 	//SFML methods
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

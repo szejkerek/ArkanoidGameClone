@@ -209,8 +209,11 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 		{
 			if (bricks[i][j] == brickToDelete)
 			{
-				if(bricks[i][j]->OnCollisionEnter())
+				if (bricks[i][j]->OnCollisionEnter())
+				{
 					bricks[i][j] = nullptr;
+					delete brickToDelete;
+				}
 			}
 				
 		}

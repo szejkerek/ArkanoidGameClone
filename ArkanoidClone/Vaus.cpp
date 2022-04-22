@@ -26,21 +26,34 @@ void Vaus::Move(float& dt)
 {
 	position += direction * speed * dt * UserSettings::GetInstance().sensitivity;
 	position.x = ValidatePosition(position);
+	central->SetPosition(position);
 	hitbox.setPosition(position);
 }
 Vaus::Vaus()
 {
-	hitbox.setSize(PixelSizes::GetInstance().vausSize);
+
 	position = PixelSizes::GetInstance().vausPosition;
-	hitbox.setPosition(position);
+
+	hitbox.setFillColor(sf::Color::Color(0, 0, 0, 0));
+	hitbox.setSize(PixelSizes::GetInstance().vausSize);
+	hitbox.setOutlineThickness(1);
 	hitbox.setOutlineColor(sf::Color::Yellow);
-	hitbox.setFillColor(sf::Color::Color(0,0,0,0));
-	hitbox.setOutlineThickness(1.f);
+	hitbox.setPosition(position);
+	central = new CentralPart(ReflectionTurnType::none);
+
+	central->SetPosition(position);
+}
+
+Vaus::~Vaus()
+{
+	delete central;
 }
 
 void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(hitbox);
+	target.draw(*central);
+
 }
 
 void Vaus::Update(float& dt)

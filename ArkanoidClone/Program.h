@@ -17,7 +17,7 @@ private:
 	float deltaTime;
 
 	//Varibles
-	Profiler profiler;
+	Profiler profiler; //REMOVE ON FINAL BUILD
 	
 	//Game Objects
 	Game game;

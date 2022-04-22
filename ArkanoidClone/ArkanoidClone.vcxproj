@@ -164,6 +164,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Vaus.cpp" />
+    <ClCompile Include="VausPart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Program.h" />
     <ClInclude Include="Profiler.h" />
     <ClInclude Include="Vaus.h" />
+    <ClInclude Include="VausPart.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
