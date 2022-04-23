@@ -10,12 +10,15 @@ private:
 	Stage* currentStage;
 	Vaus* currentVaus;
 	sf::CircleShape gameObject;
-	sf::Vector2f direction;
-	sf::Vector2f position;
+
 	//Variables
 	PositionConstrains playgroundConstrains;
-	
 	float speed;
+	sf::Vector2f direction;
+	sf::Vector2f ballToVausOffset;
+	sf::Vector2f position;
+	bool stickedToVaus;
+
 	//Methods
 	void UpdateCollistions();
 
@@ -27,6 +30,8 @@ private:
 	void Move(float& deltaTime);
 	void Move(sf::Vector2f moveToVector);
 
+	void StickedBallLogic();
+
 public:
 	//Constructors & Destructors
 	Ball(sf::Vector2f& startingPosition, sf::Vector2f& initialDirection,float ballSpeed, Stage* _stage, Vaus* _vaus);
@@ -34,10 +39,12 @@ public:
 
 	//Methods
 	void ChangeDirection(sf::Vector2f newDirection);
+	void StickBallToVaus(sf::Vector2f offsetFromVaus);
 
 	//Getters & Setters
 	sf::Vector2f GetDirection();
 	sf::Vector2f GetPosition();
+	void SetPosition(const sf::Vector2f& newPosition);
 	float GetRadius();
 
 	//SFML Methods

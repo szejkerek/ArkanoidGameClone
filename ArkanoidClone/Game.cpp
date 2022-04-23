@@ -10,31 +10,30 @@ Game::Game(float& _deltaTime):deltaTime(_deltaTime)
 
 Ball* Game::InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton)
 {
-	float startingSpeed = 200.f;
-	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1, vaus);
+	float startingSpeed = 800.f;
+	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, currentStage, vaus);
 	_ball->SetPlaygroundConstrains(playground.GetPositionConstrains(*_ball));
 	return _ball;
 }
 
 void Game::InitializeStage()
 {
-	stage1 = new Stage(1, playground.GetPosition());
+	currentStage = new Stage(1, playground.GetPosition());
 }
 
 Game::~Game()
 {
-	delete stage1;
+	delete currentStage;
 	delete ball;
 	delete vaus;
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	
 	target.draw(playground);
-	target.draw(*stage1);
-	target.draw(*ball);
+	target.draw(*currentStage);
 	target.draw(*vaus);
+	target.draw(*ball);
 }
 
 void Game::Update( float& dt)

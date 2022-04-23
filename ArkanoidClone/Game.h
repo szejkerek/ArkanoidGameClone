@@ -13,10 +13,10 @@ private:
 
 	//GameObjects
 	Playground playground;
+
 	Ball* ball;
 	Vaus* vaus;
-
-	Stage* stage1;
+	Stage* currentStage;
 
 	//Methods
 	Ball* InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton);

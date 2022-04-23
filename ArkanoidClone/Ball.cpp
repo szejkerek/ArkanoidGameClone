@@ -2,12 +2,16 @@
 #include "Utility.h"
 #include <iostream>
 
-Ball::Ball(sf::Vector2f& _position, sf::Vector2f& _direction, float _speed, Stage* _stage, Vaus* _vaus): currentStage(_stage), currentVaus(_vaus)
+Ball::Ball(sf::Vector2f& _position, sf::Vector2f& _direction, float _speed, Stage* _stage, Vaus* _vaus): stickedToVaus(true), currentStage(_stage), currentVaus(_vaus)
 {
 	gameObject.setRadius(PixelSizes::GetInstance().ballRadius);
 	gameObject.setOrigin(GetRadius(), GetRadius());
 	gameObject.setPosition(_position);
 	gameObject.setFillColor(sf::Color::White);
+
+	ballToVausOffset = {0,-21};
+	StickBallToVaus(ballToVausOffset);
+
 	position = _position;
 	direction = _direction;
 	speed = _speed;
@@ -100,19 +104,31 @@ void Ball::UpdateVausCollision()
 		if (part->gameObject.getGlobalBounds().intersects(ballBounds, overlap))
 		{
 			sf::Vector2f collisionVector = part->gameObject.getPosition() - GetPosition();
+			sf::Vector2f normalToCenter = currentVaus->parts[0]->gameObject.getPosition() - GetPosition();
 			sf::Vector3f correctionVector = CalculateCorrectionVector(overlap, collisionVector);
 			sf::Vector2f normal(correctionVector.x, correctionVector.y);
+			
+			std::cout << correctionVector.x << "|" << correctionVector.y <<"|"<< correctionVector.z << std::endl;
 			Move(normal * correctionVector.z);   //Move ball outside brick
 
-			if (part->IsCustomReflectionImplemented())
+			if (part->IsCustomReflectionImplemented() && normal.y != 1)
 			{
 				ChangeDirection(part->GetDirection());
 			}
 			else
 			{
-				ChangeDirection(MultipyVectors(direction, {1,-1}));
+				ChangeDirection(ReflectedVector(direction, normal));
 			}
+
+			if (correctionVector.z >= 3.5f) //Fixed clipping with wall
+			{
+				SetPosition({GetPosition().x, part->gameObject.getPosition().y + ballToVausOffset.y});
+				correctionVector.z = 0;
+			}
+
+
 			break;
+			
 		}
 	}
 }
@@ -125,6 +141,12 @@ void Ball::SetPlaygroundConstrains(PositionConstrains _playgroundConstrains)
 void Ball::ChangeDirection(sf::Vector2f _direction)
 {
 	direction = _direction;
+}
+
+void Ball::StickBallToVaus(sf::Vector2f offsetFromVaus)
+{
+	ballToVausOffset = offsetFromVaus;
+	stickedToVaus = true;
 }
 
 void Ball::UpdateCollistions()
@@ -146,6 +168,18 @@ void Ball::Move(sf::Vector2f moveToVector)
 	gameObject.setPosition(position);
 }
 
+void Ball::StickedBallLogic()
+{
+	SetPosition(currentVaus->parts[0]->gameObject.getPosition() + ballToVausOffset);
+	//std::cout << GetPosition().x << std::endl;
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		ChangeDirection(NormalizeVector({ 25,-25 })); //45 degrees to right
+		stickedToVaus = false;
+	}
+}
+
 sf::Vector2f Ball::GetDirection()
 {
 	return direction;
@@ -154,6 +188,12 @@ sf::Vector2f Ball::GetDirection()
 sf::Vector2f Ball::GetPosition()
 {
 	return position;
+}
+
+void Ball::SetPosition(const sf::Vector2f& newPosition)
+{
+	gameObject.setPosition(newPosition);
+	position = newPosition;
 }
 
 float Ball::GetRadius()
@@ -168,6 +208,14 @@ void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Ball::Update(float& dt)
 {
-	UpdateCollistions();
-	Move(dt);
+	if (stickedToVaus)
+	{
+		StickedBallLogic();
+	}
+	else
+	{
+		UpdateCollistions();
+		Move(dt);
+	}
+	
 }
