@@ -1,7 +1,8 @@
 #include "Ball.h"
 #include "Utility.h"
+#include <iostream>
 
-Ball::Ball(sf::Vector2f& _position, sf::Vector2f& _direction, float _speed, Stage* _stage): currentStage(_stage)
+Ball::Ball(sf::Vector2f& _position, sf::Vector2f& _direction, float _speed, Stage* _stage, Vaus* _vaus): currentStage(_stage), currentVaus(_vaus)
 {
 	gameObject.setRadius(PixelSizes::GetInstance().ballRadius);
 	gameObject.setOrigin(GetRadius(), GetRadius());
@@ -89,6 +90,33 @@ void Ball::UpdateBricksCollision()
 	}
 }
 
+void Ball::UpdateVausCollision()
+{
+	sf::FloatRect overlap;
+	sf::FloatRect ballBounds = gameObject.getTransform().transformRect(gameObject.getLocalBounds());
+
+	for (auto part : currentVaus->parts)
+	{
+		if (part->gameObject.getGlobalBounds().intersects(ballBounds, overlap))
+		{
+			sf::Vector2f collisionVector = part->gameObject.getPosition() - GetPosition();
+			sf::Vector3f correctionVector = CalculateCorrectionVector(overlap, collisionVector);
+			sf::Vector2f normal(correctionVector.x, correctionVector.y);
+			Move(normal * correctionVector.z);   //Move ball outside brick
+
+			if (part->IsCustomReflectionImplemented())
+			{
+				ChangeDirection(part->GetDirection());
+			}
+			else
+			{
+				ChangeDirection(MultipyVectors(direction, {1,-1}));
+			}
+			break;
+		}
+	}
+}
+
 void Ball::SetPlaygroundConstrains(PositionConstrains _playgroundConstrains)
 {
 	playgroundConstrains = _playgroundConstrains;
@@ -103,6 +131,7 @@ void Ball::UpdateCollistions()
 {
 	UpdateWallCollisions();
 	UpdateBricksCollision();
+	UpdateVausCollision();
 }
 
 void Ball::Move(float& dt)

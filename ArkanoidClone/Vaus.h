@@ -4,8 +4,6 @@
 #include <vector>
 class Vaus: public sf::Drawable
 {
-	//GameObjects
-	std::vector<IVausPart*> parts;    //Central,grey R, grey L, red R, red L, blue R, blue L 
 
 	//Variables
 	sf::Vector2f direction;
@@ -16,6 +14,9 @@ class Vaus: public sf::Drawable
 	void InitParts();
 
 public:
+	//GameObjects
+	std::vector<IVausPart*> parts;    //Central,grey R, grey L, red R, red L, blue R, blue L 
+
 	Vaus();
 	~Vaus();
 

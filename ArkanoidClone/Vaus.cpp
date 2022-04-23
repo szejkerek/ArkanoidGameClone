@@ -59,6 +59,9 @@ Vaus::~Vaus()
 		delete part;
 }
 
+
+
+
 void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (auto part : parts)

@@ -4,14 +4,14 @@
 Game::Game(float& _deltaTime):deltaTime(_deltaTime)
 {
 	InitializeStage();
-	ball = InitializeBall({222,575}, NormalizeVector( { 81, 49 } ));
 	vaus = new Vaus();
+	ball = InitializeBall({222,575}, NormalizeVector( { 81, 49 } ));
 }
 
 Ball* Game::InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton)
 {
 	float startingSpeed = 200.f;
-	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1);
+	Ball* _ball = new Ball(_stratingPosition, startingDireciton, startingSpeed, stage1, vaus);
 	_ball->SetPlaygroundConstrains(playground.GetPositionConstrains(*_ball));
 	return _ball;
 }
@@ -20,7 +20,6 @@ void Game::InitializeStage()
 {
 	stage1 = new Stage(1, playground.GetPosition());
 }
-
 
 Game::~Game()
 {
