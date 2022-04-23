@@ -8,13 +8,13 @@ float ValidatePosition(const sf::Vector2f& position)
 	float playgroundSize = PixelSizes::GetInstance().playgroundSize.x;
 	float vausSize = PixelSizes::GetInstance().vausSize.x;
 
-	if (position.x <= playgroundPosition)
+	if (position.x <= playgroundPosition + vausSize/2)
 	{
-		return playgroundPosition;
+		return playgroundPosition + vausSize / 2;
 	}
-	else if (position.x  >= playgroundPosition + playgroundSize - vausSize)
+	else if (position.x  >= playgroundPosition + playgroundSize - vausSize / 2)
 	{
-		return playgroundPosition + playgroundSize - vausSize;
+		return playgroundPosition + playgroundSize - vausSize / 2;
 	}
 	else
 	{
@@ -26,34 +26,43 @@ void Vaus::Move(float& dt)
 {
 	position += direction * speed * dt * UserSettings::GetInstance().sensitivity;
 	position.x = ValidatePosition(position);
-	central->SetPosition(position);
-	hitbox.setPosition(position);
+
+	SetPosition(position);
+}
+void Vaus::SetPosition(const sf::Vector2f& _position)
+{
+	for (auto part : parts)
+		part->SetPosition(_position);
+}
+
+void Vaus::InitParts()
+{
+	parts.push_back(new CentralPart({ 0,0 }));
+	parts.push_back(new GreyPart({ 20,0 }));
+	parts.push_back(new GreyPart({ -20,0 }));
+	parts.push_back(new RedPart({ 37,0 }));
+	parts.push_back(new RedPart({ -37,0 }));
+	parts.push_back(new BluePart({ 50.5f,0 }));
+	parts.push_back(new BluePart({ -50.5f,0 }));
+	 
+	SetPosition(position);
 }
 Vaus::Vaus()
 {
-
 	position = PixelSizes::GetInstance().vausPosition;
-
-	hitbox.setFillColor(sf::Color::Color(0, 0, 0, 0));
-	hitbox.setSize(PixelSizes::GetInstance().vausSize);
-	hitbox.setOutlineThickness(1);
-	hitbox.setOutlineColor(sf::Color::Yellow);
-	hitbox.setPosition(position);
-	central = new CentralPart(ReflectionTurnType::none);
-
-	central->SetPosition(position);
+	InitParts();
 }
 
 Vaus::~Vaus()
 {
-	delete central;
+	for (auto part : parts)
+		delete part;
 }
 
 void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(hitbox);
-	target.draw(*central);
-
+	for (auto part : parts)
+		target.draw(*part);
 }
 
 void Vaus::Update(float& dt)

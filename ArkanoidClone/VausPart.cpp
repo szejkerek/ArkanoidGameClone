@@ -1,17 +1,20 @@
 #include "VausPart.h"
 #include "Utility.h"
-void IVausPart::InitGameObject(const sf::Vector2f& size, const sf::Color& color)
+void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vector2f& size, const sf::Color& color)
 {
 	gameObject.setSize(size);
 	gameObject.setFillColor(color);
 	gameObject.setOrigin(size.x / 2, size.y / 2);
+	this->positionOffset = positionOffset;
 }
-IVausPart::IVausPart(const ReflectionTurnType& type) : reflectionType(type)
+IVausPart::IVausPart(const sf::Vector2f& _positionOffset) : positionOffset(_positionOffset)
 {
-	if (type == ReflectionTurnType::left)
+	if (_positionOffset.x < 0)
 		directionSign = -1;
-	else if (type == ReflectionTurnType::right)
+	else if (_positionOffset.x > 0)
 		directionSign = 1;
+	else if (_positionOffset.x == 0)
+		directionSign == 0;
 }
 
 sf::Vector2f IVausPart::GetDirection()
@@ -21,12 +24,22 @@ sf::Vector2f IVausPart::GetDirection()
 
 inline bool IVausPart::IsCustomReflectionImplemented()
 {
-	return (reflectionType == ReflectionTurnType::none) ? false : true;
+	return (positionOffset.x == 0) ? false : true;
 }
 
 void IVausPart::SetPosition(const sf::Vector2f& position)
 {
+	gameObject.setPosition(position + GetPositionOffset());
+}
+
+void IVausPart::SetAbsolutePosition(const sf::Vector2f& position)
+{
 	gameObject.setPosition(position);
+}
+
+sf::Vector2f IVausPart::GetPositionOffset()
+{
+	return positionOffset;
 }
 
 void IVausPart::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -34,24 +47,24 @@ void IVausPart::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(gameObject);
 }
 
-CentralPart::CentralPart(const ReflectionTurnType& type) : IVausPart(type)
+CentralPart::CentralPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
 {
-	InitGameObject({ 23,28 }, sf::Color::Color(72, 72, 72));
+	InitGameObject(_positionOffset, { 23,28 }, sf::Color::Color(72, 72, 72));
 }
 
-GreyPart::GreyPart(const ReflectionTurnType& type) : IVausPart(type)
+GreyPart::GreyPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
 {
-	InitGameObject({ 17,28 }, sf::Color::Color(107, 107, 107));
+	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Color(107, 107, 107));
 }
 
-RedPart::RedPart(const ReflectionTurnType& type) : IVausPart(type)
+RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
 {
-	InitGameObject({ 17,28 }, sf::Color::Red);
+	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Red);
 }
 
-BluePart::BluePart(const ReflectionTurnType& type) : IVausPart(type)
+BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
 {
-	InitGameObject({ 10,28 }, sf::Color::Blue);
+	InitGameObject(_positionOffset, { 10,28 }, sf::Color::Blue);
 }
 
 inline sf::Vector2f BluePart::GetReflectionVector()
