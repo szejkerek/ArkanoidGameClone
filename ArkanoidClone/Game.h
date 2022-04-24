@@ -5,6 +5,7 @@
 #include "Stage.h"
 #include "Playground.h"
 #include "Vaus.h"
+#include "HealthManager.h"
 class Game :public sf::Drawable
 {
 private:
@@ -17,10 +18,11 @@ private:
 	Ball* ball;
 	Vaus* vaus;
 	Stage* currentStage;
+	HealthManager healthManager;
 
 	//Methods
-	Ball* InitializeBall(sf::Vector2f _stratingPosition, sf::Vector2f startingDireciton);
-	void InitializeStage();
+	Ball* InitializeBall(const sf::Vector2f& _stratingPosition,const sf::Vector2f& startingDireciton);
+	void InitializeStage(int stageLvl);
 
 public:
 	//Constructors & Destructors

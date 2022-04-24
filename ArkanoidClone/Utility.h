@@ -56,12 +56,21 @@ public:
 
 #pragma endregion
 public:
+
+	sf::Vector2f healthPosition{ 199, 887 };
+	sf::Vector2f healthSize{ 52, 17 };
+	int healtSpacing = 11;
+
 	float ballRadius = 7.f;
+
 	sf::Vector2f brickSize{55,28};
+
 	sf::Vector2f vausSize{111,28};
 	sf::Vector2f vausPosition{577,857};
+
 	sf::Vector2f playgroundSize{ 713.f,858.f };
 	sf::Vector2f playgroundPosition{ 183,62 };
+
 	sf::Vector2i windowPosition{ 310,10 };
 	sf::Vector2i windowResolution{ 1300,990 };
 	

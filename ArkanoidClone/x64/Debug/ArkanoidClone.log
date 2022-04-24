@@ -1,2 +1,14 @@
-﻿  Game.cpp
+﻿  ArkanoidClone.cpp
+  Ball.cpp
+  Bricks.cpp
+  Game.cpp
+  HealthManager.cpp
+  IBrick.cpp
+  Playground.cpp
+  Program.cpp
+  Stage.cpp
+  Vaus.cpp
+  VausPart.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\VausPart.cpp(17,17): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+  Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

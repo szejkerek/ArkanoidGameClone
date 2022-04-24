@@ -9,6 +9,7 @@ private:
 	//Game Objects
 	Stage* currentStage;
 	Vaus* currentVaus;
+
 	sf::CircleShape gameObject;
 
 	//Variables
@@ -34,7 +35,7 @@ private:
 
 public:
 	//Constructors & Destructors
-	Ball(sf::Vector2f& startingPosition, sf::Vector2f& initialDirection,float ballSpeed, Stage* _stage, Vaus* _vaus);
+	Ball(const sf::Vector2f& _stratingPosition, const sf::Vector2f& startingDireciton,float ballSpeed, Stage* _stage, Vaus* _vaus);
 	void SetPlaygroundConstrains(PositionConstrains _playgroundConstrains);
 
 	//Methods

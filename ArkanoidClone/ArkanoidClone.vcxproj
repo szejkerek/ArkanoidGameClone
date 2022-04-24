@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="ArkanoidClone.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="HealthManager.cpp" />
     <ClCompile Include="IBrick.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Bricks.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="HealthManager.h" />
     <ClInclude Include="IBrick.h" />
     <ClInclude Include="Bricks.h" />
     <ClInclude Include="Playground.h" />
