@@ -18,7 +18,7 @@ private:
 	Ball* ball;
 	Vaus* vaus;
 	Stage* currentStage;
-	HealthManager healthManager;
+	HealthManager* healthManager;
 
 	//Methods
 	Ball* InitializeBall(const sf::Vector2f& _stratingPosition,const sf::Vector2f& startingDireciton);

@@ -35,11 +35,24 @@ HealthManager::HealthManager() : health(3), maxHealth(11)
 	InitializePlacements();
 }
 
+void HealthManager::TakeHit()
+{
+	health--;
+
+	if (health < 0)
+		health = 0;
+
+}
+
+bool HealthManager::IsDead()
+{
+	return (health <= 0);	
+}
+
 void HealthManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(healthObject);
-	for (int i = 0; i < maxHealth; i++)
+	for (int i = 0; i < health; i++)
 	{
 		target.draw(possiblePlacements[i]);
 	}
-} 
+}

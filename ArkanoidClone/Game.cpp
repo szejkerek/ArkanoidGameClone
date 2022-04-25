@@ -5,6 +5,7 @@ Game::Game(float& _deltaTime):deltaTime(_deltaTime)
 {
 	InitializeStage(1);
 	vaus = new Vaus();
+	healthManager = new HealthManager();
 	ball = InitializeBall({222,575}, NormalizeVector( { 81, 49 } ));
 }
 
@@ -26,6 +27,7 @@ Game::~Game()
 	delete currentStage;
 	delete ball;
 	delete vaus;
+	delete healthManager;
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -34,7 +36,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(*currentStage);
 	target.draw(*vaus);
 	target.draw(*ball);
-	target.draw(healthManager);
+	target.draw(*healthManager);
 }
 
 void Game::Update( float& dt)

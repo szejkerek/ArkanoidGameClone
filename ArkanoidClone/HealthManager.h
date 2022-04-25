@@ -15,6 +15,8 @@ private:
 
 public:
 	HealthManager();
+	void TakeHit();
+	bool IsDead();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
