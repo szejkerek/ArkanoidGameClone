@@ -107,10 +107,10 @@ void Ball::UpdateVausCollision()
 
 	for (auto part : currentVaus->parts)
 	{
-		if (part->gameObject.getGlobalBounds().intersects(ballBounds, overlap))
+		if (part->GetCollider().intersects(ballBounds, overlap))
 		{
-			sf::Vector2f collisionVector = part->gameObject.getPosition() - GetPosition();
-			sf::Vector2f normalToCenter = currentVaus->parts[0]->gameObject.getPosition() - GetPosition();
+			sf::Vector2f collisionVector = part->GetPosition() - GetPosition();
+			sf::Vector2f normalToCenter = currentVaus->parts[0]->GetPosition() - GetPosition();
 			sf::Vector3f correctionVector = CalculateCorrectionVector(overlap, collisionVector);
 			sf::Vector2f normal(correctionVector.x, correctionVector.y);
 
@@ -127,7 +127,7 @@ void Ball::UpdateVausCollision()
 
 			if (correctionVector.z >= 3.5f) //Fixed clipping with wall
 			{
-				SetPosition({GetPosition().x, part->gameObject.getPosition().y + ballToVausOffset.y});
+				SetPosition({GetPosition().x, part->GetPosition().y + ballToVausOffset.y});
 				correctionVector.z = 0;
 			}
 			break;
@@ -177,7 +177,7 @@ void Ball::Move(sf::Vector2f moveToVector)
 
 void Ball::StickedBallLogic()
 {
-	SetPosition(currentVaus->parts[0]->gameObject.getPosition() + ballToVausOffset);
+	SetPosition(currentVaus->parts[0]->GetPosition() + ballToVausOffset);
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{

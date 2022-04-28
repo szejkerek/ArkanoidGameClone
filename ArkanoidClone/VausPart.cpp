@@ -2,19 +2,19 @@
 #include "Utility.h"
 void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vector2f& size, const sf::Color& color)
 {
-	gameObject.setSize(size);
-	gameObject.setFillColor(color);
-	gameObject.setOrigin(size.x / 2, size.y / 2);
+	SetSize(size);
+	SetFillColor(color);
+	SetOriginCenter();
 	this->positionOffset = positionOffset;
 }
-IVausPart::IVausPart(const sf::Vector2f& _positionOffset) : positionOffset(_positionOffset)
+IVausPart::IVausPart(const sf::Vector2f& _positionOffset) : EntityRectangle({ 0,0 }), positionOffset(_positionOffset)
 {
 	if (_positionOffset.x < 0)
 		directionSign = -1;
 	else if (_positionOffset.x > 0)
 		directionSign = 1;
 	else if (_positionOffset.x == 0)
-		directionSign == 0;
+		directionSign = 0;
 }
 
 sf::Vector2f IVausPart::GetDirection()
@@ -32,10 +32,10 @@ void IVausPart::SetPosition(const sf::Vector2f& position)
 	gameObject.setPosition(position + GetPositionOffset());
 }
 
-void IVausPart::SetAbsolutePosition(const sf::Vector2f& position)
-{
-	gameObject.setPosition(position);
-}
+//void IVausPart::SetAbsolutePosition(const sf::Vector2f& position)
+//{
+//	gameObject.setPosition(position);
+//}
 
 sf::Vector2f IVausPart::GetPositionOffset()
 {
