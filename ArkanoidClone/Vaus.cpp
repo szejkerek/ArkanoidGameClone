@@ -59,9 +59,6 @@ Vaus::~Vaus()
 		delete part;
 }
 
-
-
-
 void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (auto part : parts)
@@ -80,6 +77,4 @@ void Vaus::Update(float& dt)
 		direction = { 1, 0 };
 		Move(dt);
 	}
-
-	
 }

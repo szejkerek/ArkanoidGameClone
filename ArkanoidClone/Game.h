@@ -13,16 +13,15 @@ private:
 	float deltaTime = 0;
 
 	//GameObjects
-	Playground playground;
-
+	Playground* playground;
 	Ball* ball;
 	Vaus* vaus;
 	Stage* currentStage;
 	HealthManager* healthManager;
 
 	//Methods
-	Ball* InitializeBall(const sf::Vector2f& _stratingPosition,const sf::Vector2f& startingDireciton);
-	void InitializeStage(int stageLvl);
+	void InitializeBall(const sf::Vector2f& _stratingPosition,const sf::Vector2f& startingDireciton);
+	void InitVariables(int stageLvl);
 
 public:
 	//Constructors & Destructors

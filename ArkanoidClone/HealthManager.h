@@ -1,10 +1,9 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Entity.h"
 
-class HealthManager: public sf::Drawable
+class HealthManager: public EntityRectangle 
 {
 private:
-	sf::RectangleShape healthObject;
 	std::vector<sf::RectangleShape> possiblePlacements;
 
 	int health;

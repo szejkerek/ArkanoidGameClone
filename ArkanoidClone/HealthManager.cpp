@@ -17,21 +17,17 @@ sf::Vector2f HealthManager::CalculateHealtPositon(int index)
 void HealthManager::InitializePlacements()
 {
 	for (int i = 0; i < maxHealth; i++)
-	{
-		
-		sf::RectangleShape temp = healthObject;
+	{	
+		sf::RectangleShape temp = gameObject;
 		temp.setPosition(CalculateHealtPositon(i));
 		possiblePlacements.push_back(temp);
 	}
 }
 
-HealthManager::HealthManager() : health(3), maxHealth(11)
+HealthManager::HealthManager() : health(3), maxHealth(11), EntityRectangle(PixelSizes::GetInstance().healthSize)
 {
-	std::cout << PixelSizes::GetInstance().healthPosition.x << std::endl;
-	std::cout << PixelSizes::GetInstance().healthPosition.y << std::endl;
-	healthObject.setPosition(PixelSizes::GetInstance().healthPosition);
-	healthObject.setSize(PixelSizes::GetInstance().healthSize);
-	healthObject.setFillColor(sf::Color::Red);
+	SetPosition(PixelSizes::GetInstance().healthPosition);
+	SetFillColor(sf::Color::Red);
 	InitializePlacements();
 }
 

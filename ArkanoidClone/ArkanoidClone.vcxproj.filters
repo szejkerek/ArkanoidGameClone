@@ -45,9 +45,6 @@
     <ClCompile Include="Bricks.cpp">
       <Filter>Pliki zasobów\Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="IBrick.cpp">
-      <Filter>Pliki zasobów\Blocks</Filter>
-    </ClCompile>
     <ClCompile Include="Vaus.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -55,6 +52,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="HealthManager.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,9 +83,6 @@
     <ClInclude Include="Bricks.h">
       <Filter>Pliki zasobów\Blocks</Filter>
     </ClInclude>
-    <ClInclude Include="IBrick.h">
-      <Filter>Pliki zasobów\Blocks</Filter>
-    </ClInclude>
     <ClInclude Include="Vaus.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="HealthManager.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

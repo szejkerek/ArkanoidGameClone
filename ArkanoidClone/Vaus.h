@@ -2,9 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include "VausPart.h"
 #include <vector>
-class Vaus: public sf::Drawable
+class Vaus :public sf::Drawable
 {
-
 	//Variables
 	sf::Vector2f direction;
 	sf::Vector2f position;

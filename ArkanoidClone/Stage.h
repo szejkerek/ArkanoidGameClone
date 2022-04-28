@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "IBrick.h"
 #include "Bricks.h"
 #include "SFML/Graphics.hpp"
 

@@ -1,21 +1,13 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include "Entity.h"
 #include "Utility.h"
 #include "Ball.h"
-class Playground: public sf::Drawable
+class Playground: public EntityRectangle
 {
-	//Variables
-	sf::RectangleShape gameObject;
-	PositionConstrains playgroundConstrains;
-
 	//Methods
-	void InitialazePlayground();
-
+	void InitGameObject();
 public:
 	Playground();
-	sf::Vector2f GetPosition();
-	PositionConstrains GetPositionConstrains(Ball& ball);
-
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
