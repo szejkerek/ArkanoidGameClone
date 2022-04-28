@@ -11,7 +11,7 @@ inline void EntityRectangle::InitGameObject()
 	gameObject.setSize({ 10.f,10.f });
 	gameObject.setPosition(0, 0);
 	gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
-	gameObject.setOutlineColor(sf::Color::Yellow);
+	gameObject.setOutlineColor(sf::Color::Color(155,135,12));
 	gameObject.setOutlineThickness(1.f);
 }
 
@@ -71,7 +71,7 @@ inline void EntityCircle::InitGameObject()
 	gameObject.setRadius( 10.f );
 	gameObject.setPosition(0, 0);
 	gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
-	gameObject.setOutlineColor(sf::Color::Yellow);
+	gameObject.setOutlineColor(sf::Color::Color(155, 135, 12));
 	gameObject.setOutlineThickness(1.f);
 }
 

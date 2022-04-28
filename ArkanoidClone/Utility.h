@@ -20,14 +20,6 @@ inline sf::Vector2f NormalizeVector(sf::Vector2f vector)
 	return vector;
 }
 
-struct PositionConstrains 
-{
-	float maxRight = 0;
-	float maxLeft = 0;
-	float maxUp = 0;
-	float maxDown = 0;
-};
-
 enum class ColorsEnum
 {
 	white,
@@ -68,7 +60,7 @@ public:
 	sf::Vector2f vausSize{111,28};
 	sf::Vector2f vausPosition{577,857};
 
-	sf::Vector2f playgroundSize{ 713.f,858.f };
+	sf::Vector2f playgroundSize{ 715.f,858.f };
 	sf::Vector2f playgroundPosition{ 183,62 };
 
 	sf::Vector2i windowPosition{ 310,10 };
