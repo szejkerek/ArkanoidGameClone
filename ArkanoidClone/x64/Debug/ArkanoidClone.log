@@ -1,8 +1,8 @@
 ﻿  ArkanoidClone.cpp
   Ball.cpp
-  HealthManager.cpp
   Game.cpp
+  HealthManager.cpp
   Program.cpp
-  Vaus.cpp
+  Stage.cpp
   Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

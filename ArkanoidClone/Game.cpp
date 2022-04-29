@@ -3,10 +3,10 @@
 
 Game::Game(float& _deltaTime):deltaTime(_deltaTime)
 {
-	InitVariables(1);
+	StartGame();
 }
 
-void Game::InitializeBall(const sf::Vector2f& _stratingPosition, const sf::Vector2f& startingDireciton)
+void Game::InitializeBall()
 {
 	ball = new Ball(this);
 	ball->SetPlaygroundConstrains(playground->GetCollider());
@@ -14,14 +14,15 @@ void Game::InitializeBall(const sf::Vector2f& _stratingPosition, const sf::Vecto
 
 void Game::InitVariables(int stageLvl)
 {
+	FreeMemory();
 	playground = new Playground(this);
 	currentStage = new Stage(stageLvl, playground->GetPosition());
 	vaus = new Vaus();
 	healthManager = new HealthManager(this);
-	InitializeBall({ 222,575 }, NormalizeVector({ 81, 49 }));
+	InitializeBall();
 }
 
-Game::~Game()
+void Game::FreeMemory()
 {
 	delete playground;
 	delete currentStage;
@@ -30,9 +31,15 @@ Game::~Game()
 	delete healthManager;
 }
 
+Game::~Game()
+{
+	FreeMemory();
+}
+
 void Game::StartGame()
 {
-	playable = true;
+	playable = true;	
+	InitVariables(1);
 }
 
 void Game::EndGame()
@@ -42,6 +49,9 @@ void Game::EndGame()
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	if (!playable)
+		return;
+
 	target.draw(*playground);
 	target.draw(*currentStage);
 	target.draw(*vaus);
@@ -52,7 +62,10 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Game::Update( float& dt )
 {
 	if (!playable)
+	{
+		StartGame();
 		return;
+	}
 
 	ball->Update(dt);	
 	vaus->Update(dt);	

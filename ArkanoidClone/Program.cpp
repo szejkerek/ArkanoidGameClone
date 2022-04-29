@@ -45,7 +45,6 @@ void Program::UpdateEvents()
 			window->close();
 		}
 	}
-	
 }
 
 void Program::Update()

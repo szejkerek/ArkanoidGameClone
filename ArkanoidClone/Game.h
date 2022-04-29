@@ -14,8 +14,9 @@ private:
 	bool playable = false;
 
 	//Methods
-	void InitializeBall(const sf::Vector2f& _stratingPosition,const sf::Vector2f& startingDireciton);
+	void InitializeBall();
 	void InitVariables(int stageLvl);
+	void FreeMemory();
 
 
 public:
