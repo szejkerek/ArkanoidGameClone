@@ -1,5 +1,5 @@
 #include "Vaus.h"
-#include "Utility.h"
+#include "../Utility/Utility.h"
 
 float ValidatePosition(const sf::Vector2f& position) 
 {

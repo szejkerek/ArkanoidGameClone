@@ -1,23 +1,22 @@
 #pragma once
-#include "SFML/Graphics.hpp"
-#include "Ball.h"
-#include "Bricks.h"
-#include "Stage.h"
-#include "Playground.h"
-#include "Vaus.h"
-#include "HealthManager.h"
-class Game :public sf::Drawable
+#include "Scene.h"
+#include "../Entity/Ball.h"
+#include "../Entity/Bricks.h"
+#include "../Entity/Stage.h"
+#include "../Entity/Playground.h"
+#include "../Entity/Vaus.h"
+#include "../Entity/HealthManager.h"
+class Game : public Scene
 {
 private:
 	//Variables
 	float deltaTime = 0;
-	bool playable = false;
+	bool playable;
 
 	//Methods
 	void InitializeBall();
 	void InitVariables(int stageLvl);
 	void FreeMemory();
-
 
 public:
 
@@ -29,7 +28,7 @@ public:
 	HealthManager* healthManager;
 
 	//Constructors & Destructors
-	Game(float& deltaTime);
+	Game(Program* _program, float& deltaTime);
 	virtual ~Game();
 
 	//Methods

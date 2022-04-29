@@ -1,6 +1,6 @@
 #include "Ball.h"
-#include "Utility.h"
-#include "Game.h"
+#include "../Utility/Utility.h"
+#include "../Scenes/Game.h"
 #include <iostream>
 
 Ball::Ball(Game* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)

@@ -155,31 +155,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArkanoidClone.cpp" />
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="HealthManager.cpp" />
-    <ClCompile Include="Bricks.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Playground.cpp" />
-    <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Program.cpp" />
-    <ClCompile Include="Vaus.cpp" />
-    <ClCompile Include="VausPart.cpp" />
+    <ClCompile Include="Source\ArkanoidClone.cpp" />
+    <ClCompile Include="Source\Entity\Ball.cpp" />
+    <ClCompile Include="Source\Entity\Entity.cpp" />
+    <ClCompile Include="Source\Entity\HealthManager.cpp" />
+    <ClCompile Include="Source\Entity\Bricks.cpp" />
+    <ClCompile Include="Source\Scenes\Game.cpp" />
+    <ClCompile Include="Source\Entity\Playground.cpp" />
+    <ClCompile Include="Source\Scenes\Scene.cpp" />
+    <ClCompile Include="Source\Scenes\SceneManager.cpp" />
+    <ClCompile Include="Source\Entity\Stage.cpp" />
+    <ClCompile Include="Source\Program.cpp" />
+    <ClCompile Include="Source\Entity\Vaus.cpp" />
+    <ClCompile Include="Source\Entity\VausPart.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="HealthManager.h" />
-    <ClInclude Include="Bricks.h" />
-    <ClInclude Include="Playground.h" />
-    <ClInclude Include="Stage.h" />
-    <ClInclude Include="Utility.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Program.h" />
-    <ClInclude Include="Profiler.h" />
-    <ClInclude Include="Vaus.h" />
-    <ClInclude Include="VausPart.h" />
+    <ClInclude Include="Source\Entity\Ball.h" />
+    <ClInclude Include="Source\Entity\Entity.h" />
+    <ClInclude Include="Source\Entity\HealthManager.h" />
+    <ClInclude Include="Source\Entity\Bricks.h" />
+    <ClInclude Include="Source\Entity\Playground.h" />
+    <ClInclude Include="Source\Scenes\Scene.h" />
+    <ClInclude Include="Source\Scenes\SceneManager.h" />
+    <ClInclude Include="Source\Entity\Stage.h" />
+    <ClInclude Include="Source\Utility\Utility.h" />
+    <ClInclude Include="Source\Scenes\Game.h" />
+    <ClInclude Include="Source\Program.h" />
+    <ClInclude Include="Source\Utility\Profiler.h" />
+    <ClInclude Include="Source\Entity\Vaus.h" />
+    <ClInclude Include="Source\Entity\VausPart.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

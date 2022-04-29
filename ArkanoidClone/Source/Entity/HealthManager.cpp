@@ -1,6 +1,6 @@
 #include "HealthManager.h"
-#include "Utility.h"
-#include "Game.h"
+#include "../Utility/Utility.h"
+#include "../Scenes/Game.h"
 #include <iostream>
 
 sf::Vector2f HealthManager::CalculateHealtPositon(int index)

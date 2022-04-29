@@ -1,10 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(float& _deltaTime):deltaTime(_deltaTime)
-{
-	StartGame();
-}
+Game::Game(Program* _program, float& _deltaTime) : deltaTime(_deltaTime), Scene(_program) { InitVariables(1); }
 
 void Game::InitializeBall()
 {
@@ -63,7 +60,6 @@ void Game::Update( float& dt )
 {
 	if (!playable)
 	{
-		StartGame();
 		return;
 	}
 

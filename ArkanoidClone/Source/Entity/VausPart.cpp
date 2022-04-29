@@ -1,5 +1,5 @@
 #include "VausPart.h"
-#include "Utility.h"
+#include "../Utility/Utility.h"
 void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vector2f& size, const sf::Color& color)
 {
 	SetSize(size);

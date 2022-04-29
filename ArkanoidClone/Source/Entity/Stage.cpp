@@ -1,6 +1,6 @@
 #include "Stage.h"
 #include "Bricks.h"
-#include "Utility.h"
+#include "../Utility/Utility.h"
 #include <fstream>
 #include <vector>
 #include <string>

@@ -56,10 +56,10 @@ public:
 	virtual inline void SetTexture(sf::Texture* texture) {};
 	virtual inline void SetPosition(const sf::Vector2f& position);
 	virtual inline void SetRadius(const float& radius);
+	virtual inline void SetOutlineColor(const sf::Color& color);
 	virtual inline void SetFillColor(const sf::Color& color);
 	virtual inline void SetOriginCenter();
 	virtual inline void SetOutlineThickness(const float& size);
-	virtual inline void SetOutlineColor(const sf::Color& color);
 	virtual inline float GetRadius();
 	virtual inline sf::Vector2f GetPosition();
 	virtual inline sf::FloatRect GetCollider();

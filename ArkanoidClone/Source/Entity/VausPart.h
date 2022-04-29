@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 
-class IVausPart: public EntityRectangle
+class IVausPart: public EntityRectangle 
 {
 protected:
 	//Variables
@@ -20,8 +20,6 @@ public:
 	virtual sf::Vector2f GetDirection();
 	virtual bool IsCustomReflectionImplemented();
 	virtual void SetPosition(const sf::Vector2f& position);
-	// void SetAbsolutePosition(const sf::Vector2f& position);
-
 	virtual sf::Vector2f GetPositionOffset();
 
 	//SFML Methods

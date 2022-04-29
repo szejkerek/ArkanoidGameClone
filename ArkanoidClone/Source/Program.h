@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Game.h"
-#include "Profiler.h"
+#include "Scenes/Game.h"
+#include "Utility/Profiler.h"
 class Program
 {
 private:
@@ -18,12 +18,10 @@ private:
 	//Varibles
 	Profiler profiler; //REMOVE ON FINAL BUILD
 	
-	//Game Objects
-	Game* game;
+
 	
 	//Methods
 	void InitializeWindow(unsigned int width, unsigned int height, std::string title);
-	void StartGame();
 	void CalculateDeltaTime();
 	void UpdateEvents();
 	void Update();
@@ -31,6 +29,11 @@ private:
 
 	
 public:
+
+	//Scenes
+	Game* game;
+
+	//Constructors
 	Program();
 	~Program();
 
