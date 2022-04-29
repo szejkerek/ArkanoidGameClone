@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Scenes/Game.h"
+#include "Scenes/SceneManager.h"
 #include "Utility/Profiler.h"
 class Program
 {
@@ -17,7 +18,6 @@ private:
 
 	//Varibles
 	Profiler profiler; //REMOVE ON FINAL BUILD
-	
 
 	
 	//Methods
@@ -29,9 +29,12 @@ private:
 
 	
 public:
+	
+	SceneManager* sceneManager;
 
 	//Scenes
 	Game* game;
+
 
 	//Constructors
 	Program();

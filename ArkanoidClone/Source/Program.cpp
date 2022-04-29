@@ -1,15 +1,16 @@
 #include "Program.h"
 #include "Utility/Utility.h"
-Program::Program()
+Program::Program() : game (new Game(this, deltaTime)), sceneManager(new SceneManager(this))
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
-	game = new Game(this, deltaTime);
+	sceneManager->LoadScene(Scenes::Game);
 }
 
 Program::~Program()
 {
+	delete sceneManager;
 	delete game;
 	delete window;
 }
@@ -44,14 +45,14 @@ void Program::Update()
 	UpdateEvents();
 	CalculateDeltaTime();
 
-	game->Update(deltaTime);
+	sceneManager->Update(deltaTime);
 }
 
 void Program::Render()
 {
 	window->clear(backgroundColor);
 
-	window->draw(*game);
+	window->draw(*sceneManager);
 	
 	window->display();
 }

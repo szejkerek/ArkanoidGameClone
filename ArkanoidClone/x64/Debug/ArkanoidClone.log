@@ -1,7 +1,2 @@
-﻿  Ball.cpp
-  HealthManager.cpp
-  Program.cpp
-  Vaus.cpp
-  VausPart.cpp
-  Generowanie kodu...
+﻿  UIElement.cpp
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

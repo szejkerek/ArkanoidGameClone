@@ -17,8 +17,14 @@ void SceneManager::LoadScene(const Scenes& sceneToLoad)
 	{
 		currentScene = program->game;
 		program->game->StartGame();
-	}
 		break;
+	}
+	case Scenes::Menu:
+	{
+		currentScene = program->game;
+		program->game->StartGame();
+		break;
+	}
 
 	default:
 		break;

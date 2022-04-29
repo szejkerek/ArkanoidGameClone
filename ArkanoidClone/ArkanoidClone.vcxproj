@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Scenes\MenuScene.cpp" />
     <ClCompile Include="Source\ArkanoidClone.cpp" />
     <ClCompile Include="Source\Entity\Ball.cpp" />
     <ClCompile Include="Source\Entity\Entity.cpp" />
@@ -168,8 +169,10 @@
     <ClCompile Include="Source\Program.cpp" />
     <ClCompile Include="Source\Entity\Vaus.cpp" />
     <ClCompile Include="Source\Entity\VausPart.cpp" />
+    <ClCompile Include="Source\UI\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Scenes\MenuScene.h" />
     <ClInclude Include="Source\Entity\Ball.h" />
     <ClInclude Include="Source\Entity\Entity.h" />
     <ClInclude Include="Source\Entity\HealthManager.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="Source\Utility\Profiler.h" />
     <ClInclude Include="Source\Entity\Vaus.h" />
     <ClInclude Include="Source\Entity\VausPart.h" />
+    <ClInclude Include="Source\UI\UIElement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
