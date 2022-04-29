@@ -1,14 +1,10 @@
 #pragma once
 #include "Entity.h"
 #include "Utility.h"
-#include "Stage.h"
-#include "Vaus.h"
+#include "Bricks.h"
 class Ball : public EntityCircle
 {
 private:
-	//Game Objects
-	Stage* currentStage;
-	Vaus* currentVaus;
 
 	//Variables
 	sf::FloatRect playgroundCollider;
@@ -33,12 +29,12 @@ private:
 
 public:
 	//Constructors & Destructors
-	Ball(Stage* _stage, Vaus* _vaus);
+	Ball(Game* game);
 	void SetPlaygroundConstrains(const sf::FloatRect& _playgroundConstrains);
 
 	//Methods
 	void ChangeDirection(sf::Vector2f newDirection);
-	void StickBallToVaus(sf::Vector2f offsetFromVaus);
+	void StickBallToVaus();
 	
 	void InitGameObject(const float& _speed);
 

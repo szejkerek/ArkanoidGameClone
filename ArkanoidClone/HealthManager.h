@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 
+
 class HealthManager: public EntityRectangle 
 {
 private:
@@ -13,7 +14,7 @@ private:
 	void InitializePlacements();
 
 public:
-	HealthManager();
+	HealthManager(Game* _gameScene);
 	void TakeHit();
 	bool IsDead();
 

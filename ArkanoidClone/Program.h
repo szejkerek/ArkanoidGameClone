@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Game.h"
-#include "Ball.h"
 #include "Profiler.h"
 class Program
 {
@@ -20,24 +19,21 @@ private:
 	Profiler profiler; //REMOVE ON FINAL BUILD
 	
 	//Game Objects
-	Game game;
+	Game* game;
 	
 	//Methods
 	void InitializeWindow(unsigned int width, unsigned int height, std::string title);
-
-public:
-	//Variables
-
-	//Constructors&Destructors
-	Program();
-	~Program();
-
-	//Methods
+	void StartGame();
 	void CalculateDeltaTime();
 	void UpdateEvents();
 	void Update();
 	void Render();
-	void Run();
 
+	
+public:
+	Program();
+	~Program();
+
+	void Run();
 };
 

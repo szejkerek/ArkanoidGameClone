@@ -1,5 +1,6 @@
 #include "HealthManager.h"
 #include "Utility.h"
+#include "Game.h"
 #include <iostream>
 
 sf::Vector2f HealthManager::CalculateHealtPositon(int index)
@@ -24,7 +25,7 @@ void HealthManager::InitializePlacements()
 	}
 }
 
-HealthManager::HealthManager() : health(3), maxHealth(11), EntityRectangle(PixelSizes::GetInstance().healthSize)
+HealthManager::HealthManager(Game* game) : health(3), maxHealth(11), EntityRectangle(game, PixelSizes::GetInstance().healthSize)
 {
 	SetPosition(PixelSizes::GetInstance().healthPosition);
 	SetFillColor(sf::Color::Red);
@@ -35,9 +36,11 @@ void HealthManager::TakeHit()
 {
 	health--;
 
-	if (health < 0)
+	if (health <= 0)
+	{
 		health = 0;
-
+		gameScene->EndGame();
+	}
 }
 
 bool HealthManager::IsDead()

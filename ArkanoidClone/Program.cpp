@@ -1,14 +1,17 @@
 #include "Program.h"
 #include "Utility.h"
-Program::Program(): game(deltaTime)
+Program::Program()
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
+
+	StartGame();
 }
 
 Program::~Program()
 {
+	delete game;
 	delete window;
 }
 
@@ -18,6 +21,13 @@ void Program::InitializeWindow(unsigned int width, unsigned int height, std::str
 	window->setPosition(PixelSizes::GetInstance().windowPosition);
 	//window->setVerticalSyncEnabled(false); - ENABLE ONLY WHEN BOOST GAMEPLAY
 	//window->setFramerateLimit(60 or 144); - ENABLE THIS ON FINAL BUILD
+}
+
+void Program::StartGame()
+{
+	delete game;
+	game = new Game(deltaTime);
+	game->StartGame();
 }
 
 void Program::CalculateDeltaTime()
@@ -43,14 +53,14 @@ void Program::Update()
 	UpdateEvents();
 	CalculateDeltaTime();
 
-	game.Update(deltaTime);
+	game->Update(deltaTime);
 }
 
 void Program::Render()
 {
 	window->clear(backgroundColor);
 
-	window->draw(game);
+	window->draw(*game);
 	
 	window->display();
 }

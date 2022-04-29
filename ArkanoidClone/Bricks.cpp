@@ -1,10 +1,9 @@
 #include "Bricks.h"
 
-IBrick::IBrick(): points(0), EntityRectangle({0,0})
+IBrick::IBrick(Game* _game): points(0), EntityRectangle(_game,{0,0})
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
 }
-
 
 sf::Vector2f IBrick::GetCenterPoint()
 {
@@ -14,14 +13,12 @@ sf::Vector2f IBrick::GetCenterPoint()
 }
 
 
-
-
 void IBrick::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(gameObject);
 }
 
-GoldBrick::GoldBrick()
+GoldBrick::GoldBrick() : IBrick(gameScene)
 {
 	SetFillColor(sf::Color::Color(181, 166, 66, 255));
 }
@@ -51,12 +48,12 @@ inline int CalculateHealth(int stageNumber)
 	return 2 + (stageNumber >> 3); //2hp at the beginning, then each 8lvls +1hp
 }
 
-SilverBrick::SilverBrick(int stageNumber) : hp(CalculateHealth(stageNumber))
+SilverBrick::SilverBrick(int stageNumber) : IBrick(gameScene), hp(CalculateHealth(stageNumber))
 {
 	SetFillColor(sf::Color::Color(196, 202, 206));
 }
 
-ColorBrick::ColorBrick(ColorsEnum color)
+ColorBrick::ColorBrick(ColorsEnum color) : IBrick(gameScene)
 {
 
 	switch (color)

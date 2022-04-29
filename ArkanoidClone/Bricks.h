@@ -4,30 +4,14 @@
 
 class IBrick : public EntityRectangle
 {
-public:
-	//sf::RectangleShape gameObject;
 protected:
-	//Game Objects
-	//sf::Texture texture;
-
-	//Variables
-	//sf::Vector2f size = PixelSizes::GetInstance().brickSize;
 	int points;
 
 public:
-	
 	//Constructors & Destructors
-	IBrick();
+	IBrick(Game* gameScene);
 	~IBrick() {}
 
-	//Methods
-	//void SetPosition(sf::Vector2f _position);
-	//void SetFillColor(sf::Color _color);
-	//void SetSize(sf::Vector2f _size);
-	//virtual void SetTexture(sf::Texture _texture) {};
-	//sf::Vector2f GetSize();
-	//sf::Vector2f GetPosition();
-	//PositionConstrains GetConstrains();
 	sf::Vector2f GetCenterPoint();
 
 	//Getters&Setters

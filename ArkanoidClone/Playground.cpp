@@ -8,7 +8,7 @@ void Playground::InitGameObject()
 	SetFillColor(sf::Color::Color(10,10,10));
 }
 
-Playground::Playground():EntityRectangle(PixelSizes::GetInstance().playgroundPosition)
+Playground::Playground(Game* game):EntityRectangle(game, PixelSizes::GetInstance().playgroundPosition)
 {
 	InitGameObject();
 }

@@ -1,13 +1,14 @@
 #include "Ball.h"
 #include "Utility.h"
+#include "Game.h"
 #include <iostream>
 
-Ball::Ball(Stage* _stage, Vaus* _vaus): EntityCircle(PixelSizes::GetInstance().ballRadius),speed(400.f) ,stickedToVaus(true), currentStage(_stage), currentVaus(_vaus)
+Ball::Ball(Game* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)
 {
 	SetOriginCenter();
 	SetFillColor(sf::Color::White);
 	ballToVausOffset = {0,-21};
-	StickBallToVaus(ballToVausOffset);
+	StickBallToVaus();
 }
 
 void Ball::UpdateWallCollisions()
@@ -39,8 +40,8 @@ void Ball::UpdateWallCollisions()
 	}
 	else if (gameObject.getPosition().y >= down)
 	{
-		newPosition = { GetPosition().x, down };
-		newDirection = MultipyVectors(direction, changeY);
+		gameScene->healthManager->TakeHit();
+		StickBallToVaus();
 	}
 	else
 	{
@@ -89,12 +90,12 @@ void Ball::UpdateBricksCollision()
 	sf::FloatRect overlap;
 	sf::FloatRect ballBounds = gameObject.getTransform().transformRect(gameObject.getLocalBounds());
 
-	for (auto& brick: currentStage->playableBricks)
+	for (auto& brick: gameScene->currentStage->playableBricks)
 	{
 		if (brick->GetCollider().intersects(ballBounds, overlap))
 		{
 			UpdateBrickCollision(brick, overlap);//Calculate movement
-			currentStage->CollisionDetected(brick);//Handle internal brick logic
+			gameScene->currentStage->CollisionDetected(brick);//Handle internal brick logic
 			break;
 		}
 	}
@@ -105,12 +106,12 @@ void Ball::UpdateVausCollision()
 	sf::FloatRect overlap;
 	sf::FloatRect ballBounds = gameObject.getTransform().transformRect(gameObject.getLocalBounds());
 
-	for (auto part : currentVaus->parts)
+	for (auto part : gameScene->vaus->parts)
 	{
 		if (part->GetCollider().intersects(ballBounds, overlap))
 		{
 			sf::Vector2f collisionVector = part->GetPosition() - GetPosition();
-			sf::Vector2f normalToCenter = currentVaus->parts[0]->GetPosition() - GetPosition();
+			sf::Vector2f normalToCenter = gameScene->vaus->parts[0]->GetPosition() - GetPosition();
 			sf::Vector3f correctionVector = CalculateCorrectionVector(overlap, collisionVector);
 			sf::Vector2f normal(correctionVector.x, correctionVector.y);
 
@@ -146,16 +147,15 @@ void Ball::ChangeDirection(sf::Vector2f _direction)
 	direction = _direction;
 }
 
-void Ball::StickBallToVaus(sf::Vector2f offsetFromVaus)
+void Ball::StickBallToVaus()
 {
-	ballToVausOffset = offsetFromVaus;
 	stickedToVaus = true;
 }
 
 void Ball::InitGameObject(const float& _speed)
 {
 	speed = _speed;
-	StickBallToVaus(ballToVausOffset);
+	StickBallToVaus();
 }
 
 void Ball::UpdateCollistions()
@@ -177,7 +177,7 @@ void Ball::Move(sf::Vector2f moveToVector)
 
 void Ball::StickedBallLogic()
 {
-	SetPosition(currentVaus->parts[0]->GetPosition() + ballToVausOffset);
+	SetPosition(gameScene->vaus->parts[0]->GetPosition() + ballToVausOffset);
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{

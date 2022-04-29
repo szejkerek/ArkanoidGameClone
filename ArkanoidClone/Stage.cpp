@@ -34,7 +34,6 @@ Stage::~Stage()
 			delete bricks[i][j];
 		}
 	}
-
 }
 
 bool Stage::CalculateBricksPositions() 
@@ -60,7 +59,6 @@ void GenerateDefaultMapFile(std::string filename)
 	std::filesystem::path path = std::filesystem::current_path().append("Stages");
 	std::filesystem::create_directory(path);
 	path.append(filename).concat(".txt");
-
 	std::ofstream file(path);
 
 	if(file) 

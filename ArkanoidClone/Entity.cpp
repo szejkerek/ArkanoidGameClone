@@ -1,6 +1,7 @@
 #include "Entity.h"
 
-EntityRectangle::EntityRectangle(const sf::Vector2f& size)
+
+EntityRectangle::EntityRectangle(Game* _gameScene, const sf::Vector2f& size): gameScene(_gameScene)
 {
 	InitGameObject();
 	SetSize(size);
@@ -60,7 +61,7 @@ inline sf::Vector2f EntityRectangle::GetSize()
 	return gameObject.getSize();
 }
 
-EntityCircle::EntityCircle(const float& radius)
+EntityCircle::EntityCircle(Game* _gameScene, const float& radius) : gameScene(_gameScene)
 {
 	InitGameObject();
 	SetRadius(radius);
@@ -114,8 +115,6 @@ inline float EntityCircle::GetRadius()
 {
 	return gameObject.getRadius();
 }
-
-
 
 inline void EntityCircle::SetOutlineColor(const sf::Color& color)
 {

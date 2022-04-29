@@ -14,7 +14,7 @@ protected:
 
 public:
 	//Constructors
-	IVausPart(const sf::Vector2f& _positionOffset);
+	IVausPart(Game* game, const sf::Vector2f& _positionOffset);
 
 	//Methods
 	virtual sf::Vector2f GetDirection();

@@ -7,7 +7,7 @@ void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vec
 	SetOriginCenter();
 	this->positionOffset = positionOffset;
 }
-IVausPart::IVausPart(const sf::Vector2f& _positionOffset) : EntityRectangle({ 0,0 }), positionOffset(_positionOffset)
+IVausPart::IVausPart(Game* _game, const sf::Vector2f& _positionOffset) : EntityRectangle(_game,{ 0,0 }), positionOffset(_positionOffset)
 {
 	if (_positionOffset.x < 0)
 		directionSign = -1;
@@ -32,11 +32,6 @@ void IVausPart::SetPosition(const sf::Vector2f& position)
 	gameObject.setPosition(position + GetPositionOffset());
 }
 
-//void IVausPart::SetAbsolutePosition(const sf::Vector2f& position)
-//{
-//	gameObject.setPosition(position);
-//}
-
 sf::Vector2f IVausPart::GetPositionOffset()
 {
 	return positionOffset;
@@ -47,22 +42,22 @@ void IVausPart::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(gameObject);
 }
 
-CentralPart::CentralPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
+CentralPart::CentralPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene,_positionOffset)
 {
 	InitGameObject(_positionOffset, { 23,28 }, sf::Color::Color(72, 72, 72));
 }
 
-GreyPart::GreyPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
+GreyPart::GreyPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Color(107, 107, 107));
 }
 
-RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
+RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Red);
 }
 
-BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(_positionOffset)
+BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	InitGameObject(_positionOffset, { 10,28 }, sf::Color::Blue);
 }

@@ -1,14 +1,19 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
+class Game;
+
 class EntityRectangle :public sf::Drawable
 {
 protected:
 	//Gameobject
 	sf::RectangleShape gameObject;
 public:
+
+	Game* gameScene;
+
 	//Constructors&Destructors
-	EntityRectangle(const sf::Vector2f& size);
+	EntityRectangle(Game* gameScene, const sf::Vector2f& size);
 	virtual ~EntityRectangle() = default;
 	
 	//Methods
@@ -37,8 +42,11 @@ protected:
 	//Gameobject
 	sf::CircleShape gameObject;
 public:
+
+	Game* gameScene;
+
 	//Constructors&Destructors
-	EntityCircle(const float& radius);
+	EntityCircle(Game* _gameScene, const float& radius);
 	virtual ~EntityCircle() = default;
 
 	//Methods
