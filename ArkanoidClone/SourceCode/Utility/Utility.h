@@ -57,8 +57,15 @@ public:
 
 	sf::Vector2f brickSize{55,28};
 
-	sf::Vector2f vausSize{111,28};
-	sf::Vector2f vausPosition{577,857};
+
+	sf::Vector2f iVausCentralSize{23,28 }; //23
+	sf::Vector2f iVausGreySize{ 17,28 };
+	sf::Vector2f iVausRedSize{ 17,28 };
+	sf::Vector2f iVausBlueSize{ 10,28 }; //10
+
+
+	sf::Vector2f vausSize{ iVausCentralSize.x + iVausGreySize.x * 2 + iVausRedSize.x * 2+ iVausBlueSize.x * 2, 28 };
+	sf::Vector2f vausPosition{ 577,857 };
 
 	sf::Vector2f playgroundSize{ 715.f,858.f };
 	sf::Vector2f playgroundPosition{ 183,62 };

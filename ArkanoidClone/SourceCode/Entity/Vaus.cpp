@@ -7,7 +7,7 @@ float ValidatePosition(const sf::Vector2f& position)
 	float playgroundSize = PixelSizes::GetInstance().playgroundSize.x;
 	float vausSize = PixelSizes::GetInstance().vausSize.x;
 
-	if (position.x <= playgroundPosition + vausSize/2)
+	if (position.x <= playgroundPosition + vausSize / 2)
 	{
 		return playgroundPosition + vausSize / 2;
 	}
@@ -36,13 +36,23 @@ void Vaus::SetPosition(const sf::Vector2f& _position)
 
 void Vaus::InitParts()
 {
-	parts.push_back(new CentralPart({ 0,0 }));
-	parts.push_back(new GreyPart({ 20,0 }));
-	parts.push_back(new GreyPart({ -20,0 }));
-	parts.push_back(new RedPart({ 37,0 }));
-	parts.push_back(new RedPart({ -37,0 }));
-	parts.push_back(new BluePart({ 50.5f,0 }));
-	parts.push_back(new BluePart({ -50.5f,0 }));
+	float centerSize = PixelSizes::GetInstance().iVausCentralSize.x;
+	float greySize = PixelSizes::GetInstance().iVausGreySize.x;
+	float redSize = PixelSizes::GetInstance().iVausRedSize.x;
+	float blueSize = PixelSizes::GetInstance().iVausBlueSize.x;
+
+	float centerOffset = 0;
+	float greyOffset = greySize / 2 + centerSize / 2;
+	float redOffset = greySize + redSize / 2 + centerSize / 2;
+	float blueOffset = greySize + redSize + blueSize / 2 + centerSize / 2;
+
+	parts.push_back(new CentralPart({ centerOffset,0 }));
+	parts.push_back(new GreyPart({ greyOffset,0 }));
+	parts.push_back(new GreyPart({ -greyOffset,0 }));
+	parts.push_back(new RedPart({ redOffset,0 }));
+	parts.push_back(new RedPart({ -redOffset,0 }));
+	parts.push_back(new BluePart({ blueOffset,0 }));
+	parts.push_back(new BluePart({ -blueOffset,0 }));
 	 
 	SetPosition(position);
 }

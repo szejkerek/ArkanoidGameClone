@@ -44,22 +44,26 @@ void IVausPart::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 CentralPart::CentralPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene,_positionOffset)
 {
-	InitGameObject(_positionOffset, { 23,28 }, sf::Color::Color(72, 72, 72));
+	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausCentralSize;
+	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Color(72, 72, 72));
 }
 
 GreyPart::GreyPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
-	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Color(107, 107, 107));
+	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausGreySize;
+	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Color(107, 107, 107));
 }
 
 RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
-	InitGameObject(_positionOffset, { 17,28 }, sf::Color::Red);
+	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausRedSize;
+	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Red);
 }
 
 BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
-	InitGameObject(_positionOffset, { 10,28 }, sf::Color::Blue);
+	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausBlueSize;
+	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Blue);
 }
 
 inline sf::Vector2f BluePart::GetReflectionVector()
