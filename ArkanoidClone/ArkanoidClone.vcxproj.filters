@@ -24,105 +24,105 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Entity\Ball.cpp">
+    <ClCompile Include="SourceCode\Entity\Ball.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Entity.cpp">
+    <ClCompile Include="SourceCode\Entity\Entity.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\HealthManager.cpp">
+    <ClCompile Include="SourceCode\Entity\HealthManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Bricks.cpp">
+    <ClCompile Include="SourceCode\Entity\Bricks.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Scenes\Game.cpp">
+    <ClCompile Include="SourceCode\Scenes\Game.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Playground.cpp">
+    <ClCompile Include="SourceCode\Entity\Playground.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Scenes\Scene.cpp">
+    <ClCompile Include="SourceCode\Scenes\Scene.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Scenes\SceneManager.cpp">
+    <ClCompile Include="SourceCode\Scenes\SceneManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Stage.cpp">
+    <ClCompile Include="SourceCode\Entity\Stage.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Vaus.cpp">
+    <ClCompile Include="SourceCode\Entity\Vaus.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\VausPart.cpp">
+    <ClCompile Include="SourceCode\Entity\VausPart.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ArkanoidClone.cpp">
+    <ClCompile Include="SourceCode\ArkanoidClone.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Program.cpp">
+    <ClCompile Include="SourceCode\Program.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Scenes\MenuScene.cpp">
+    <ClCompile Include="SourceCode\Scenes\MenuScene.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI\UIElement.cpp">
+    <ClCompile Include="SourceCode\UI\UIElement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI\Button.cpp">
+    <ClCompile Include="SourceCode\UI\Button.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Entity\Ball.h">
+    <ClInclude Include="SourceCode\Entity\Ball.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Entity.h">
+    <ClInclude Include="SourceCode\Entity\Entity.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\HealthManager.h">
+    <ClInclude Include="SourceCode\Entity\HealthManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Bricks.h">
+    <ClInclude Include="SourceCode\Entity\Bricks.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Playground.h">
+    <ClInclude Include="SourceCode\Entity\Playground.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scenes\Scene.h">
+    <ClInclude Include="SourceCode\Scenes\Scene.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scenes\SceneManager.h">
+    <ClInclude Include="SourceCode\Scenes\SceneManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Stage.h">
+    <ClInclude Include="SourceCode\Entity\Stage.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utility\Utility.h">
+    <ClInclude Include="SourceCode\Utility\Utility.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scenes\Game.h">
+    <ClInclude Include="SourceCode\Scenes\Game.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utility\Profiler.h">
+    <ClInclude Include="SourceCode\Utility\Profiler.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Vaus.h">
+    <ClInclude Include="SourceCode\Entity\Vaus.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\VausPart.h">
+    <ClInclude Include="SourceCode\Entity\VausPart.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Program.h">
+    <ClInclude Include="SourceCode\Program.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scenes\MenuScene.h">
+    <ClInclude Include="SourceCode\Scenes\MenuScene.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\UIElement.h">
+    <ClInclude Include="SourceCode\UI\UIElement.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\Button.h">
+    <ClInclude Include="SourceCode\UI\Button.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
