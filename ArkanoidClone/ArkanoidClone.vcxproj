@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\UI\Button.cpp" />
     <ClCompile Include="Source\Scenes\MenuScene.cpp" />
     <ClCompile Include="Source\ArkanoidClone.cpp" />
     <ClCompile Include="Source\Entity\Ball.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Source\UI\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\UI\Button.h" />
     <ClInclude Include="Source\Scenes\MenuScene.h" />
     <ClInclude Include="Source\Entity\Ball.h" />
     <ClInclude Include="Source\Entity\Entity.h" />

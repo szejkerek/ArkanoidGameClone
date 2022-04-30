@@ -9,8 +9,7 @@
 class Game : public Scene
 {
 private:
-	//Variables
-	float deltaTime = 0;
+
 	bool playable;
 
 	//Methods
@@ -19,6 +18,7 @@ private:
 	void FreeMemory();
 
 public:
+	Program* program;
 
 	//GameObjects
 	Playground* playground;
@@ -26,6 +26,9 @@ public:
 	Vaus* vaus;
 	Stage* currentStage;
 	HealthManager* healthManager;
+
+	//Variables
+	float ballAirTime = 0;
 
 	//Constructors & Destructors
 	Game(Program* _program, float& deltaTime);

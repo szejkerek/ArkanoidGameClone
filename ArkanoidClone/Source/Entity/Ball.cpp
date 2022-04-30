@@ -150,6 +150,7 @@ void Ball::ChangeDirection(sf::Vector2f _direction)
 void Ball::StickBallToVaus()
 {
 	stickedToVaus = true;
+	gameScene->ballAirTime = 0;
 }
 
 void Ball::InitGameObject(const float& _speed)
@@ -178,9 +179,12 @@ void Ball::Move(sf::Vector2f moveToVector)
 void Ball::StickedBallLogic()
 {
 	SetPosition(gameScene->vaus->parts[0]->GetPosition() + ballToVausOffset);
-
+	
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
+		if (gameScene->ballAirTime <= 0.2f)
+			return;
+
 		ChangeDirection(NormalizeVector({ 25,-25 })); //45 degrees to right
 		stickedToVaus = false;
 	}

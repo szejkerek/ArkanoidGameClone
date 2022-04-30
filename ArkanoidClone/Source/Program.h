@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Scenes/Game.h"
+#include "Scenes/MenuScene.h"
 #include "Scenes/SceneManager.h"
 #include "Utility/Profiler.h"
 class Program
@@ -10,7 +11,6 @@ private:
 	const std::string windowTitle = "ArkanoidClone";
 
 	//SFML Variables 
-	sf::RenderWindow* window;
 	sf::Event sfEvent;
 	sf::Color backgroundColor = sf::Color::Black;
 	sf::Clock clock;
@@ -29,12 +29,13 @@ private:
 
 	
 public:
-	
-	SceneManager* sceneManager;
+	//SFML Variables 
+	sf::RenderWindow* window;
 
 	//Scenes
+	SceneManager* sceneManager;
 	Game* game;
-
+	MenuScene* menu;
 
 	//Constructors
 	Program();

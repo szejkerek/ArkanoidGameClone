@@ -1,16 +1,17 @@
 #include "Program.h"
 #include "Utility/Utility.h"
-Program::Program() : game (new Game(this, deltaTime)), sceneManager(new SceneManager(this))
+Program::Program() : game (new Game(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
-	sceneManager->LoadScene(Scenes::Game);
+	sceneManager->LoadScene(Scenes::Menu);
 }
 
 Program::~Program()
 {
 	delete sceneManager;
+	delete menu;
 	delete game;
 	delete window;
 }

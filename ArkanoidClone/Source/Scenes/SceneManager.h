@@ -7,6 +7,7 @@ class Program;
 
 enum class Scenes
 {
+	none,
 	Menu,
 	LevelSelector,
 	Game,
@@ -22,11 +23,10 @@ private:
 
 public:
 	SceneManager(Program* _program);
-	~SceneManager();
 
 	void LoadScene(const Scenes& sceneToLoad);
-	void OpenPauseMenu();
-	void ClosePauseMenu();
+	//void OpenPauseMenu();
+	//void ClosePauseMenu();
 
 	void Update(float& dt);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

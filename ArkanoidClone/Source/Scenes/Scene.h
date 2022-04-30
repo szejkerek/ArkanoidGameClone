@@ -1,15 +1,14 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-
 class Program;
 
 class Scene : public sf::Drawable
 {
-protected:
-	Program* program;
+
 public:
+	Program* program;
 	Scene(Program* _program) :program(_program) {}
-	~Scene() = default;
+	~Scene();
 
 	//SFML
 	virtual void Update(float& dt) = 0;

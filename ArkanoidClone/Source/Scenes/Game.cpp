@@ -1,7 +1,8 @@
 #include "Game.h"
+#include "../Program.h"
 #include <iostream>
 
-Game::Game(Program* _program, float& _deltaTime) : deltaTime(_deltaTime), Scene(_program) { InitVariables(1); }
+Game::Game(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { InitVariables(1); }
 
 void Game::InitializeBall()
 {
@@ -42,6 +43,8 @@ void Game::StartGame()
 void Game::EndGame()
 {
 	playable = false;
+	ballAirTime = 0;
+	program->sceneManager->LoadScene(Scenes::Menu);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -59,10 +62,9 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Game::Update( float& dt )
 {
 	if (!playable)
-	{
 		return;
-	}
-
+	
+	ballAirTime += dt; //GameTime
 	ball->Update(dt);	
 	vaus->Update(dt);	
 }

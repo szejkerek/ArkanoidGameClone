@@ -5,10 +5,6 @@ SceneManager::SceneManager(Program* _program) : program(_program), currentScene(
 {
 }
 
-SceneManager::~SceneManager()
-{
-}
-
 void SceneManager::LoadScene(const Scenes& sceneToLoad)
 {
 	switch (sceneToLoad)
@@ -21,11 +17,13 @@ void SceneManager::LoadScene(const Scenes& sceneToLoad)
 	}
 	case Scenes::Menu:
 	{
-		currentScene = program->game;
-		program->game->StartGame();
+		currentScene = program->menu;
 		break;
 	}
-
+	case Scenes::none:
+	{
+		break;
+	}
 	default:
 		break;
 	}
