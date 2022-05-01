@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "../Utility/Utility.h"
 
+
 class IBrick : public EntityRectangle
 {
 protected:

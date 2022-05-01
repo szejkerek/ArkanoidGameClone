@@ -1,19 +1,11 @@
-﻿  Button.cpp
-  MenuScene.cpp
-  ArkanoidClone.cpp
-  Ball.cpp
-  Entity.cpp
-  HealthManager.cpp
+﻿  ArkanoidClone.cpp
   Bricks.cpp
-  Game.cpp
-  Playground.cpp
-  Scene.cpp
-  SceneManager.cpp
-  Stage.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Stage.cpp(67,34): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
   Program.cpp
-  Vaus.cpp
-  VausPart.cpp
+  Game.cpp
+  MenuScene.cpp
+  SceneManager.cpp
+  Button.cpp
   UIElement.cpp
+  Resources.cpp
   Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

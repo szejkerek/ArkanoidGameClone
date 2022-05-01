@@ -5,6 +5,8 @@
 #include "Scenes/MenuScene.h"
 #include "Scenes/SceneManager.h"
 #include "Utility/Profiler.h"
+
+#include "Utility/Resources.h"
 class Program
 {
 private:

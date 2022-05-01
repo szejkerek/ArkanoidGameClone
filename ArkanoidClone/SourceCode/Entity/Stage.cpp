@@ -64,8 +64,7 @@ inline void Stage::LoadVectorFromFile(const std::string& filename, const StageTy
 inline bool Stage::ValidateVector(const std::vector<char>& brickChars)
 {
 	int expectedSize = BRICK_COLUMNS * BRICK_ROWS;
-	int fileSize = brickChars.size();
-	std::cout << brickChars.size() << std::endl;
+	size_t fileSize = brickChars.size();
 	if (fileSize > expectedSize)
 	{
 		std::cerr << "Error: Loaded stage was too large." << std::endl;

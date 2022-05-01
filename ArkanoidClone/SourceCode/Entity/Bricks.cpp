@@ -1,8 +1,10 @@
 #include "Bricks.h"
+#include "../Utility/Resources.h"
 
 IBrick::IBrick(Game* _game): points(0), EntityRectangle(_game,{0,0})
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
+	gameObject.setTexture(ResourceManager::Get().GetTexture("2"));
 }
 
 sf::Vector2f IBrick::GetCenterPoint()

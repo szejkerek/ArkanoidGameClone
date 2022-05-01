@@ -2,6 +2,18 @@
 #include "SFML/Graphics.hpp"
 #include "Utility.h"
 
+enum class ColorsEnum
+{
+	white,
+	orange,
+	turquoise,
+	green,
+	red,
+	blue,
+	pink,
+	yelow
+};
+
 inline sf::Vector2f MultipyVectors(sf::Vector2f vectorA, sf::Vector2f vectorB)
 {
 	return  sf::Vector2f(vectorA.x * vectorB.x, vectorA.y * vectorB.y);
@@ -20,20 +32,9 @@ inline sf::Vector2f NormalizeVector(sf::Vector2f vector)
 	return vector;
 }
 
-enum class ColorsEnum
-{
-	white,
-	orange,
-	turquoise,
-	green,
-	red,
-	blue,
-	pink,
-	yelow
-};
-
 class PixelSizes
 {
+
 #pragma region Singleton
 
 	PixelSizes() {}
@@ -47,6 +48,7 @@ public:
 	PixelSizes& operator=(PixelSizes const&) = delete;
 
 #pragma endregion
+
 public:
 
 	sf::Vector2f healthPosition{ 199, 887 };
@@ -77,6 +79,7 @@ public:
 
 class UserSettings
 {
+
 #pragma region Singleton
 
 	UserSettings() {}
@@ -90,6 +93,7 @@ public:
 	UserSettings& operator=(UserSettings const&) = delete;
 
 #pragma endregion
+
 public:
 	float sensitivity = 10.f;
 	
