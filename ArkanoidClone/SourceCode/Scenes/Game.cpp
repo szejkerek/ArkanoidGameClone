@@ -14,18 +14,14 @@ void GameScene::InitVariables() //Preload level
 {
 	FreeMemory();
 	background = new Background(this);
-	currentStage = new Stage(1);
 	vaus = new Vaus();
 	healthManager = new HealthManager(this);
 	InitializeBall();
 }
 
-
-
 void GameScene::FreeMemory()
 {
 	delete background;
-	delete currentStage;
 	delete ball;
 	delete vaus;
 	delete healthManager;
@@ -37,16 +33,13 @@ GameScene::~GameScene()
 }
 
 void GameScene::StartGame()
-{
+{	
+	healthManager->RestoreFullHp();
 	playable = true;	
-	SelectStage(new Stage(1), new Background(this));
 }
 
-void GameScene::SelectStage(Stage* _stage, Background* _background)
+void GameScene::SelectStage(Stage* _stage/*, Background* _background*/)
 {
-	delete background;
-	delete currentStage;
-	background = _background;
 	currentStage = _stage;
 }
 
@@ -54,7 +47,7 @@ void GameScene::EndGame()
 {
 	playable = false;
 	ballAirTime = 0;
-	program->sceneManager->LoadScene(Scenes::Menu);
+	program->sceneManager->LoadScene(Scenes::LevelSelector);
 }
 
 void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const

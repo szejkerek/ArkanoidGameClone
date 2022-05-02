@@ -6,23 +6,27 @@
 class LevelSelectorScene : public Scene
 {
 private:
-	int currentIndex = 6;
+	int currentIndex = 0;
+	void IncrementIndex();
+	void DecrementIndex();
+	void LoadGame();
 
 	Button* backToMenuBtn;
 	Button* playBtn;
 	Button* customBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
-	Button* fastNextBtn;
-	Button* fastPreviousBtn;
 
-	
+	sf::RectangleShape preview;
 
 	void SetUpScene();
+	void SetFullPreview();
+	void LoadOriginalStages();
+
+	std::vector<Stage*> originalStages;
 
 
 public:
-	void IncrementIndex();
 	LevelSelectorScene(Program* _program);
 	~LevelSelectorScene();
 

@@ -68,6 +68,16 @@ inline bool UIElement::MouseHovers()
 	return GetCollider().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition(*program->window)));
 }
 
+inline void UIElement::Disable()
+{
+	isDisabled = true;
+}
+
+inline void UIElement::Enable()
+{
+	isDisabled = false;
+}
+
 
 void UIElement::Update(float& dt)
 {

@@ -207,7 +207,14 @@ bool Stage::LoadedSucessfuly()
 
 sf::Texture* Stage::GetPreview()
 {
-	return ResourceManager::Get().GetTexture("Preview"+stageName);
+	if (ResourceManager::Get().GetTexture("Preview" + stageName) == nullptr)
+	{
+		return ResourceManager::Get().GetTexture("PreviewNotFound");
+	}
+	else
+	{
+		return ResourceManager::Get().GetTexture("Preview" + stageName);
+	}
 }
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const

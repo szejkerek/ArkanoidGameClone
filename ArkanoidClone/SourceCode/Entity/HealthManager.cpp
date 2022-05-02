@@ -43,6 +43,16 @@ void HealthManager::TakeHit()
 	}
 }
 
+void HealthManager::RestoreFullHp()
+{
+	health = 3;
+}
+
+void HealthManager::HealOneHealth()
+{
+	health++;
+}
+
 bool HealthManager::IsDead()
 {
 	return (health <= 0);	

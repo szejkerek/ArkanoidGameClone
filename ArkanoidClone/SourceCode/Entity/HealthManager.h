@@ -15,6 +15,8 @@ private:
 public:
 	HealthManager(GameScene* _gameScene);
 	void TakeHit();
+	void RestoreFullHp();
+	void HealOneHealth();
 	bool IsDead();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

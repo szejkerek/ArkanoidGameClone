@@ -18,7 +18,7 @@ void Button::DecrementTimer(float& dt)
 
 inline bool Button::Clicked()
 {
-	if (buttonCooldown == 0 && (MouseHovers() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)))
+	if (buttonCooldown == 0 && !isDisabled && (MouseHovers() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)))
 	{
 		buttonCooldown = defalutButtonCooldown;
 		return true;
@@ -75,10 +75,15 @@ void Button::Update(float& dt)
 	{
 		SetFillColor(sf::Color::Red);
 	}
+	else if (isDisabled)
+	{
+		SetFillColor(sf::Color::Magenta);
+	}
 	else
 	{
 		SetFillColor(sf::Color::White);
 	}
+
 
 	if (Clicked())
 	{

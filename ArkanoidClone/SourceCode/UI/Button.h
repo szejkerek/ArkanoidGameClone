@@ -8,8 +8,8 @@ protected:
 	Scenes sceneToLoad;
 	std::function<void()> onClickFunction = nullptr;
 
-	float buttonCooldown = .1f;
-	float defalutButtonCooldown = .1f;
+	float buttonCooldown = .3f;
+	float defalutButtonCooldown = .3f;
 	void DecrementTimer(float& dt);
 	virtual inline bool Clicked();
 	virtual inline void OnClick();

@@ -37,11 +37,16 @@ public:
 			for (std::filesystem::directory_entry entry : std::filesystem::recursive_directory_iterator(current))
 			{
 				if (entry.path().stem() == name)
+				{
 					tempResource->loadFromFile(entry.path().string());
-			}
+					resources.insert({ name , tempResource });
+					return tempResource.get();
 
-			resources.insert({ name , tempResource });
-			return tempResource.get();
+				}
+					
+			}
+			return nullptr;
+			
 		}
 	}
 };

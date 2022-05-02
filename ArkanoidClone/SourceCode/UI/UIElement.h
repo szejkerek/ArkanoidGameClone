@@ -11,6 +11,7 @@ private:
 protected:
 	//Gameobject
 	sf::RectangleShape gameObject;
+	bool isDisabled = false;
 public:
 	Program* program;
 	//Constructors&Destructors
@@ -32,6 +33,8 @@ public:
 	virtual inline sf::Vector2f GetSize();
 	virtual inline sf::Vector2f GetPosition();
 	virtual inline bool MouseHovers();
+	virtual inline void Disable();
+	virtual inline void Enable();
 
 
 	//SFML methods

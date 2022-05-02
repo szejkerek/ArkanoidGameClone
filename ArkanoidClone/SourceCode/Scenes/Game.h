@@ -36,7 +36,7 @@ public:
 
 	//Methods
 	void StartGame();
-	void SelectStage(Stage* _stage, Background* background);
+	void SelectStage(Stage* _stage/*, Background* background*/);
 	void EndGame();
 
 	//SFML Methods
