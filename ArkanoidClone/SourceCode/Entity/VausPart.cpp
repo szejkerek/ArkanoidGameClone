@@ -7,7 +7,7 @@ void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vec
 	SetOriginCenter();
 	this->positionOffset = positionOffset;
 }
-IVausPart::IVausPart(Game* _game, const sf::Vector2f& _positionOffset) : EntityRectangle(_game,{ 0,0 }), positionOffset(_positionOffset)
+IVausPart::IVausPart(GameScene* _game, const sf::Vector2f& _positionOffset) : EntityRectangle(_game,{ 0,0 }), positionOffset(_positionOffset)
 {
 	if (_positionOffset.x < 0)
 		directionSign = -1;

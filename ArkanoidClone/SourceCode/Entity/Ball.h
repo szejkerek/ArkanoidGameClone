@@ -29,7 +29,7 @@ private:
 
 public:
 	//Constructors & Destructors
-	Ball(Game* game);
+	Ball(GameScene* game);
 	void SetPlaygroundConstrains(const sf::FloatRect& _playgroundConstrains);
 
 	//Methods

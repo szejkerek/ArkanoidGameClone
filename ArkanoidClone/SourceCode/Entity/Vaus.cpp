@@ -3,8 +3,8 @@
 
 float ValidatePosition(const sf::Vector2f& position) 
 {
-	float playgroundPosition = PixelSizes::GetInstance().playgroundPosition.x;
-	float playgroundSize = PixelSizes::GetInstance().playgroundSize.x;
+	float playgroundPosition = PixelSizes::GetInstance().backgroundPosition.x;
+	float playgroundSize = PixelSizes::GetInstance().backgroundSize.x;
 	float vausSize = PixelSizes::GetInstance().vausSize.x;
 
 	if (position.x <= playgroundPosition + vausSize / 2)

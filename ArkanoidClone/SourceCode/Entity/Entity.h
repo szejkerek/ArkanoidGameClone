@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-class Game;
+class GameScene;
 
 class EntityRectangle :public sf::Drawable
 {
@@ -10,17 +10,17 @@ protected:
 	sf::RectangleShape gameObject;
 public:
 
-	Game* gameScene;
+	GameScene* gameScene;
 
 	//Constructors&Destructors
-	EntityRectangle(Game* gameScene, const sf::Vector2f& size);
+	EntityRectangle(GameScene* gameScene, const sf::Vector2f& size);
 	virtual ~EntityRectangle() = default;
 	
 	//Methods
 	virtual inline void InitGameObject();
 
 	///Getters&Setters
-	virtual inline void SetTexture(sf::Texture* texture) {};
+	virtual inline void SetTexture(sf::Texture* texture);
 	virtual inline void SetPosition(const sf::Vector2f& position);
 	virtual inline void SetSize(const sf::Vector2f& size);
 	virtual inline void SetFillColor(const sf::Color& color);
@@ -43,10 +43,10 @@ protected:
 	sf::CircleShape gameObject;
 public:
 
-	Game* gameScene;
+	GameScene* gameScene;
 
 	//Constructors&Destructors
-	EntityCircle(Game* _gameScene, const float& radius);
+	EntityCircle(GameScene* _gameScene, const float& radius);
 	virtual ~EntityCircle() = default;
 
 	//Methods

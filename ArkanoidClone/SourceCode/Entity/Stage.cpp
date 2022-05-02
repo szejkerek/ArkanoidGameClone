@@ -7,9 +7,25 @@
 #include <regex>
 #include <filesystem>
 
-Stage::Stage(const int& _stageNumber) :stageNumber(_stageNumber)
+inline std::string Stage::GenerateStageName(const int& _stageNumber)
 {
-	LoadVectorFromFile("Stage_1.txt", StageType::original);
+	stageName = "Stage_" + std::to_string(_stageNumber);
+	return  stageName;
+}
+
+Stage::Stage() 
+{ 
+	LoadStageFromFile(1, GenerateStageName(1), StageType::original); // TO CHANGE
+}
+
+Stage::Stage(const int& _stageNumber)
+{
+	LoadStageFromFile(_stageNumber, GenerateStageName(_stageNumber), StageType::original);
+}
+
+Stage::Stage(const int& _stageNumber, const std::string& stageName, const StageType& stageType)
+{
+	LoadStageFromFile(_stageNumber, stageName, stageType);
 }
 
 Stage::~Stage()
@@ -21,8 +37,9 @@ Stage::~Stage()
 	}
 }
 
-inline void Stage::LoadVectorFromFile(const std::string& filename, const StageType& stageType)
+inline void Stage::LoadStageFromFile(const int& _stageNumber, const std::string& filename, const StageType& stageType)
 {
+	stageNumber = _stageNumber;
 	std::filesystem::path path = std::filesystem::current_path().append("Resources/Stages");
 	switch (stageType)
 	{
@@ -34,20 +51,17 @@ inline void Stage::LoadVectorFromFile(const std::string& filename, const StageTy
 		break;
 	}
 	path.append(filename);
+	path.concat(".txt");
 
 	if (!std::filesystem::exists(path))
 	{
-		std::cout << "Error: Couldn`t find file" << std::endl;
+		std::cout << "Error: Couldn`t find file of Stage " << stageNumber << std::endl;
 		std::cout << path.string() << std::endl;
 		return;
 	}
 
-
 	std::vector<char> temp;
 	std::ifstream file(path);
-
-
-
 	if (file)
 	{
 		char brickChar;
@@ -67,16 +81,16 @@ inline bool Stage::ValidateVector(const std::vector<char>& brickChars)
 	size_t fileSize = brickChars.size();
 	if (fileSize > expectedSize)
 	{
-		std::cerr << "Error: Loaded stage was too large." << std::endl;
+		std::cerr << "Error: Stage " << stageNumber << " is too large." << std::endl;
 		std::cout << "Expected size = " << expectedSize << std::endl;
 		std::cout << "File size =" << fileSize << std::endl;
 		return false;
 	}
 	else if(fileSize < expectedSize)
 	{
-		std::cerr << "Error: Loaded stage was too small." << std::endl;
+		std::cerr << "Error: Stage " << stageNumber << " is too small." << std::endl;
 		std::cout << "Expected size = " << expectedSize << std::endl;
-		std::cout << "File size =" << fileSize << std::endl;
+		std::cout << "File size = " << fileSize << std::endl;
 		return false;
 	}
 
@@ -88,7 +102,7 @@ inline bool Stage::ValidateVector(const std::vector<char>& brickChars)
 		std::string s(1, brickChar);
 		if (!std::regex_match(s, validate))
 		{
-			std::cerr << "Error: Invalid character found in stage file \"" << s << "\"" << std::endl;
+			std::cerr << "Error: Invalid character found in stage "<< stageNumber <<" file \"" << s << "\"" << std::endl;
 			return false;
 		}
 	}
@@ -100,6 +114,7 @@ inline void Stage::SetUpStage(const std::vector<char>& brickChars)
 {
 	if (!ValidateVector(brickChars))
 		return;
+
 	int collumn = 0, row = 0;
 	for (char brickChar : brickChars)
 	{	
@@ -112,6 +127,8 @@ inline void Stage::SetUpStage(const std::vector<char>& brickChars)
 			row++;
 		}
 	}
+
+	loadedSuccesfuly = true;
 }
 
 inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char& brickChar)
@@ -181,6 +198,16 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 			playableBricks[i] = nullptr;
 		}
 	}
+}
+
+bool Stage::LoadedSucessfuly()
+{
+	return loadedSuccesfuly;
+}
+
+sf::Texture* Stage::GetPreview()
+{
+	return ResourceManager::Get().GetTexture("Preview"+stageName);
 }
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const

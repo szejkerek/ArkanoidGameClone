@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ArkanoidClone",
+    "\\ArkanoidClone\\SourceCode",
+    "\\ArkanoidClone\\SourceCode\\Entity",
+    "\\ArkanoidClone\\SourceCode\\Scenes",
+    "\\ArkanoidClone\\SourceCode\\UI",
+    "\\ArkanoidClone\\SourceCode\\Utility"
   ],
+  "SelectedNode": "\\ArkanoidClone\\SourceCode\\UI\\ArrowButton.h",
   "PreviewInSolutionExplorer": false
 }

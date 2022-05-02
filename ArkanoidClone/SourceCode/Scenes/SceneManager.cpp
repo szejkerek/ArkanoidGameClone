@@ -20,6 +20,11 @@ void SceneManager::LoadScene(const Scenes& sceneToLoad)
 		currentScene = program->menu;
 		break;
 	}
+	case Scenes::LevelSelector:
+	{
+		currentScene = program->levelSelector;
+		break;
+	}
 	case Scenes::none:
 	{
 		break;

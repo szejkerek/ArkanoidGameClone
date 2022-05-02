@@ -3,10 +3,10 @@
 #include "../Entity/Ball.h"
 #include "../Entity/Bricks.h"
 #include "../Entity/Stage.h"
-#include "../Entity/Playground.h"
+#include "../Entity/Background.h"
 #include "../Entity/Vaus.h"
 #include "../Entity/HealthManager.h"
-class Game : public Scene
+class GameScene : public Scene
 {
 private:
 
@@ -14,14 +14,14 @@ private:
 
 	//Methods
 	void InitializeBall();
-	void InitVariables(int stageLvl);
+	void InitVariables();	
 	void FreeMemory();
 
 public:
 	Program* program;
 
 	//GameObjects
-	Playground* playground;
+	Background* background;
 	Ball* ball;
 	Vaus* vaus;
 	Stage* currentStage;
@@ -31,12 +31,12 @@ public:
 	float ballAirTime = 0;
 
 	//Constructors & Destructors
-	Game(Program* _program, float& deltaTime);
-	virtual ~Game();
+	GameScene(Program* _program, float& deltaTime);
+	virtual ~GameScene();
 
 	//Methods
 	void StartGame();
-	void SelectStage(Stage* _stage);
+	void SelectStage(Stage* _stage, Background* background);
 	void EndGame();
 
 	//SFML Methods

@@ -3,7 +3,7 @@
 #include "../Scenes/Game.h"
 #include <iostream>
 
-Ball::Ball(Game* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)
+Ball::Ball(GameScene* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)
 {
 	SetOriginCenter();
 	SetFillColor(sf::Color::White);

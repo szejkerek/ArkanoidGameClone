@@ -69,8 +69,8 @@ public:
 	sf::Vector2f vausSize{ iVausCentralSize.x + iVausGreySize.x * 2 + iVausRedSize.x * 2+ iVausBlueSize.x * 2, 28 };
 	sf::Vector2f vausPosition{ 577,857 };
 
-	sf::Vector2f playgroundSize{ 715.f,858.f };
-	sf::Vector2f playgroundPosition{ 183,62 };
+	sf::Vector2f backgroundSize{ 715.f,858.f };
+	sf::Vector2f backgroundPosition{ 183,62 };
 
 	sf::Vector2i windowPosition{ 310,10 };
 	sf::Vector2i windowResolution{ 1300,990 };

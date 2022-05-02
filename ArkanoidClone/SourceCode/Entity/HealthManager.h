@@ -13,7 +13,7 @@ private:
 	void InitializePlacements();
 
 public:
-	HealthManager(Game* _gameScene);
+	HealthManager(GameScene* _gameScene);
 	void TakeHit();
 	bool IsDead();
 

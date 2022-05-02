@@ -25,7 +25,7 @@ void HealthManager::InitializePlacements()
 	}
 }
 
-HealthManager::HealthManager(Game* game) : health(3), maxHealth(11), EntityRectangle(game, PixelSizes::GetInstance().healthSize)
+HealthManager::HealthManager(GameScene* game) : health(3), maxHealth(11), EntityRectangle(game, PixelSizes::GetInstance().healthSize)
 {
 	SetPosition(PixelSizes::GetInstance().healthPosition);
 	SetFillColor(sf::Color::Red);

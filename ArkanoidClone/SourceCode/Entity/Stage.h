@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Bricks.h"
-#include "SFML/Graphics.hpp"
+#include "../Utility/Resources.h"
 
 enum class StageType {
 	original,
@@ -16,21 +16,29 @@ class Stage: public sf::Drawable
 {
 private:
 	int stageNumber;
+	std::string stageName;
+	bool loadedSuccesfuly = false;
+	sf::Sprite* preview;
 
-	inline void LoadVectorFromFile(const std::string& filename, const StageType& stageType);
 	inline void SetUpStage(const std::vector<char>& brickChars);
 	inline IBrick* SetUpBrick(const int& row, const int& collumn, const char& brickChar);
 	inline bool ValidateVector(const std::vector<char>& brickChars);
+	inline void LoadStageFromFile(const int& _stageNumber, const std::string& filename, const StageType& stageType);
+	inline std::string GenerateStageName(const int& _stageNumber);
 
 public:
 	std::vector<IBrick*> playableBricks;	  //vector with just bricks
 
 	//Constructors & Destructors
-	Stage(const int& stageNumber);
+	Stage();
+	Stage(const int& _stageNumber);
+	Stage(const int& _stageNumber, const std::string& filename, const StageType& stageType);
 	~Stage();
 
 	//Methods 
 	void CollisionDetected(IBrick* brickToDelete);
+	bool LoadedSucessfuly();
+	sf::Texture* GetPreview();
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

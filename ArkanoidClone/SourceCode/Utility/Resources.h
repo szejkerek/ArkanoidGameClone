@@ -19,9 +19,7 @@ public:
 	~Resource()
 	{
 		for (auto i = resources.begin(); i != resources.end();)
-		{
 			i = resources.erase(i);
-		}
 	}
 
 	ResourceType* GetResource(const std::string& name)
@@ -36,7 +34,12 @@ public:
 		else
 		{
 			std::shared_ptr<ResourceType> tempResource = std::make_shared<ResourceType>();
-			tempResource->loadFromFile(current.append(name + resourceExtension).string());
+			for (std::filesystem::directory_entry entry : std::filesystem::recursive_directory_iterator(current))
+			{
+				if (entry.path().stem() == name)
+					tempResource->loadFromFile(entry.path().string());
+			}
+
 			resources.insert({ name , tempResource });
 			return tempResource.get();
 		}

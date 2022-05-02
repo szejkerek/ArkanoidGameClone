@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Scenes\LevelSelectorScene.cpp" />
     <ClCompile Include="SourceCode\Utility\Resources.cpp" />
     <ClCompile Include="SourceCode\UI\Button.cpp" />
     <ClCompile Include="SourceCode\Scenes\MenuScene.cpp" />
@@ -164,7 +165,7 @@
     <ClCompile Include="SourceCode\Entity\HealthManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Bricks.cpp" />
     <ClCompile Include="SourceCode\Scenes\Game.cpp" />
-    <ClCompile Include="SourceCode\Entity\Playground.cpp" />
+    <ClCompile Include="SourceCode\Entity\Background.cpp" />
     <ClCompile Include="SourceCode\Scenes\Scene.cpp" />
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Stage.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="SourceCode\UI\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SourceCode\Scenes\LevelSelectorScene.h" />
     <ClInclude Include="SourceCode\Utility\Resources.h" />
     <ClInclude Include="SourceCode\UI\Button.h" />
     <ClInclude Include="SourceCode\Scenes\MenuScene.h" />
@@ -181,7 +183,7 @@
     <ClInclude Include="SourceCode\Entity\Entity.h" />
     <ClInclude Include="SourceCode\Entity\HealthManager.h" />
     <ClInclude Include="SourceCode\Entity\Bricks.h" />
-    <ClInclude Include="SourceCode\Entity\Playground.h" />
+    <ClInclude Include="SourceCode\Entity\Background.h" />
     <ClInclude Include="SourceCode\Scenes\Scene.h" />
     <ClInclude Include="SourceCode\Scenes\SceneManager.h" />
     <ClInclude Include="SourceCode\Entity\Stage.h" />

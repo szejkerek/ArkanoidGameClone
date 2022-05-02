@@ -5,6 +5,7 @@
 #include "Scenes/MenuScene.h"
 #include "Scenes/SceneManager.h"
 #include "Utility/Profiler.h"
+#include "Scenes/LevelSelectorScene.h"
 
 #include "Utility/Resources.h"
 class Program
@@ -35,8 +36,9 @@ public:
 	sf::RenderWindow* window;
 
 	//Scenes
+	LevelSelectorScene* levelSelector;
 	SceneManager* sceneManager;
-	Game* game;
+	GameScene* game;
 	MenuScene* menu;
 
 	//Constructors

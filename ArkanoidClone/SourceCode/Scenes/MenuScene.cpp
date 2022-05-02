@@ -4,7 +4,7 @@
 MenuScene::MenuScene(Program* _program) : Scene(_program)
 {
 	btn = new Button(program);
-	btn->LoadSceneOnClick(Scenes::Game);
+	btn->LoadSceneOnClick(Scenes::LevelSelector);
 }
 
 MenuScene::~MenuScene()

@@ -2,69 +2,74 @@
 #include "../Program.h"
 #include <iostream>
 
-Game::Game(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { InitVariables(1); }
+GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { InitVariables(); }
 
-void Game::InitializeBall()
+void GameScene::InitializeBall()
 {
 	ball = new Ball(this);
-	ball->SetPlaygroundConstrains(playground->GetCollider());
+	ball->SetPlaygroundConstrains(background->GetCollider());
 }
 
-void Game::InitVariables(int stageLvl)
+void GameScene::InitVariables() //Preload level
 {
 	FreeMemory();
-	playground = new Playground(this);
+	background = new Background(this);
 	currentStage = new Stage(1);
 	vaus = new Vaus();
 	healthManager = new HealthManager(this);
 	InitializeBall();
 }
 
-void Game::FreeMemory()
+
+
+void GameScene::FreeMemory()
 {
-	delete playground;
+	delete background;
 	delete currentStage;
 	delete ball;
 	delete vaus;
 	delete healthManager;
 }
 
-Game::~Game()
+GameScene::~GameScene()
 {
 	FreeMemory();
 }
 
-void Game::StartGame()
+void GameScene::StartGame()
 {
 	playable = true;	
-	InitVariables(1);
+	SelectStage(new Stage(1), new Background(this));
 }
 
-void Game::SelectStage(Stage* _stage)
+void GameScene::SelectStage(Stage* _stage, Background* _background)
 {
+	delete background;
+	delete currentStage;
+	background = _background;
 	currentStage = _stage;
 }
 
-void Game::EndGame()
+void GameScene::EndGame()
 {
 	playable = false;
 	ballAirTime = 0;
 	program->sceneManager->LoadScene(Scenes::Menu);
 }
 
-void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (!playable)
 		return;
 
-	target.draw(*playground);
+	target.draw(*background);
 	target.draw(*currentStage);
 	target.draw(*vaus);
 	target.draw(*ball);
 	target.draw(*healthManager);
 }
 
-void Game::Update( float& dt )
+void GameScene::Update( float& dt )
 {
 	if (!playable)
 		return;

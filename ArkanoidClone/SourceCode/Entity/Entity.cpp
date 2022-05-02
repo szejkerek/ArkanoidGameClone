@@ -1,7 +1,7 @@
 #include "Entity.h"
 
 
-EntityRectangle::EntityRectangle(Game* _gameScene, const sf::Vector2f& size): gameScene(_gameScene)
+EntityRectangle::EntityRectangle(GameScene* _gameScene, const sf::Vector2f& size): gameScene(_gameScene)
 {
 	InitGameObject();
 	SetSize(size);
@@ -11,9 +11,14 @@ inline void EntityRectangle::InitGameObject()
 {
 	gameObject.setSize({ 10.f,10.f });
 	gameObject.setPosition(0, 0);
-	gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
-	gameObject.setOutlineColor(sf::Color::Color(155,135,12));
-	gameObject.setOutlineThickness(1.f);
+	//gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
+	//gameObject.setOutlineColor(sf::Color::Color(155,135,12));
+	//gameObject.setOutlineThickness(1.f);
+}
+
+inline void EntityRectangle::SetTexture(sf::Texture* texture)
+{
+	gameObject.setTexture(texture);
 }
 
 inline void EntityRectangle::SetPosition(const sf::Vector2f& position)
@@ -61,7 +66,7 @@ inline sf::Vector2f EntityRectangle::GetSize()
 	return gameObject.getSize();
 }
 
-EntityCircle::EntityCircle(Game* _gameScene, const float& radius) : gameScene(_gameScene)
+EntityCircle::EntityCircle(GameScene* _gameScene, const float& radius) : gameScene(_gameScene)
 {
 	InitGameObject();
 	SetRadius(radius);
@@ -71,7 +76,7 @@ inline void EntityCircle::InitGameObject()
 {
 	gameObject.setRadius( 10.f );
 	gameObject.setPosition(0, 0);
-	gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
+	//gameObject.setFillColor(sf::Color::Color(0, 0, 0, 0));
 	gameObject.setOutlineColor(sf::Color::Color(155, 135, 12));
 	gameObject.setOutlineThickness(1.f);
 }

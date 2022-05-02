@@ -9,7 +9,7 @@ b b b b b b b b b b b b b
 p p p p p p p p p p p p p
 g g g g g g g g g g g g g
 * * * * * * * * * * * * *
-* * * * * * b * * * * * *
+* * * * * * * * * * * * *
 * * * * * * * * * * * * *
 * * * * * * * * * * * * *
 * * * * * * * * * * * * *

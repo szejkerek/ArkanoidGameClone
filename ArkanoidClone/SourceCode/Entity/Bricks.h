@@ -10,7 +10,7 @@ protected:
 
 public:
 	//Constructors & Destructors
-	IBrick(Game* gameScene);
+	IBrick(GameScene* gameScene);
 	~IBrick() {}
 
 	sf::Vector2f GetCenterPoint();

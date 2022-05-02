@@ -1,10 +1,10 @@
 #include "Bricks.h"
 #include "../Utility/Resources.h"
 
-IBrick::IBrick(Game* _game): points(0), EntityRectangle(_game,{0,0})
+IBrick::IBrick(GameScene* _game): points(0), EntityRectangle(_game,{0,0})
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
-	gameObject.setTexture(ResourceManager::Get().GetTexture("2"));
+	gameObject.setTexture(ResourceManager::Get().GetTexture("brick"));
 }
 
 sf::Vector2f IBrick::GetCenterPoint()
@@ -16,7 +16,7 @@ sf::Vector2f IBrick::GetCenterPoint()
 
 inline void IBrick::SetRelativePosition(int row, int collumn)
 {
-	sf::Vector2f init = PixelSizes::GetInstance().playgroundPosition;
+	sf::Vector2f init = PixelSizes::GetInstance().backgroundPosition;
 	SetPosition({ init.x + GetSize().x * collumn, init.y + GetSize().y * row, });
 }
 
