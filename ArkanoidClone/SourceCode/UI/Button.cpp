@@ -4,6 +4,7 @@
 
 Button::Button(Program* _program) : UIElement(_program), sceneToLoad(Scenes::none)
 {
+	
 }
 
 void Button::DecrementTimer(float& dt)
@@ -49,23 +50,26 @@ inline void Button::LoadSceneOnClick(const Scenes& _sceneToLoad)
 
 inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size, std::string displayText, const Scenes& sceneToLoad)
 {
-	SetPosition(position);
 	SetSize(size);
+	SetOriginCenter();
+	SetPosition(position);
 	//SetText
 	LoadSceneOnClick(sceneToLoad);
 }
 
 inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size, std::string displayText)
 {
-	SetPosition(position);
 	SetSize(size);
+	SetOriginCenter();
+	SetPosition(position);
 	//SetText
 }
 
 inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size)
 {
-	SetPosition(position);
 	SetSize(size);
+	SetOriginCenter();
+	SetPosition(position);
 }
 
 void Button::Update(float& dt)

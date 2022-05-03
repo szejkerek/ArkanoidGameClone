@@ -9,7 +9,8 @@ enum class Scenes
 {
 	none,
 	Menu,
-	LevelSelector,
+	LevelSelectorOriginal,
+	LevelSelectorCustom,
 	Game,
 	Settings,
 	LevelCreator

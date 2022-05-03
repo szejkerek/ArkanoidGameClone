@@ -36,7 +36,8 @@ public:
 	sf::RenderWindow* window;
 
 	//Scenes
-	LevelSelectorScene* levelSelector;
+	LevelSelectorOriginal* levelSelectorOriginal;
+	LevelSelectorCustom* levelSelectorCustom;
 	SceneManager* sceneManager;
 	GameScene* game;
 	MenuScene* menu;

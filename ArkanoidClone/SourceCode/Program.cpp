@@ -1,7 +1,8 @@
 #include "Program.h"
 #include "Utility/Utility.h"
 Program::Program() 
-	: game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this)), levelSelector(new LevelSelectorScene(this))
+	: game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
+	, levelSelectorOriginal(new LevelSelectorOriginal(this)), levelSelectorCustom(new LevelSelectorCustom(this))
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
@@ -12,7 +13,8 @@ Program::Program()
 Program::~Program()
 {
 	delete sceneManager;
-	delete levelSelector;
+	delete levelSelectorOriginal;
+	delete levelSelectorCustom;
 	delete menu;
 	delete game;
 	delete window;

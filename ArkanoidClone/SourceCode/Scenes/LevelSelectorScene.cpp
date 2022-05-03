@@ -2,6 +2,25 @@
 #include "../Program.h"
 #include "../Utility/Utility.h"
 
+LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
+{
+	SetUpScene();
+}
+
+LevelSelectorScene::~LevelSelectorScene()
+{
+	delete backToMenuBtn;
+	delete playBtn;
+	delete nextStageBtn;
+	delete previousStageBtn;
+
+	for (auto stage : stages)
+	{ 
+		if(stage != nullptr)
+		delete stage;
+	}
+}
+
 void LevelSelectorScene::SetUpScene()
 {
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
@@ -26,64 +45,85 @@ void LevelSelectorScene::SetUpScene()
 	nextStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::IncrementIndex, this));
 	previousStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::DecrementIndex, this));
 	playBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::LoadGame, this));
+}
 
-
+void LevelSelectorScene::IncrementIndex()
+{
+	if (currentIndex < stages.size())
+		currentIndex++;
 
 	SetFullPreview();
 }
 
-
-LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
+void LevelSelectorScene::DecrementIndex()
 {
-	LoadOriginalStages();
-	SetUpScene();
+	if (currentIndex > 0)
+		currentIndex--;
+
+	SetFullPreview();
 }
 
-LevelSelectorScene::~LevelSelectorScene()
+void LevelSelectorScene::LoadGame()
 {
-	delete backToMenuBtn;
-	delete playBtn;
-	delete customBtn;
-	delete nextStageBtn;
-	delete previousStageBtn;
-
-	for (auto stage : originalStages)
-	{ 
-		if(stage != nullptr)
-		delete stage;
-	}
-}
-
-
-void LevelSelectorScene::LoadOriginalStages()
-{
-	for (int i = 0; i < 33; i++)
+	if (stages[currentIndex] != nullptr)
 	{
-		Stage* tempStage = new Stage(i);
-		if (tempStage->LoadedSucessfuly())
-		{
-			originalStages.push_back(tempStage);
-		}
-		else
-		{
-			delete tempStage;
-			originalStages.push_back(nullptr);
-		}
+		program->game->SelectStage(stages[currentIndex]);
+		program->sceneManager->LoadScene(Scenes::Game);
+
 	}
+	else
+	{
+		preview.setTexture(ResourceManager::Get().GetTexture("StageNotFound"));
+	}
+
 }
 
 void LevelSelectorScene::SetFullPreview()
 {
-	if (originalStages[currentIndex] != nullptr)
+	if (stages[currentIndex] != nullptr)
 	{
 		playBtn->Enable();
-		preview.setTexture(originalStages[currentIndex]->GetPreview());
+		preview.setTexture(stages[currentIndex]->GetPreview());
 		
 	}
 	else
 	{
 		playBtn->Disable();
 		preview.setTexture(ResourceManager::Get().GetTexture("StageNotFound"));
+	}
+}
+
+void LevelSelectorOriginal::LoadStages()
+{
+	for (int i = 0; i < 33; i++)
+	{
+		Stage* tempStage = new Stage(i);
+		if (tempStage->LoadedSucessfuly())
+		{
+			stages.push_back(tempStage);
+		}
+		else
+		{
+			delete tempStage;
+			stages.push_back(nullptr);
+		}
+	}
+}
+
+void LevelSelectorCustom::LoadStages()
+{
+	for (int i = 0; i < 33; i++)
+	{
+		Stage* tempStage = new Stage(i);
+		if (tempStage->LoadedSucessfuly())
+		{
+			stages.push_back(tempStage);
+		}
+		else
+		{
+			delete tempStage;
+			stages.push_back(nullptr);
+		}
 	}
 }
 
@@ -102,35 +142,4 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(*nextStageBtn);
 	target.draw(*previousStageBtn);
 	target.draw(preview);
-}
-
-void LevelSelectorScene::IncrementIndex()
-{
-	if (currentIndex < originalStages.size())
-	currentIndex++;
-
-	SetFullPreview();
-}
-
-void LevelSelectorScene::DecrementIndex()
-{
-	if(currentIndex>0)
-		currentIndex--;
-
-	SetFullPreview();
-}
-
-void LevelSelectorScene::LoadGame()
-{
-	if (originalStages[currentIndex] != nullptr)
-	{
-		program->game->SelectStage(originalStages[currentIndex]);
-		program->sceneManager->LoadScene(Scenes::Game);
-
-	}
-	else
-	{
-		preview.setTexture(ResourceManager::Get().GetTexture("StageNotFound"));
-	}
-	
 }

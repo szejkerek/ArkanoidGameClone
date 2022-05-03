@@ -5,7 +5,7 @@
 
 class LevelSelectorScene : public Scene
 {
-private:
+protected:
 	int currentIndex = 0;
 	void IncrementIndex();
 	void DecrementIndex();
@@ -13,7 +13,6 @@ private:
 
 	Button* backToMenuBtn;
 	Button* playBtn;
-	Button* customBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
 
@@ -21,12 +20,12 @@ private:
 
 	void SetUpScene();
 	void SetFullPreview();
-	void LoadOriginalStages();
 
-	std::vector<Stage*> originalStages;
+	std::vector<Stage*> stages;
 
 
 public:
+	virtual void LoadStages() = 0;
 	LevelSelectorScene(Program* _program);
 	~LevelSelectorScene();
 
@@ -34,3 +33,16 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
+class LevelSelectorOriginal : public LevelSelectorScene
+{
+public:
+	LevelSelectorOriginal(Program* _program) : LevelSelectorScene(_program) { LoadStages(); SetFullPreview();}
+	virtual void LoadStages();
+};
+
+class LevelSelectorCustom : public LevelSelectorScene
+{
+public:
+	LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program) { /*LoadStages();*/ }
+	virtual void LoadStages();
+};
