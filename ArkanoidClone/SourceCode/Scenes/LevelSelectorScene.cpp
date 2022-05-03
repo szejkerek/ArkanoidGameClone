@@ -1,21 +1,27 @@
 #include "LevelSelectorScene.h"
 #include "../Program.h"
+#include "../Utility/Utility.h"
 
 void LevelSelectorScene::SetUpScene()
 {
+	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
+	float screenMargin = 0;
+	float buttonPadding = 150;
+
 	preview.setSize({ 500, 660 });
-	preview.setPosition({ 400,200 });
+	preview.setOrigin(preview.getSize().x/2, preview.getSize().y / 2);
+	preview.setPosition({ window.x / 2,window.y / 2 });
 	
 	backToMenuBtn = new Button(program);
 	playBtn = new Button(program);
 	nextStageBtn = new Button(program);
 	previousStageBtn = new Button(program);
-	customBtn = new Button(program);
 
-	backToMenuBtn->PlaceOnScene({ 150,850 }, { 150,75 }, "Back", Scenes::Menu);
-	playBtn->PlaceOnScene({ 550,850 }, { 150,75 }, "Play");
-	nextStageBtn->PlaceOnScene({ 650,50 }, { 50,50 });
-	previousStageBtn->PlaceOnScene({ 350,50 }, { 50,50 });
+	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin}, {150,75}, "Back", Scenes::Menu);
+	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, { 150,75 }, "Play");
+
+	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, { 75,75 });
+	previousStageBtn->PlaceOnScene({ window.x/2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, { 75,75 });
 
 	nextStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::IncrementIndex, this));
 	previousStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::DecrementIndex, this));
