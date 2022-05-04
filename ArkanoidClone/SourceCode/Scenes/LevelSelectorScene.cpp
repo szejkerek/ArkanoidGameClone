@@ -2,9 +2,36 @@
 #include "../Program.h"
 #include "../Utility/Utility.h"
 
+void LevelSelectorScene::CreateButtnos()
+{
+	backToMenuBtn = new Button(program);
+	playBtn = new Button(program);
+	nextStageBtn = new Button(program);
+	previousStageBtn = new Button(program);
+	programableSwapStageBtn = new Button(program);
+}
+
+void LevelSelectorScene::LayoutButtons()
+{
+	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
+	float screenMargin = 0;
+	float buttonPadding = 150;
+
+	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Back", Scenes::Menu);
+	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, ButtonType::RectangleBig, "Play");
+	programableSwapStageBtn->PlaceOnScene({ window.x - screenMargin - programableSwapStageBtn->GetSize().x, window.y - programableSwapStageBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Play");
+
+	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, ButtonType::squareMedium);
+	previousStageBtn->PlaceOnScene({ window.x / 2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, ButtonType::squareMedium);
+
+	nextStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::IncrementIndex, this));
+	previousStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::DecrementIndex, this));
+	playBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::LoadGame, this));
+}
+
 LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 {
-	SetUpScene();
+	CreateButtnos();
 }
 
 LevelSelectorScene::~LevelSelectorScene()
@@ -13,6 +40,7 @@ LevelSelectorScene::~LevelSelectorScene()
 	delete playBtn;
 	delete nextStageBtn;
 	delete previousStageBtn;
+	delete programableSwapStageBtn;
 
 	for (auto stage : stages)
 	{ 
@@ -24,35 +52,21 @@ LevelSelectorScene::~LevelSelectorScene()
 void LevelSelectorScene::SetUpScene()
 {
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
-	float screenMargin = 0;
-	float buttonPadding = 150;
-
 	preview.setSize({ 500, 660 });
-	preview.setOrigin(preview.getSize().x/2, preview.getSize().y / 2);
+	preview.setOrigin(preview.getSize().x / 2, preview.getSize().y / 2);
 	preview.setPosition({ window.x / 2,window.y / 2 });
-	
-	backToMenuBtn = new Button(program);
-	playBtn = new Button(program);
-	nextStageBtn = new Button(program);
-	previousStageBtn = new Button(program);
 
-	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin}, {150,75}, "Back", Scenes::Menu);
-	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, { 150,75 }, "Play");
+	LayoutButtons();
+	ChoosePreviewImage();
 
-	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, { 75,75 });
-	previousStageBtn->PlaceOnScene({ window.x/2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, { 75,75 });
-
-	nextStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::IncrementIndex, this));
-	previousStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::DecrementIndex, this));
-	playBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::LoadGame, this));
 }
 
 void LevelSelectorScene::IncrementIndex()
 {
-	if (currentIndex < stages.size())
+	if (currentIndex < stages.size() - 1)
 		currentIndex++;
 
-	SetFullPreview();
+	ChoosePreviewImage();
 }
 
 void LevelSelectorScene::DecrementIndex()
@@ -60,7 +74,7 @@ void LevelSelectorScene::DecrementIndex()
 	if (currentIndex > 0)
 		currentIndex--;
 
-	SetFullPreview();
+	ChoosePreviewImage();
 }
 
 void LevelSelectorScene::LoadGame()
@@ -78,7 +92,7 @@ void LevelSelectorScene::LoadGame()
 
 }
 
-void LevelSelectorScene::SetFullPreview()
+void LevelSelectorScene::ChoosePreviewImage()
 {
 	if (stages[currentIndex] != nullptr)
 	{
@@ -95,7 +109,7 @@ void LevelSelectorScene::SetFullPreview()
 
 void LevelSelectorOriginal::LoadStages()
 {
-	for (int i = 0; i < 33; i++)
+	for (int i = 0; i < 5; i++) //TODO change to 33
 	{
 		Stage* tempStage = new Stage(i);
 		if (tempStage->LoadedSucessfuly())
@@ -110,20 +124,40 @@ void LevelSelectorOriginal::LoadStages()
 	}
 }
 
+LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program)
+{
+	LoadStages();
+	SetUpScene();
+	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
+}
+
+LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorScene(_program)
+{
+	LoadStages();
+	SetUpScene();
+	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
+
+}
+
 void LevelSelectorCustom::LoadStages()
 {
-	for (int i = 0; i < 33; i++)
-	{
-		Stage* tempStage = new Stage(i);
+	std::filesystem::path current = std::filesystem::current_path().append("Resources/Stages/Custom");
+
+	int i = 0;
+	for (std::filesystem::directory_entry entry : std::filesystem::directory_iterator(current))
+	{	
+		Stage* tempStage = new Stage(i, entry.path().stem().string(), StageType::custom);
 		if (tempStage->LoadedSucessfuly())
 		{
 			stages.push_back(tempStage);
 		}
 		else
 		{
-			delete tempStage;
 			stages.push_back(nullptr);
+			delete tempStage;
 		}
+
+		i++;
 	}
 }
 
@@ -133,6 +167,7 @@ void LevelSelectorScene::Update(float& dt)
 	playBtn->Update(dt);
 	nextStageBtn->Update(dt);
 	previousStageBtn->Update(dt);
+	programableSwapStageBtn->Update(dt);
 }
 
 void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -141,5 +176,6 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(*playBtn);
 	target.draw(*nextStageBtn);
 	target.draw(*previousStageBtn);
+	target.draw(*programableSwapStageBtn);
 	target.draw(preview);
 }

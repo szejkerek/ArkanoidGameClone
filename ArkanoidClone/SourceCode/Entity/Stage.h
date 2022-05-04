@@ -39,6 +39,7 @@ public:
 	void CollisionDetected(IBrick* brickToDelete);
 	bool LoadedSucessfuly();
 	sf::Texture* GetPreview();
+	std::string GetStageName();
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

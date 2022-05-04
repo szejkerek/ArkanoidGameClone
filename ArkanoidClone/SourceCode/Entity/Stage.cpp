@@ -56,7 +56,7 @@ inline void Stage::LoadStageFromFile(const int& _stageNumber, const std::string&
 	if (!std::filesystem::exists(path))
 	{
 		std::cout << "Error: Couldn`t find file of Stage " << stageNumber << std::endl;
-		std::cout << path.string() << std::endl;
+		std::cout << path.string() << std::endl << std::endl;
 		return;
 	}
 
@@ -207,7 +207,7 @@ bool Stage::LoadedSucessfuly()
 
 sf::Texture* Stage::GetPreview()
 {
-	if (ResourceManager::Get().GetTexture("Preview" + stageName) == nullptr)
+	if ( stageName.size() == 0 || ResourceManager::Get().GetTexture("Preview" + stageName) == nullptr)
 	{
 		return ResourceManager::Get().GetTexture("PreviewNotFound");
 	}
@@ -215,6 +215,11 @@ sf::Texture* Stage::GetPreview()
 	{
 		return ResourceManager::Get().GetTexture("Preview" + stageName);
 	}
+}
+
+std::string Stage::GetStageName()
+{
+	return stageName;
 }
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const

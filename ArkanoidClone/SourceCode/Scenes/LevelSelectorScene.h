@@ -6,7 +6,10 @@
 class LevelSelectorScene : public Scene
 {
 protected:
+	std::vector<Stage*> stages;
+	sf::RectangleShape preview;
 	int currentIndex = 0;
+
 	void IncrementIndex();
 	void DecrementIndex();
 	void LoadGame();
@@ -15,13 +18,13 @@ protected:
 	Button* playBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
+	Button* programableSwapStageBtn;
 
-	sf::RectangleShape preview;
 
 	void SetUpScene();
-	void SetFullPreview();
-
-	std::vector<Stage*> stages;
+	void ChoosePreviewImage();
+	void CreateButtnos();
+	void LayoutButtons();
 
 
 public:
@@ -36,13 +39,13 @@ public:
 class LevelSelectorOriginal : public LevelSelectorScene
 {
 public:
-	LevelSelectorOriginal(Program* _program) : LevelSelectorScene(_program) { LoadStages(); SetFullPreview();}
+	LevelSelectorOriginal(Program* _program);
 	virtual void LoadStages();
 };
 
 class LevelSelectorCustom : public LevelSelectorScene
 {
 public:
-	LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program) { /*LoadStages();*/ }
+	LevelSelectorCustom(Program* _program);
 	virtual void LoadStages();
 };

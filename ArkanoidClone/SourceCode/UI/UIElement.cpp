@@ -14,8 +14,13 @@ inline void UIElement::InitGameObject()
 	SetOriginCenter();
 	SetPosition({ screenSize.x/2,screenSize.y/2 });
 	SetFillColor(sf::Color::White);
-	SetOutlineColor(sf::Color::Color(155, 135, 12));
-	SetOutlineThickness(1.f);
+	//SetOutlineColor(sf::Color::Color(155, 135, 12));
+	//SetOutlineThickness(1.f);
+}
+
+inline void UIElement::SetTexture(sf::Texture* texture)
+{
+	gameObject.setTexture(texture);
 }
 
 inline void UIElement::SetPosition(const sf::Vector2f& position)

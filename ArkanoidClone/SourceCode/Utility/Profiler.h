@@ -130,7 +130,7 @@ private:
 
 	void ShowStats()
 	{
-		std::cout<<mFps<< "\t" << CalculateFpsDrop(mFps)<< std::endl;
+		//std::cout<<mFps<< "\t" << CalculateFpsDrop(mFps)<< std::endl;
 
 	}
 

@@ -30,12 +30,46 @@ inline bool Button::Clicked()
 	}
 }
 
+
+
 inline void Button::OnClick()
 {
 	program->sceneManager->LoadScene(sceneToLoad);
 
 	if(onClickFunction != nullptr)
 		onClickFunction();
+}
+
+
+inline void Button::ChooseButton(const ButtonType& buttonType)
+{
+	switch (buttonType)
+	{
+	case ButtonType::RectangleBig:
+		SetSize({ 250,100 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonRectangle"));
+		break;
+	case ButtonType::RectangleMedium:
+		SetSize({ 250 * 0.75,100 * 0.75 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonRectangle"));
+		break;
+	case ButtonType::RectangleSmall:
+		SetSize({ 250 * 0.40,100 * 0.40 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonRectangle"));
+		break;
+	case ButtonType::squareBig:
+		SetSize({ 100,100 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonSquare"));
+		break;
+	case ButtonType::squareMedium:
+		SetSize({ 100 * 0.75,100 * 0.75 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonSquare"));
+		break;
+	case ButtonType::squareSmall:
+		SetSize({ 100 * 0.40,100 * 0.40 });
+		SetTexture(ResourceManager::Get().GetTexture("buttonSquare"));
+		break;
+	}
 }
 
 inline void Button::SetOnClickFunction(std::function<void()> function)
@@ -48,26 +82,26 @@ inline void Button::LoadSceneOnClick(const Scenes& _sceneToLoad)
 	sceneToLoad = _sceneToLoad;
 }
 
-inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size, std::string displayText, const Scenes& sceneToLoad)
+inline void Button::PlaceOnScene(const sf::Vector2f& position, const ButtonType& type, std::string displayText, const Scenes& sceneToLoad)
 {
-	SetSize(size);
+	ChooseButton(type);
 	SetOriginCenter();
 	SetPosition(position);
 	//SetText
 	LoadSceneOnClick(sceneToLoad);
 }
 
-inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size, std::string displayText)
+inline void Button::PlaceOnScene(const sf::Vector2f& position, const ButtonType& type, std::string displayText)
 {
-	SetSize(size);
+	ChooseButton(type);
 	SetOriginCenter();
 	SetPosition(position);
 	//SetText
 }
 
-inline void Button::PlaceOnScene(const sf::Vector2f& position, const sf::Vector2f& size)
+inline void Button::PlaceOnScene(const sf::Vector2f& position, const ButtonType& type)
 {
-	SetSize(size);
+	ChooseButton(type);
 	SetOriginCenter();
 	SetPosition(position);
 }

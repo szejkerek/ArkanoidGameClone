@@ -22,7 +22,7 @@ public:
 	virtual inline void InitGameObject();
 
 	///Getters&Setters
-	virtual inline void SetTexture(sf::Texture * texture) {};
+	virtual inline void SetTexture(sf::Texture * texture);
 	virtual inline void SetPosition(const sf::Vector2f & position);
 	virtual inline void SetSize(const sf::Vector2f & size);
 	virtual inline void SetFillColor(const sf::Color & color);
