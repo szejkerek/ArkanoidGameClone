@@ -5,7 +5,7 @@ MenuScene::MenuScene(Program* _program) : Scene(_program)
 {
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
 	levelSelectorBtn = new Button(program);
-	levelSelectorBtn->PlaceOnScene({ window.x / 2, window.y / 2 }, ButtonType::RectangleBig,"Choose Stage",Scenes::LevelSelectorOriginal);
+	levelSelectorBtn->PlaceOnScene({ window.x / 2, window.y / 2 }, ButtonType::RectangleBig,"Choose\n  Stage", 30 ,Scenes::LevelSelectorOriginal);
 }
 
 MenuScene::~MenuScene()

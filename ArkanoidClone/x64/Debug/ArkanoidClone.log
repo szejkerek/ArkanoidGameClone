@@ -1,4 +1,8 @@
 ﻿  ArkanoidClone.cpp
+  Ball.cpp
+  Bricks.cpp
+  HealthManager.cpp
+  Stage.cpp
   Program.cpp
   Game.cpp
   LevelSelectorScene.cpp

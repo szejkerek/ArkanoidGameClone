@@ -17,12 +17,12 @@ void LevelSelectorScene::LayoutButtons()
 	float screenMargin = 0;
 	float buttonPadding = 150;
 
-	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Back", Scenes::Menu);
-	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, ButtonType::RectangleBig, "Play");
-	programableSwapStageBtn->PlaceOnScene({ window.x - screenMargin - programableSwapStageBtn->GetSize().x, window.y - programableSwapStageBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Play");
+	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Back", 30, Scenes::Menu);
+	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, ButtonType::RectangleBig, "Play", 55);
+	programableSwapStageBtn->PlaceOnScene({ window.x - screenMargin - programableSwapStageBtn->GetSize().x, window.y - programableSwapStageBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium);
 
-	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, ButtonType::squareMedium);
-	previousStageBtn->PlaceOnScene({ window.x / 2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, ButtonType::squareMedium);
+	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, ButtonType::squareMedium, ">", 25);
+	previousStageBtn->PlaceOnScene({ window.x / 2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, ButtonType::squareMedium, "<", 25);
 
 	nextStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::IncrementIndex, this));
 	previousStageBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::DecrementIndex, this));
@@ -141,6 +141,7 @@ LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene
 {
 	LoadStages();
 	SetUpScene();
+	programableSwapStageBtn->SetText("Original", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
 }
 
@@ -148,6 +149,7 @@ LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorS
 {
 	LoadStages();
 	SetUpScene();
+	programableSwapStageBtn->SetText("Custom", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
 
 }
