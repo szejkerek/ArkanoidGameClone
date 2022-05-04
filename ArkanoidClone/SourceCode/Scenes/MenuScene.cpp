@@ -3,21 +3,22 @@
 
 MenuScene::MenuScene(Program* _program) : Scene(_program)
 {
-	btn = new Button(program);
-	btn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
+	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
+	levelSelectorBtn = new Button(program);
+	levelSelectorBtn->PlaceOnScene({ window.x / 2, window.y / 2 }, ButtonType::RectangleBig,"Choose Stage",Scenes::LevelSelectorOriginal);
 }
 
 MenuScene::~MenuScene()
 {
-	delete btn;
+	delete levelSelectorBtn;
 }
 
 void MenuScene::Update(float& dt)
 {
-	btn->Update(dt);
+	levelSelectorBtn->Update(dt);
 }
 
 void MenuScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(*btn);
+	target.draw(*levelSelectorBtn);
 }

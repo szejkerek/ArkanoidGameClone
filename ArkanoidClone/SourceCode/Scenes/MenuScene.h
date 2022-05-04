@@ -4,7 +4,7 @@
 
 class MenuScene : public Scene
 {
-	Button* btn;
+	Button* levelSelectorBtn;
 
 public:
 	MenuScene(Program* _program);

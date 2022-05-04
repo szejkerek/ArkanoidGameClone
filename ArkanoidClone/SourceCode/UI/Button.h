@@ -21,6 +21,8 @@ protected:
 
 	float buttonCooldown = .3f;
 	float defalutButtonCooldown = .3f;
+	sf::Vector2f buttonSize;
+
 	void DecrementTimer(float& dt);
 	virtual inline bool Clicked();
 	virtual inline void OnClick();

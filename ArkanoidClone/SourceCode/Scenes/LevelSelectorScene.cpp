@@ -66,6 +66,7 @@ void LevelSelectorScene::IncrementIndex()
 	if (currentIndex < stages.size() - 1)
 		currentIndex++;
 
+
 	ChoosePreviewImage();
 }
 
@@ -73,6 +74,7 @@ void LevelSelectorScene::DecrementIndex()
 {
 	if (currentIndex > 0)
 		currentIndex--;
+
 
 	ChoosePreviewImage();
 }
@@ -94,6 +96,17 @@ void LevelSelectorScene::LoadGame()
 
 void LevelSelectorScene::ChoosePreviewImage()
 {
+	if (currentIndex == 0)
+		previousStageBtn->Disable();
+	else
+		previousStageBtn->Enable();
+
+
+	if (currentIndex == stages.size() - 1)
+		nextStageBtn->Disable();
+	else
+		nextStageBtn->Enable();
+
 	if (stages[currentIndex] != nullptr)
 	{
 		playBtn->Enable();

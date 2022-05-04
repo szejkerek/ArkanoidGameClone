@@ -70,6 +70,8 @@ inline void Button::ChooseButton(const ButtonType& buttonType)
 		SetTexture(ResourceManager::Get().GetTexture("buttonSquare"));
 		break;
 	}
+
+	buttonSize = GetSize();
 }
 
 inline void Button::SetOnClickFunction(std::function<void()> function)
@@ -109,17 +111,19 @@ inline void Button::PlaceOnScene(const sf::Vector2f& position, const ButtonType&
 void Button::Update(float& dt)
 {
 	DecrementTimer(dt);
-	if (MouseHovers())
+	if (isDisabled)
 	{
-		SetFillColor(sf::Color::Red);
+		SetFillColor(sf::Color::Color(90, 90, 90));
 	}
-	else if (isDisabled)
+	else if (MouseHovers())
 	{
-		SetFillColor(sf::Color::Magenta);
-	}
+		SetFillColor(sf::Color::Color(200, 200, 200));
+		gameObject.setScale(1.04f, 1.04f);
+	}	
 	else
 	{
-		SetFillColor(sf::Color::White);
+		SetFillColor(sf::Color::Color(255,255,255,255));
+		gameObject.setScale(1.f, 1.f);
 	}
 
 
