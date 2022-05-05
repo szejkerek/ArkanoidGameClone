@@ -12,7 +12,7 @@ inline void UIElement::InitGameObject()
 	sf::Vector2f screenSize = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
 	SetSize({ 150,80 });
 	SetOriginCenter();
-	SetPosition({ screenSize.x/2,screenSize.y/2 });
+	SetPosition({ screenSize.x / 2,screenSize.y / 2 });
 	SetFillColor(sf::Color::White);
 }
 

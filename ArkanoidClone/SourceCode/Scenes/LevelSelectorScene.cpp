@@ -29,6 +29,17 @@ void LevelSelectorScene::LayoutButtons()
 	playBtn->SetOnClickFunction(std::bind(&LevelSelectorScene::LoadGame, this));
 }
 
+void LevelSelectorScene::LayoutText()
+{
+	indexText = new TextElement(program);
+	stageTypeText = new TextElement(program);
+	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
+	indexText->SetTextPosition({ window.x / 2, 180 });
+	stageTypeText->SetTextPosition({ window.x / 2, 80 });
+
+
+}
+
 LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 {
 	CreateButtnos();
@@ -41,6 +52,8 @@ LevelSelectorScene::~LevelSelectorScene()
 	delete nextStageBtn;
 	delete previousStageBtn;
 	delete programableSwapStageBtn;
+	delete indexText;
+	delete stageTypeText;
 
 	for (auto stage : stages)
 	{ 
@@ -48,6 +61,7 @@ LevelSelectorScene::~LevelSelectorScene()
 		delete stage;
 	}
 }
+
 
 void LevelSelectorScene::SetUpScene()
 {
@@ -58,7 +72,6 @@ void LevelSelectorScene::SetUpScene()
 
 	LayoutButtons();
 	ChoosePreviewImage();
-
 }
 
 void LevelSelectorScene::IncrementIndex()
@@ -141,14 +154,19 @@ LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene
 {
 	LoadStages();
 	SetUpScene();
+	LayoutText();
+	indexText->SetText("SDDDDDDDDDDDDDDDDDDDDD", 20, sf::Color::Black);
 	programableSwapStageBtn->SetText("Original", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
+
 }
 
 LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorScene(_program)
 {
 	LoadStages();
 	SetUpScene();
+	LayoutText();
+	indexText->SetText("XDDDDDDDDDDDDDDDDDDDDD", 20, sf::Color::Black);
 	programableSwapStageBtn->SetText("Custom", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
 
@@ -193,4 +211,6 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(*previousStageBtn);
 	target.draw(*programableSwapStageBtn);
 	target.draw(preview);
+	target.draw(*indexText);
+	target.draw(*stageTypeText);
 }

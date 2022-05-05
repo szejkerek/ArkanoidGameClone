@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "../Entity/Stage.h"
 #include "../UI/Button.h"
+#include "../UI/TextElement.h"
 
 class LevelSelectorScene : public Scene
 {
@@ -9,22 +10,25 @@ protected:
 	std::vector<Stage*> stages;
 	sf::RectangleShape preview;
 	int currentIndex = 0;
-
+	
 	void IncrementIndex();
 	void DecrementIndex();
 	void LoadGame();
-
+	 
 	Button* backToMenuBtn;
 	Button* playBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
 	Button* programableSwapStageBtn;
 
-
+	TextElement* indexText;
+	TextElement* stageTypeText;
+	
 	void SetUpScene();
 	void ChoosePreviewImage();
 	void CreateButtnos();
 	void LayoutButtons();
+	void LayoutText();
 
 
 public:

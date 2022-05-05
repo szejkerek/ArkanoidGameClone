@@ -173,6 +173,7 @@
     <ClCompile Include="SourceCode\Entity\Vaus.cpp" />
     <ClCompile Include="SourceCode\Entity\VausPart.cpp" />
     <ClCompile Include="SourceCode\UI\UIElement.cpp" />
+    <ClCompile Include="SourceCode\UI\TextElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Scenes\LevelSelectorScene.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="SourceCode\Entity\Vaus.h" />
     <ClInclude Include="SourceCode\Entity\VausPart.h" />
     <ClInclude Include="SourceCode\UI\UIElement.h" />
+    <ClInclude Include="SourceCode\UI\TextElement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

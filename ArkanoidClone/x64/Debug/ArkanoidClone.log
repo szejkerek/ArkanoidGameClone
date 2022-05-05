@@ -1,14 +1,2 @@
-﻿  ArkanoidClone.cpp
-  Ball.cpp
-  Bricks.cpp
-  HealthManager.cpp
-  Stage.cpp
-  Program.cpp
-  Game.cpp
-  LevelSelectorScene.cpp
-  MenuScene.cpp
-  SceneManager.cpp
-  Button.cpp
-  UIElement.cpp
-  Generowanie kodu...
-  ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe
+﻿  LevelSelectorScene.cpp
+  ArkanoidClone.vcxproj -> C:\Projekty\Studia\ArkanoidClone\x64\Debug\ArkanoidClone.exe

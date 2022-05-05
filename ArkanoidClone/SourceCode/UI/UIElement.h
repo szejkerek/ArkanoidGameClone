@@ -37,6 +37,7 @@ public:
 	virtual inline void Enable();
 
 
+
 	//SFML methods
 	virtual void Update(float& dt);
 	virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override = 0;
