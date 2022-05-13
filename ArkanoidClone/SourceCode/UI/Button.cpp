@@ -22,7 +22,7 @@ inline bool Button::Clicked()
 {
 	if (buttonCooldown == 0 && !isDisabled && (MouseHovers() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)))
 	{
-		buttonCooldown = defalutButtonCooldown;
+		buttonCooldown = defaultButtonCooldown;
 		return true;
 	}
 	else
@@ -82,10 +82,13 @@ void Button::SetText(const std::string& _text, const int& fontSize)
 	text.setFont(*tempFont);
 	text.setFillColor(sf::Color::Black);
 	text.setCharacterSize(fontSize);
+	
 	sf::FloatRect collider = text.getGlobalBounds();
-	text.setOrigin(collider.left + collider.width/2, collider.top + collider.height/2);
+	text.setOrigin(collider.left + collider.width / 2, collider.top + collider.height / 2);
 
 	text.setPosition(GetPosition());
+
+	
 
 }
 

@@ -5,11 +5,10 @@
 class TextElement : public UIElement
 {
 private:
-	sf::Text* text;
 public:
+	sf::Text* text;
 	TextElement(Program* program);
 	~TextElement();
-	virtual inline void InitGameObject();
 	virtual inline void SetText(const std::string& text, const int& fontSize, const sf::Color& color);
 	virtual inline void SetTextPosition(const sf::Vector2f& position);
 

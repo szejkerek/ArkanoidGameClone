@@ -20,7 +20,7 @@ protected:
 	std::function<void()> onClickFunction = nullptr;
 	sf::Text text;
 	float buttonCooldown = .3f;
-	float defalutButtonCooldown = .3f;
+	float defaultButtonCooldown = .3f;
 	sf::Vector2f buttonSize;
 
 

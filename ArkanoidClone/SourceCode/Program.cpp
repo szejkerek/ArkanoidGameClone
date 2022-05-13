@@ -39,7 +39,7 @@ void Program::UpdateEvents()
 	{
 		if (sfEvent.type == sf::Event::Closed)
 		{
-			profiler.SaveProfile();
+			profiler.SaveProfile(); //REMOVE ON FINAL BUILD
 			window->close();
 		}
 	}

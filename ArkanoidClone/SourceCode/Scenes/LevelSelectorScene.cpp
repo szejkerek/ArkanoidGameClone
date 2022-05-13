@@ -34,15 +34,15 @@ void LevelSelectorScene::LayoutText()
 	indexText = new TextElement(program);
 	stageTypeText = new TextElement(program);
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
-	indexText->SetTextPosition({ window.x / 2, 180 });
+	indexText->SetTextPosition({ window.x / 2, 20 });
+	std::cout << indexText->text->getPosition().x << " dup " << indexText->text->getPosition().y << std::endl;
 	stageTypeText->SetTextPosition({ window.x / 2, 80 });
-
-
 }
 
 LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 {
 	CreateButtnos();
+	LayoutText();
 }
 
 LevelSelectorScene::~LevelSelectorScene()
@@ -152,12 +152,13 @@ void LevelSelectorOriginal::LoadStages()
 
 LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program)
 {
+	std::cout << indexText->text->getPosition().x << " dupa" << indexText->text->getPosition().y << std::endl;
 	LoadStages();
 	SetUpScene();
-	LayoutText();
-	indexText->SetText("SDDDDDDDDDDDDDDDDDDDDD", 20, sf::Color::Black);
+	indexText->SetText("Custom stages", 12, sf::Color::White);
 	programableSwapStageBtn->SetText("Original", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
+	std::cout << indexText->text->getPosition().x << " dupa2 " << indexText->text->getPosition().y << std::endl;
 
 }
 
@@ -165,8 +166,7 @@ LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorS
 {
 	LoadStages();
 	SetUpScene();
-	LayoutText();
-	indexText->SetText("XDDDDDDDDDDDDDDDDDDDDD", 20, sf::Color::Black);
+	indexText->SetText("Original stages", 12, sf::Color::White);
 	programableSwapStageBtn->SetText("Custom", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
 
