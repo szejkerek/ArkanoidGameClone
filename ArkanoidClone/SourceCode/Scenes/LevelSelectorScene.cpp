@@ -44,21 +44,11 @@ LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 	LayoutText();
 }
 
+
+
 LevelSelectorScene::~LevelSelectorScene()
 {
-	delete backToMenuBtn;
-	delete playBtn;
-	delete nextStageBtn;
-	delete previousStageBtn;
-	delete programableSwapStageBtn;
-	delete indexText;
-	delete stageTypeText;
-
-	for (auto stage : stages)
-	{ 
-		if(stage != nullptr)
-		delete stage;
-	}
+	FreeMemory();
 }
 
 
@@ -92,6 +82,8 @@ void LevelSelectorScene::DecrementIndex()
 
 void LevelSelectorScene::LoadGame()
 {
+	LoadStages();
+
 	if (stages[currentIndex] != nullptr)
 	{
 		program->game->SelectStage(stages[currentIndex]);
@@ -135,6 +127,13 @@ void LevelSelectorScene::ChoosePreviewImage()
 
 void LevelSelectorOriginal::LoadStages()
 {
+	for (auto stage : stages)
+	{
+		if (stage != nullptr)
+			delete stage;
+	}
+	stages.clear();
+
 	levelsCount = 4; //TODO change to 33 or 32 (boss fight included)
 
 	for (int i = 0; i < levelsCount; i++) 
@@ -218,6 +217,24 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(preview);
 	target.draw(*indexText);
 	target.draw(*stageTypeText);
+}
+
+void LevelSelectorScene::FreeMemory()
+{	
+	delete backToMenuBtn;
+	delete playBtn;
+	delete nextStageBtn;
+	delete previousStageBtn;
+	delete programableSwapStageBtn;
+	delete indexText;
+	delete stageTypeText;
+
+	for (auto stage : stages)
+	{
+		if (stage != nullptr)
+			delete stage;
+	}
+	stages.clear();
 }
 
 void LevelSelectorScene::ResetIndex()

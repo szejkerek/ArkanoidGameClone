@@ -30,6 +30,7 @@ protected:
 	void CreateButtnos();
 	void LayoutButtons();
 	void LayoutText();
+	void FreeMemory();
 
 
 public:
