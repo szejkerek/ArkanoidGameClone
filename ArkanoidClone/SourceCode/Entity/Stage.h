@@ -18,7 +18,9 @@ private:
 	int stageNumber;
 	std::string stageName;
 	bool loadedSuccesfuly = false;
-	sf::Sprite* preview;
+	std::vector<IBrick*> loadedStage;	  //vector with just bricks
+
+
 
 	inline void SetUpStage(const std::vector<char>& brickChars);
 	inline IBrick* SetUpBrick(const int& row, const int& collumn, const char& brickChar);
@@ -38,6 +40,7 @@ public:
 	//Methods 
 	void CollisionDetected(IBrick* brickToDelete);
 	bool LoadedSucessfuly();
+	void ResetStage();
 	sf::Texture* GetPreview();
 	std::string GetStageName();
 

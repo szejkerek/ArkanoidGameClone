@@ -10,6 +10,7 @@ protected:
 	std::vector<Stage*> stages;
 	sf::RectangleShape preview;
 	int currentIndex = 0;
+	int levelsCount = 0;
 	
 	void IncrementIndex();
 	void DecrementIndex();
@@ -33,6 +34,7 @@ protected:
 
 public:
 	virtual void LoadStages() = 0;
+	virtual void ResetIndex();
 	LevelSelectorScene(Program* _program);
 	~LevelSelectorScene();
 

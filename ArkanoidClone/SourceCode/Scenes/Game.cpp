@@ -48,7 +48,6 @@ void GameScene::EndGame()
 	playable = false;
 	ballAirTime = 0;
 	program->sceneManager->LoadScene(Scenes::Menu);
-	//Stage.reset();
 }
 
 void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const

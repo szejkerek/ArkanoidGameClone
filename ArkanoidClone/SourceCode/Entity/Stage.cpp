@@ -15,7 +15,7 @@ inline std::string Stage::GenerateStageName(const int& _stageNumber)
 
 Stage::Stage() 
 { 
-	LoadStageFromFile(1, GenerateStageName(1), StageType::original); // TO CHANGE
+	LoadStageFromFile(1, GenerateStageName(1), StageType::original);
 }
 
 Stage::Stage(const int& _stageNumber)
@@ -35,7 +35,9 @@ Stage::~Stage()
 		if (brick != nullptr)
 			delete brick;
 	}
+
 }
+
 
 inline void Stage::LoadStageFromFile(const int& _stageNumber, const std::string& filename, const StageType& stageType)
 {
@@ -118,7 +120,7 @@ inline void Stage::SetUpStage(const std::vector<char>& brickChars)
 	int collumn = 0, row = 0;
 	for (char brickChar : brickChars)
 	{	
-		playableBricks.push_back( SetUpBrick(row, collumn, brickChar) );
+		loadedStage.push_back( SetUpBrick(row, collumn, brickChar) );
 
 		collumn++;
 		if (collumn == BRICK_COLUMNS)
@@ -129,6 +131,7 @@ inline void Stage::SetUpStage(const std::vector<char>& brickChars)
 	}
 
 	loadedSuccesfuly = true;
+	playableBricks = loadedStage;
 }
 
 inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char& brickChar)
@@ -220,6 +223,12 @@ sf::Texture* Stage::GetPreview()
 std::string Stage::GetStageName()
 {
 	return stageName;
+}
+
+void Stage::ResetStage()
+{
+	std::cout << playableBricks.size() << std::endl;
+	std::cout << loadedStage.size() << std::endl;
 }
 
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const

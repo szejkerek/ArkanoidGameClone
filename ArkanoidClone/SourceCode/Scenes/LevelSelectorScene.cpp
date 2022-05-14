@@ -35,7 +35,6 @@ void LevelSelectorScene::LayoutText()
 	stageTypeText = new TextElement(program);
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
 	indexText->SetTextPosition({ window.x / 2, 20 });
-	std::cout << indexText->text->getPosition().x << " dup " << indexText->text->getPosition().y << std::endl;
 	stageTypeText->SetTextPosition({ window.x / 2, 80 });
 }
 
@@ -79,7 +78,7 @@ void LevelSelectorScene::IncrementIndex()
 	if (currentIndex < stages.size() - 1)
 		currentIndex++;
 
-
+	
 	ChoosePreviewImage();
 }
 
@@ -87,7 +86,6 @@ void LevelSelectorScene::DecrementIndex()
 {
 	if (currentIndex > 0)
 		currentIndex--;
-
 
 	ChoosePreviewImage();
 }
@@ -109,6 +107,8 @@ void LevelSelectorScene::LoadGame()
 
 void LevelSelectorScene::ChoosePreviewImage()
 {
+	stageTypeText->SetText(std::to_string(currentIndex + 1) + "/" + std::to_string(levelsCount), 20, sf::Color::White);
+
 	if (currentIndex == 0)
 		previousStageBtn->Disable();
 	else
@@ -135,7 +135,9 @@ void LevelSelectorScene::ChoosePreviewImage()
 
 void LevelSelectorOriginal::LoadStages()
 {
-	for (int i = 0; i < 5; i++) //TODO change to 33
+	levelsCount = 4; //TODO change to 33 or 32 (boss fight included)
+
+	for (int i = 0; i < levelsCount; i++) 
 	{
 		Stage* tempStage = new Stage(i);
 		if (tempStage->LoadedSucessfuly())
@@ -148,17 +150,17 @@ void LevelSelectorOriginal::LoadStages()
 			stages.push_back(nullptr);
 		}
 	}
+
 }
 
 LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program)
 {
-	std::cout << indexText->text->getPosition().x << " dupa" << indexText->text->getPosition().y << std::endl;
 	LoadStages();
 	SetUpScene();
 	indexText->SetText("Custom stages", 12, sf::Color::White);
+	stageTypeText->SetText(std::to_string(1) +"/" + std::to_string(levelsCount), 20, sf::Color::White);
 	programableSwapStageBtn->SetText("Original", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
-	std::cout << indexText->text->getPosition().x << " dupa2 " << indexText->text->getPosition().y << std::endl;
 
 }
 
@@ -167,6 +169,7 @@ LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorS
 	LoadStages();
 	SetUpScene();
 	indexText->SetText("Original stages", 12, sf::Color::White);
+	stageTypeText->SetText(std::to_string(1) + "/" + std::to_string(levelsCount), 20, sf::Color::White);
 	programableSwapStageBtn->SetText("Custom", 21);
 	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
 
@@ -192,6 +195,8 @@ void LevelSelectorCustom::LoadStages()
 
 		i++;
 	}
+
+	levelsCount = i;
 }
 
 void LevelSelectorScene::Update(float& dt)
@@ -213,4 +218,10 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(preview);
 	target.draw(*indexText);
 	target.draw(*stageTypeText);
+}
+
+void LevelSelectorScene::ResetIndex()
+{
+	currentIndex = 0;
+	ChoosePreviewImage();
 }
