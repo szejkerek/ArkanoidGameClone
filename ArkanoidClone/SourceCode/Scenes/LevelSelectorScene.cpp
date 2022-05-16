@@ -44,8 +44,6 @@ LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 	LayoutText();
 }
 
-
-
 LevelSelectorScene::~LevelSelectorScene()
 {
 	FreeMemory();
@@ -138,7 +136,7 @@ void LevelSelectorOriginal::LoadStages()
 
 	for (int i = 0; i < levelsCount; i++) 
 	{
-		Stage* tempStage = new Stage(i);
+		Stage* tempStage = new Stage(i, program);
 		if (tempStage->LoadedSucessfuly())
 		{
 			stages.push_back(tempStage);
@@ -181,7 +179,7 @@ void LevelSelectorCustom::LoadStages()
 	int i = 0;
 	for (std::filesystem::directory_entry entry : std::filesystem::directory_iterator(current))
 	{	
-		Stage* tempStage = new Stage(i, entry.path().stem().string(), StageType::custom);
+		Stage* tempStage = new Stage(i, entry.path().stem().string(), StageType::custom, program);
 		if (tempStage->LoadedSucessfuly())
 		{
 			stages.push_back(tempStage);

@@ -45,6 +45,7 @@ void GameScene::SelectStage(Stage* _stage/*, Background* _background*/)
 
 void GameScene::EndGame()
 {
+	ball->StickBallToVaus();
 	playable = false;
 	ballAirTime = 0;
 	program->sceneManager->LoadScene(Scenes::Menu);

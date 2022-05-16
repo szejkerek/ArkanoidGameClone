@@ -1,7 +1,7 @@
 #include "Bricks.h"
 #include "../Utility/Resources.h"
 
-IBrick::IBrick(GameScene* _game): points(0), EntityRectangle(_game,{0,0})
+IBrick::IBrick(bool destructible, GameScene* _game): points(0), EntityRectangle(_game,{0,0}), destructible(true)
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
 	gameObject.setTexture(ResourceManager::Get().GetTexture("brick"));
@@ -20,14 +20,20 @@ inline void IBrick::SetRelativePosition(int row, int collumn)
 	SetPosition({ init.x + GetSize().x * collumn, init.y + GetSize().y * row, });
 }
 
+inline bool IBrick::IsDestructible()
+{
+	return destructible;
+}
+
 
 void IBrick::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(gameObject);
 }
 
-GoldBrick::GoldBrick() : IBrick(gameScene)
+GoldBrick::GoldBrick() : IBrick(false, gameScene)
 {
+	destructible = false;
 	SetFillColor(sf::Color::Color(181, 166, 66, 255));
 }
 
@@ -56,13 +62,15 @@ inline int CalculateHealth(int stageNumber)
 	return 2 + (stageNumber >> 3); //2hp at the beginning, then each 8lvls +1hp
 }
 
-SilverBrick::SilverBrick(int stageNumber) : IBrick(gameScene), hp(CalculateHealth(stageNumber))
+SilverBrick::SilverBrick(int stageNumber) : IBrick(true, gameScene), hp(CalculateHealth(stageNumber))
 {
+	destructible = true;
 	SetFillColor(sf::Color::Color(196, 202, 206));
 }
 
-ColorBrick::ColorBrick(ColorsEnum color) : IBrick(gameScene)
+ColorBrick::ColorBrick(ColorsEnum color) : IBrick(true, gameScene)
 {
+	destructible = true;
 
 	switch (color)
 	{

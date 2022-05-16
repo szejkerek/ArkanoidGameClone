@@ -6,6 +6,7 @@
 #include <string>
 #include <regex>
 #include <filesystem>
+#include <../ArkanoidClone/SourceCode/Program.h>
 
 inline std::string Stage::GenerateStageName(const int& _stageNumber)
 {
@@ -13,23 +14,19 @@ inline std::string Stage::GenerateStageName(const int& _stageNumber)
 	return  stageName;
 }
 
-Stage::Stage() 
-{ 
-	LoadStageFromFile(1, GenerateStageName(1), StageType::original);
-}
-
-Stage::Stage(const int& _stageNumber)
+Stage::Stage(const int& _stageNumber, Program* _program): program(_program)
 {
 	LoadStageFromFile(_stageNumber, GenerateStageName(_stageNumber), StageType::original);
 }
 
-Stage::Stage(const int& _stageNumber, const std::string& stageName, const StageType& stageType)
+Stage::Stage(const int& _stageNumber, const std::string& stageName, const StageType& stageType, Program* _program) : program(_program)
 {
 	LoadStageFromFile(_stageNumber, stageName, stageType);
 }
 
 Stage::~Stage()
 {	
+	//std::cout << stageName << std::endl;
 	for (auto brick : playableBricks)
 	{
 		if (brick != nullptr)
@@ -38,10 +35,10 @@ Stage::~Stage()
 
 }
 
-
 inline void Stage::LoadStageFromFile(const int& _stageNumber, const std::string& filename, const StageType& stageType)
 {
 	stageNumber = _stageNumber;
+	stageName = filename;
 	std::filesystem::path path = std::filesystem::current_path().append("Resources/Stages");
 	switch (stageType)
 	{
@@ -188,19 +185,32 @@ inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char&
 
 void Stage::CollisionDetected(IBrick* brickToDelete)
 {
+	int destructibleBlocks = 0;
 	for (int i = 0; i < playableBricks.size(); i++)
 	{
 		if (playableBricks[i] == nullptr)
-			continue;
+			continue;	
+
 		if (playableBricks[i] != brickToDelete)
+		{
+			if (playableBricks[i]->IsDestructible())
+			{
+				destructibleBlocks++;
+				std::cout << destructibleBlocks << std::endl;
+			}
 			continue;
+		}
 
 		if (brickToDelete->OnCollisionEnter())
 		{
 			delete playableBricks[i];
 			playableBricks[i] = nullptr;
-		}
+		}	
 	}
+
+	if (destructibleBlocks == 0)
+		WinStage();
+	
 }
 
 bool Stage::LoadedSucessfuly()
@@ -225,12 +235,6 @@ std::string Stage::GetStageName()
 	return stageName;
 }
 
-void Stage::ResetStage()
-{
-	std::cout << playableBricks.size() << std::endl;
-	std::cout << loadedStage.size() << std::endl;
-}
-
 void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (playableBricks.size() == 0)
@@ -241,6 +245,11 @@ void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		if(brick != nullptr)
 		target.draw(*brick);
 	}
+}
+
+void Stage::WinStage()
+{
+	program->game->EndGame();
 }
 
 
