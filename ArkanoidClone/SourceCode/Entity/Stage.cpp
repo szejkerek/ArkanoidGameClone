@@ -196,7 +196,6 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 			if (playableBricks[i]->IsDestructible())
 			{
 				destructibleBlocks++;
-				std::cout << destructibleBlocks << std::endl;
 			}
 			continue;
 		}

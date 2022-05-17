@@ -120,7 +120,7 @@ void Ball::UpdateVausCollision()
 
 			Move(normal * correctionVector.z);   //Move ball outside brick
 
-			if (part->IsCustomReflectionImplemented() && normal.y != 1) //without downside reflections
+			if (part->IsCustomReflectionImplemented() && normal.y != 1 && GetPosition().y <= 844.f) //without downside reflections
 			{
 				ChangeDirection(part->GetDirection());
 			}
