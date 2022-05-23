@@ -20,6 +20,16 @@ inline void IBrick::SetRelativePosition(int row, int collumn)
 	SetPosition({ init.x + GetSize().x * collumn, init.y + GetSize().y * row, });
 }
 
+void IBrick::SetPoints(const int& _points)
+{
+	points = _points;
+}
+
+int IBrick::GetPoints()
+{
+	return points;
+}
+
 inline bool IBrick::IsDestructible()
 {
 	return destructible;
@@ -31,7 +41,7 @@ void IBrick::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(gameObject);
 }
 
-GoldBrick::GoldBrick() : IBrick(false, gameScene)
+GoldBrick::GoldBrick() : IBrick(false,gameScene)
 {
 	destructible = false;
 	SetFillColor(sf::Color::Color(181, 166, 66, 255));
@@ -65,6 +75,8 @@ inline int CalculateHealth(int stageNumber)
 SilverBrick::SilverBrick(int stageNumber) : IBrick(true, gameScene), hp(CalculateHealth(stageNumber))
 {
 	destructible = true;
+	SetPoints(stageNumber * 50);
+
 	SetFillColor(sf::Color::Color(196, 202, 206));
 }
 
@@ -76,27 +88,43 @@ ColorBrick::ColorBrick(ColorsEnum color) : IBrick(true, gameScene)
 	{
 	case ColorsEnum::blue:
 		SetFillColor(sf::Color::Blue);
+		SetPoints(100);
+
 		break;
 	case ColorsEnum::green:
 		SetFillColor(sf::Color::Green);
+		SetPoints(80);
+
 		break;
 	case ColorsEnum::orange:
 		SetFillColor(sf::Color::Color(255, 165, 0, 255));
+		SetPoints(60);
+
 		break;
 	case ColorsEnum::pink:
 		SetFillColor(sf::Color::Magenta);
+		SetPoints(110);
+
 		break;
 	case ColorsEnum::red:
 		SetFillColor(sf::Color::Red);
+		SetPoints(90);
+
 		break;
 	case ColorsEnum::white:
 		SetFillColor(sf::Color::White);
+		SetPoints(50);
+
 		break;
 	case ColorsEnum::turquoise:
 		SetFillColor(sf::Color::Color(48, 213, 200, 255));
+		SetPoints(70);
+
 		break;
 	case ColorsEnum::yelow:
 		SetFillColor(sf::Color::Yellow);
+		SetPoints(120);
+
 		break;
 	default:
 		break;
