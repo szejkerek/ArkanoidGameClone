@@ -119,7 +119,7 @@ void Ball::UpdateVausCollision()
 			sf::Vector2f normal(correctionVector.x, correctionVector.y);
 
 			Move(normal * correctionVector.z);   //Move ball outside brick
-			if (part->IsCustomReflectionImplemented() && normal.y != 1 && GetPosition().y <= part->GetCollider().top + part->GetCollider().height / 2) //without downside reflections
+			if (part->IsCustomReflectionImplemented() && normal.y != 1 && GetPosition().y <= part->GetCollider().top + part->GetCollider().height / 4) //without downside reflections
 			{
 				ChangeDirection(part->GetDirection());
 			}
@@ -133,6 +133,9 @@ void Ball::UpdateVausCollision()
 				SetPosition({GetPosition().x, part->GetPosition().y + ballToVausOffset.y});
 				correctionVector.z = 0;
 			}
+
+			Move(normal * correctionVector.z); //Move ball outside brick
+
 			break;
 			
 		}
