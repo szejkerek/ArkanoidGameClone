@@ -41,7 +41,6 @@ public:
 					tempResource->loadFromFile(entry.path().string());
 					resources.insert({ name , tempResource });
 					return tempResource.get();
-
 				}
 					
 			}

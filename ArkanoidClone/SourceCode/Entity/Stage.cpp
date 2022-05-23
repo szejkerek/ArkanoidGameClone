@@ -70,6 +70,8 @@ inline void Stage::LoadStageFromFile(const int& _stageNumber, const std::string&
 	}
 	file.close();
 
+
+
 	SetUpStage(temp);
 }
 

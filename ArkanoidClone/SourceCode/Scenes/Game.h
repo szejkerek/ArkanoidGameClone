@@ -6,6 +6,7 @@
 #include "../Entity/Background.h"
 #include "../Entity/Vaus.h"
 #include "../Entity/HealthManager.h"
+#include "../Entity/HighScoreManager.h"
 class GameScene : public Scene
 {
 private:
@@ -26,6 +27,7 @@ public:
 	Vaus* vaus;
 	Stage* currentStage;
 	HealthManager* healthManager;
+	
 
 	//Variables
 	float ballAirTime = 0;

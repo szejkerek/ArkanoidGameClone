@@ -155,7 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HighScoreManager.cpp" />
+    <ClCompile Include="SourceCode\Entity\HighScoreManager.cpp" />
     <ClCompile Include="SourceCode\Scenes\LevelSelectorScene.cpp" />
     <ClCompile Include="SourceCode\Utility\Resources.cpp" />
     <ClCompile Include="SourceCode\UI\Button.cpp" />
@@ -177,7 +177,7 @@
     <ClCompile Include="SourceCode\UI\TextElement.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HighScoreManager.h" />
+    <ClInclude Include="SourceCode\Entity\HighScoreManager.h" />
     <ClInclude Include="SourceCode\Scenes\LevelSelectorScene.h" />
     <ClInclude Include="SourceCode\Utility\Resources.h" />
     <ClInclude Include="SourceCode\UI\Button.h" />

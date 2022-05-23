@@ -81,7 +81,7 @@
     <ClCompile Include="SourceCode\UI\TextElement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="HighScoreManager.cpp">
+    <ClCompile Include="SourceCode\Entity\HighScoreManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,7 +146,7 @@
     <ClInclude Include="SourceCode\UI\TextElement.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="HighScoreManager.h">
+    <ClInclude Include="SourceCode\Entity\HighScoreManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

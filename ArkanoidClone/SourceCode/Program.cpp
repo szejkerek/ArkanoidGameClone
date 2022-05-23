@@ -2,12 +2,14 @@
 #include "Utility/Utility.h"
 Program::Program() 
 	: game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
-	, levelSelectorOriginal(new LevelSelectorOriginal(this)), levelSelectorCustom(new LevelSelectorCustom(this))
+	, levelSelectorOriginal(new LevelSelectorOriginal(this)), levelSelectorCustom(new LevelSelectorCustom(this)),
+		highScoreManager(new HighScoreManager(this))
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
 	int screenHeight = PixelSizes::GetInstance().windowResolution.y;
 	InitializeWindow(screenWidth, screenHeight, windowTitle);
 	sceneManager->LoadScene(Scenes::Menu);
+	highScoreManager->LoadScores();
 }
 
 Program::~Program()
@@ -18,6 +20,7 @@ Program::~Program()
 	delete menu;
 	delete game;
 	delete window;
+	delete highScoreManager;
 }
 
 void Program::InitializeWindow(unsigned int width, unsigned int height, std::string title)

@@ -7,7 +7,6 @@
 class LevelSelectorScene : public Scene
 {
 protected:
-	std::vector<Stage*> stages;
 	sf::RectangleShape preview;
 	int currentIndex = 0;
 	int levelsCount = 0;
@@ -34,6 +33,8 @@ protected:
 
 
 public:
+	std::vector<Stage*> stages;
+
 	virtual void LoadStages() = 0;
 	virtual void ResetIndex();
 	LevelSelectorScene(Program* _program);

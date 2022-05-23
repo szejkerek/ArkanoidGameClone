@@ -36,6 +36,7 @@ public:
 	//Constructors & Destructors
 	Stage(const int& _stageNumber, Program* _program);
 	Stage(const int& _stageNumber, const std::string& filename, const StageType& stageType, Program* _program);
+	Stage(const int& _stageNumber, const StageType& stageType, Program* _program);
 	~Stage();
 
 	//Methods 

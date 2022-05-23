@@ -39,6 +39,7 @@ public:
 	LevelSelectorOriginal* levelSelectorOriginal;
 	LevelSelectorCustom* levelSelectorCustom;
 	SceneManager* sceneManager;
+	HighScoreManager* highScoreManager;
 	GameScene* game;
 	MenuScene* menu;
 

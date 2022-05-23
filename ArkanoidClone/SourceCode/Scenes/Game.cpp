@@ -41,10 +41,9 @@ void GameScene::StartGame()
 void GameScene::AddPoints(const int& brickPoint)
 {
 	tempPoints += brickPoint;
-	std::cout << tempPoints << std::endl;
 }
 
-void GameScene::SelectStage(Stage* _stage/*, Background* _background*/)
+void GameScene::SelectStage(Stage* _stage)
 {
 	currentStage = _stage;
 }
