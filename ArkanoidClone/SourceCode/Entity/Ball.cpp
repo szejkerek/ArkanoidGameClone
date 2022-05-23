@@ -182,6 +182,7 @@ void Ball::StickedBallLogic()
 {
 	SetPosition(gameScene->vaus->parts[0]->GetPosition() + ballToVausOffset);
 	
+
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		if (gameScene->ballAirTime <= 0.2f)

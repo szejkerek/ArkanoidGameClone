@@ -38,6 +38,12 @@ void GameScene::StartGame()
 	playable = true;	
 }
 
+void GameScene::AddPoints(const int& brickPoint)
+{
+	tempPoints += brickPoint;
+	std::cout << tempPoints << std::endl;
+}
+
 void GameScene::SelectStage(Stage* _stage/*, Background* _background*/)
 {
 	currentStage = _stage;
@@ -48,6 +54,7 @@ void GameScene::EndGame()
 	ball->StickBallToVaus();
 	playable = false;
 	ballAirTime = 0;
+	tempPoints = 0;
 	program->sceneManager->LoadScene(Scenes::Menu);
 }
 

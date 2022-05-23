@@ -18,7 +18,6 @@ class Stage: public sf::Drawable
 {
 private:
 	int stageNumber;
-	std::string stageName = "null";
 	bool loadedSuccesfuly = false;
 	std::vector<IBrick*> loadedStage;	  //vector with just bricks
 	Program* program;
@@ -31,6 +30,7 @@ private:
 	inline std::string GenerateStageName(const int& _stageNumber);
 
 public:
+	std::string stageName = "null";
 	std::vector<IBrick*> playableBricks;	  //vector with just bricks
 
 	//Constructors & Destructors

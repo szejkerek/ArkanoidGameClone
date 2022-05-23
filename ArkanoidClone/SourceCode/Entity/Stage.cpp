@@ -16,17 +16,16 @@ inline std::string Stage::GenerateStageName(const int& _stageNumber)
 
 Stage::Stage(const int& _stageNumber, Program* _program): program(_program)
 {
-	LoadStageFromFile(_stageNumber, GenerateStageName(_stageNumber), StageType::original);
+	LoadStageFromFile(_stageNumber + 1, GenerateStageName(_stageNumber), StageType::original);
 }
 
 Stage::Stage(const int& _stageNumber, const std::string& stageName, const StageType& stageType, Program* _program) : program(_program)
 {
-	LoadStageFromFile(_stageNumber, stageName, stageType);
+	LoadStageFromFile(_stageNumber + 1, stageName, stageType);
 }
 
 Stage::~Stage()
 {	
-	//std::cout << stageName << std::endl;
 	for (auto brick : playableBricks)
 	{
 		if (brick != nullptr)
@@ -141,7 +140,7 @@ inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char&
 		temp = nullptr;
 		break;
 	case 's':
-		temp = new SilverBrick(stageNumber);
+		temp = new SilverBrick(stageNumber );
 		break;
 	case 'x':
 		temp = new GoldBrick();
@@ -202,6 +201,7 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 
 		if (brickToDelete->OnCollisionEnter())
 		{
+			program->game->AddPoints(playableBricks[i]->GetPoints());
 			delete playableBricks[i];
 			playableBricks[i] = nullptr;
 		}	

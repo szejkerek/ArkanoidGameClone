@@ -9,7 +9,7 @@
 class GameScene : public Scene
 {
 private:
-
+	int tempPoints;
 	bool playable;
 
 	//Methods
@@ -36,6 +36,7 @@ public:
 
 	//Methods
 	void StartGame();
+	void AddPoints(const int& brickPoint);
 	void SelectStage(Stage* _stage/*, Background* background*/);
 	void EndGame();
 

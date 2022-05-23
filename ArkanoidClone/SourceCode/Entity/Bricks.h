@@ -19,6 +19,8 @@ public:
 	virtual inline void SetRelativePosition(int row, int collumn);
 	//Getters&Setters
 	virtual bool OnCollisionEnter() = 0;  //Returns true when brick is to be destroyed
+	virtual void SetPoints(const int& points);
+	virtual int GetPoints();
 	inline virtual bool IsDestructible();
 
 	//SFML Methods
