@@ -58,6 +58,11 @@ bool HealthManager::IsDead()
 	return (health <= 0);	
 }
 
+int HealthManager::GetCurrentHealth()
+{
+	return health;
+}
+
 void HealthManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (int i = 0; i < health; i++)

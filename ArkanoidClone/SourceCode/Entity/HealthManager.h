@@ -18,6 +18,7 @@ public:
 	void RestoreFullHp();
 	void HealOneHealth();
 	bool IsDead();
+	int GetCurrentHealth();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

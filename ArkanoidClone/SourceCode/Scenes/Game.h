@@ -7,16 +7,27 @@
 #include "../Entity/Vaus.h"
 #include "../Entity/HealthManager.h"
 #include "../Entity/HighScoreManager.h"
+#include "../ArkanoidClone/SourceCode/UI/TextElement.h"
+#include "../ArkanoidClone/SourceCode/Utility/Utility.h"
 class GameScene : public Scene
 {
 private:
-	int tempPoints;
+	int currentScore = 0;
+	int currentHighscore = 0;
 	bool playable;
+
+	TextElement* highScoreLabel;
+	TextElement* scoreLabel;
+	TextElement* scoreCount;
+	TextElement* highScoreCount;
 
 	//Methods
 	void InitializeBall();
 	void InitVariables();	
 	void FreeMemory();
+
+	void SetUpScoresText();
+	void UpdateScores();
 
 public:
 	Program* program;

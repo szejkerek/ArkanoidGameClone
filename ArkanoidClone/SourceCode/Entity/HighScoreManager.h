@@ -11,6 +11,7 @@ public:
 	void LoadScores();
 	void UpdateScore(Stage* currentStage, int currentScore);
 	void SaveScores();
+	int GetCurrentHighscore(Stage* stage);
 
 private:
 	Program* program;

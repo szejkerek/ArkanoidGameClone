@@ -22,7 +22,26 @@ void HighScoreManager::LoadScores()
 
 void HighScoreManager::UpdateScore(Stage* currentStage, int currentScore)
 {
-	
+	if (scoreMap[currentStage->stageName] < currentScore)
+		scoreMap[currentStage->stageName] = currentScore;
+}
+
+void HighScoreManager::SaveScores()
+{
+	std::ofstream file(pathToScore);
+	if (file)
+	{
+		for (auto pair : scoreMap)
+		{
+			file << pair.first << " " << pair.second << std::endl;
+		}
+	}
+	file.close();
+}
+
+int HighScoreManager::GetCurrentHighscore(Stage* stage)
+{
+	return scoreMap[stage->stageName];
 }
 
 void HighScoreManager::LoadScoresFromFile()

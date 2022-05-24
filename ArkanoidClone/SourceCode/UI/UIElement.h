@@ -12,6 +12,7 @@ protected:
 	//Gameobject
 	sf::RectangleShape gameObject;
 	bool isDisabled = false;
+
 public:
 	Program* program;
 	//Constructors&Destructors
@@ -30,9 +31,9 @@ public:
 	virtual inline void SetOutlineThickness(const float& size);
 	virtual inline void SetOutlineColor(const sf::Color & color);
 	virtual inline sf::FloatRect GetCollider();
-	virtual inline sf::Vector2f GetSize();
 	virtual inline sf::Vector2f GetPosition();
 	virtual inline bool MouseHovers();
+	virtual inline sf::Vector2f GetSize();
 	virtual inline void Disable();
 	virtual inline void Enable();
 
