@@ -50,7 +50,14 @@ void HealthManager::RestoreFullHp()
 
 void HealthManager::HealOneHealth()
 {
-	health++;
+	if (health == maxHealth)
+	{
+		//ADD 1000 POINTS
+	}
+	else
+	{
+		health++;
+	}
 }
 
 bool HealthManager::IsDead()
