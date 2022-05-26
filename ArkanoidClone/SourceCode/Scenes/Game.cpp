@@ -24,6 +24,7 @@ void GameScene::FreeMemory()
 {
 	delete scoreCount;
 	delete highScoreCount;
+	delete highscoreNotification;
 	delete scoreLabel;
 	delete highScoreLabel;
 	delete background;
@@ -40,22 +41,27 @@ void GameScene::SetUpScoresText()
 	scoreLabel = new TextElement(program);
 	highScoreCount = new TextElement(program);
 	scoreCount = new TextElement(program);
+	highscoreNotification = new TextElement(program);
 
 	highScoreLabel->SetTextPosition({ screenWidth - 184 ,170});
 	highScoreCount->SetTextPosition({ screenWidth - 184 ,190});
+	highscoreNotification->SetTextPosition({ screenWidth - 184 ,145});
+
 	highScoreLabel->SetText("Highscore", 12, sf::Color::Color(140,140,140));
-	highScoreCount->SetText(std::to_string(currentHighscore), 18, sf::Color::Color(140, 140, 140));
+	highscoreNotification->SetText("", 8, sf::Color::Yellow);
+	highScoreCount->SetText(std::to_string(currentHighscore), 18, sf::Color(140, 140, 140));
 
 	scoreLabel->SetTextPosition({ screenWidth - 184 ,240 });
 	scoreCount->SetTextPosition({ screenWidth - 184 ,275 });
 	scoreLabel->SetText("Score", 20, sf::Color::White);
 	scoreCount->SetText("0", 35, sf::Color::White);
 
+	highscoreNotification->Disable();
 }
 
 void GameScene::UpdateScores()
 {
-	highScoreCount->SetText(std::to_string(currentHighscore), 18, sf::Color::Color(140, 140, 140));
+	highScoreCount->SetText(std::to_string(currentHighscore), 18, sf::Color(140, 140, 140));
 	scoreCount->SetText(std::to_string(currentScore), 35, sf::Color::White);
 }
 
@@ -74,7 +80,13 @@ void GameScene::AddPoints(const int& brickPoint)
 {
 	currentScore += brickPoint * healthManager->GetCurrentHealth();
 	if (currentScore > currentHighscore)
+	{
+		if (program->highScoreManager->GetCurrentHighscore(currentStage) != 0)
+		{
+			highscoreNotification->SetText("NEW HIGHSCORE!", 16, sf::Color::Yellow);
+		}
 		currentHighscore = currentScore;
+	}
 
 	UpdateScores();
 }
@@ -111,6 +123,7 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(*highScoreLabel);
 	target.draw(*scoreLabel);
 	target.draw(*highScoreCount);
+	target.draw(*highscoreNotification);
 	target.draw(*scoreCount);
 
 
