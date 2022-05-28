@@ -19,8 +19,8 @@ protected:
 	Scenes sceneToLoad;
 	std::function<void()> onClickFunction = nullptr;
 	sf::Text text;
-	float buttonCooldown = .1f;
-	float defaultButtonCooldown = .1f;
+	float buttonCooldown = .5f;
+	float defaultButtonCooldown = .5f;
 	sf::Vector2f buttonSize;
 
 

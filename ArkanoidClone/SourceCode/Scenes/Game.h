@@ -20,6 +20,7 @@ private:
 	TextElement* scoreLabel;
 	TextElement* scoreCount;
 	TextElement* highScoreCount;
+	TextElement* highscoreNotification;
 
 	//Methods
 	void InitializeBall();
