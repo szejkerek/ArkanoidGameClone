@@ -1,6 +1,6 @@
 #include "Ball.h"
 #include "../ArkanoidClone/SourceCode/Utility/Resources.h"
-#include "../ArkanoidClone/SourceCode/Scenes/Game.h"
+#include "../ArkanoidClone/SourceCode/Scenes/GameScene.h"
 #include <iostream>
 
 Ball::Ball(GameScene* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)

@@ -6,6 +6,7 @@
 #include "../Entity/Objects/Background.h"
 #include "../Entity/Objects/Vaus.h"
 #include "../Entity/Managers/HealthManager.h"
+#include "../Entity/Managers/PowerUpManager.h"
 #include "../Entity/Managers/HighScoreManager.h"
 #include "../ArkanoidClone/SourceCode/UI/TextElement.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
@@ -23,8 +24,6 @@ private:
 	TextElement* highscoreNotification;
 
 	//Methods
-	void InitializeBall();
-	void InitVariables();	
 	void FreeMemory();
 
 	void SetUpScoresText();
@@ -39,7 +38,7 @@ public:
 	Vaus* vaus;
 	Stage* currentStage;
 	HealthManager* healthManager;
-	
+	PowerUpManager* powerUpManager;
 
 	//Variables
 	float ballAirTime = 0;
@@ -49,9 +48,9 @@ public:
 	virtual ~GameScene();
 
 	//Methods
-	void StartGame();
 	void AddPoints(const int& brickPoint);
 	void SelectStage(Stage* _stage);
+	void StartGame();	
 	void EndGame();
 
 	//SFML Methods

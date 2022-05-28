@@ -204,6 +204,7 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 		if (brickToDelete->OnCollisionEnter())
 		{
 			program->game->AddPoints(playableBricks[i]->GetPoints());
+			program->game->powerUpManager->PickRandomPowerUp(brickToDelete->GetPosition());
 			delete playableBricks[i];
 			playableBricks[i] = nullptr;
 		}	

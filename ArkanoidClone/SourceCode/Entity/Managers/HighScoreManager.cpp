@@ -1,5 +1,5 @@
 #include "HighScoreManager.h"
-#include "../ArkanoidClone/SourceCode/Scenes/Game.h"
+#include "../ArkanoidClone/SourceCode/Scenes/GameScene.h"
 #include "../ArkanoidClone/SourceCode/Program.h"
 #include <filesystem>
 #include <fstream>

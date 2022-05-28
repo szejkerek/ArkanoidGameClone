@@ -167,7 +167,7 @@
     <ClCompile Include="SourceCode\Entity\Objects\Entity.cpp" />
     <ClCompile Include="SourceCode\Entity\Managers\HealthManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Objects\Bricks.cpp" />
-    <ClCompile Include="SourceCode\Scenes\Game.cpp" />
+    <ClCompile Include="SourceCode\Scenes\GameScene.cpp" />
     <ClCompile Include="SourceCode\Entity\Objects\Background.cpp" />
     <ClCompile Include="SourceCode\Scenes\Scene.cpp" />
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp" />
@@ -195,7 +195,7 @@
     <ClInclude Include="SourceCode\Scenes\SceneManager.h" />
     <ClInclude Include="SourceCode\Entity\Managers\Stage.h" />
     <ClInclude Include="SourceCode\Utility\Utility.h" />
-    <ClInclude Include="SourceCode\Scenes\Game.h" />
+    <ClInclude Include="SourceCode\Scenes\GameScene.h" />
     <ClInclude Include="SourceCode\Program.h" />
     <ClInclude Include="SourceCode\Utility\Profiler.h" />
     <ClInclude Include="SourceCode\Entity\Objects\Vaus.h" />

@@ -36,7 +36,7 @@
     <ClCompile Include="SourceCode\Entity\Objects\Bricks.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Scenes\Game.cpp">
+    <ClCompile Include="SourceCode\Scenes\GameScene.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\Entity\Objects\Background.cpp">
@@ -119,7 +119,7 @@
     <ClInclude Include="SourceCode\Utility\Utility.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Scenes\Game.h">
+    <ClInclude Include="SourceCode\Scenes\GameScene.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Utility\Profiler.h">

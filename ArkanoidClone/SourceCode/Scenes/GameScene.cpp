@@ -1,36 +1,37 @@
-#include "Game.h"
+#include "GameScene.h"
 #include "../Program.h"
 
 #include <iostream>
 
-GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { InitVariables(); }
+GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { StartGame(); }
 
-void GameScene::InitializeBall()
-{
-	ball = new Ball(this);
-	ball->SetPlaygroundConstrains(background->GetCollider());	
-}
-
-void GameScene::InitVariables() //Preload level
+void GameScene::StartGame() //Preload level
 {
 	FreeMemory();
 	background = new Background(this);
 	vaus = new Vaus();
 	healthManager = new HealthManager(this);
-	InitializeBall();
+	powerUpManager = new PowerUpManager(program);
+	ball = new Ball(this);
+	ball->SetPlaygroundConstrains(background->GetCollider());
+
+	healthManager->RestoreFullHp();
+	playable = true;
+	SetUpScoresText();
 }
 
 void GameScene::FreeMemory()
 {
+	delete background;
+	delete ball;
+	delete vaus;
+	delete healthManager;
 	delete scoreCount;
 	delete highScoreCount;
 	delete highscoreNotification;
 	delete scoreLabel;
 	delete highScoreLabel;
-	delete background;
-	delete ball;
-	delete vaus;
-	delete healthManager;
+	delete powerUpManager;
 }
 
 void GameScene::SetUpScoresText()
@@ -68,12 +69,6 @@ void GameScene::UpdateScores()
 GameScene::~GameScene()
 {
 	FreeMemory();
-}
-
-void GameScene::StartGame()
-{	
-	healthManager->RestoreFullHp();
-	playable = true;	
 }
 
 void GameScene::AddPoints(const int& brickPoint)
@@ -119,6 +114,8 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(*vaus);
 	target.draw(*ball);
 	target.draw(*healthManager);
+	target.draw(*powerUpManager);
+
 
 	target.draw(*highScoreLabel);
 	target.draw(*scoreLabel);
@@ -131,11 +128,16 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void GameScene::Update( float& dt )
 {
+
 	if (!playable)
 		return;
 	
 	ballAirTime += dt; //GameTime
 	ball->Update(dt);	
 	vaus->Update(dt);	
+	powerUpManager->Update(dt);
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		EndGame();
 }
 

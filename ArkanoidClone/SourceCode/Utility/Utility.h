@@ -57,7 +57,7 @@ public:
 
 	float ballRadius = 7.f;
 
-	sf::Vector2f brickSize{55,28};
+	sf::Vector2f brickSize{ 55,28 };
 
 
 	sf::Vector2f iVausCentralSize{23,28 };
@@ -71,6 +71,8 @@ public:
 
 	sf::Vector2f backgroundSize{ 715.f,858.f };
 	sf::Vector2f backgroundPosition{ 183,62 };
+
+	sf::Vector2f powerUpSize{ 52,25 };
 
 	sf::Vector2i windowPosition{ 310,10 };
 	sf::Vector2i windowResolution{ 1300,990 };

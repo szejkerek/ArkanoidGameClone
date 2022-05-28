@@ -1,6 +1,6 @@
 #include "HealthManager.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
-#include "../ArkanoidClone/SourceCode/Scenes/Game.h"
+#include "../ArkanoidClone/SourceCode/Scenes/GameScene.h"
 #include <iostream>
 
 sf::Vector2f HealthManager::CalculateHealtPositon(int index)
