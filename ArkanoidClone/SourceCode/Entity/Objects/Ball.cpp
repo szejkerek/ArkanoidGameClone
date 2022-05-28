@@ -41,6 +41,7 @@ void Ball::UpdateWallCollisions()
 	else if (gameObject.getPosition().y >= down)
 	{
 		gameScene->healthManager->TakeHit();
+		gameScene->powerUpManager->FreeMemory();
 		StickBallToVaus();
 	}
 	else

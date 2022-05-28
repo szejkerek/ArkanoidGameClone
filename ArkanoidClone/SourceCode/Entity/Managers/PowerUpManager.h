@@ -7,15 +7,18 @@ class PowerUpManager : public sf::Drawable
 {
 public: 
 	PowerUpManager(Program* _program);
+
 	void PickRandomPowerUp(const sf::Vector2f& position);
+	void FreeMemory();
+
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update(float& dt);
 private:
 	float powerUpChance = 75;  // x%
+	
 	IPowerUp* currentPowerUp;
 	bool blocked = false;
 	Program* program;
-	void FreeMemory();
 
 };
 

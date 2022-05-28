@@ -8,6 +8,7 @@ class IPowerUp : public EntityRectangle
 {
 public:
 	IPowerUp(Program* _program, const sf::Vector2f& position);
+
 	virtual void ApplyEffect() = 0;
 	void Hide();
 
@@ -17,14 +18,18 @@ public:
 protected:
 	Program* program;
 	float speed = 250.f;
+	float bottomCollider = 0;
+	bool effectApplied = false;
+
 	void MoveDown(float& dt);
+	void CheckForCollisions();
 };
 
 class AddHealth : public IPowerUp
 {
 public:
 	AddHealth(Program* _program, const sf::Vector2f& position);
-	void ApplyEffect() { std::cout << "ADD HEALTH" << std::endl; }
+	void ApplyEffect();
 };
 
 class SplitBall : public IPowerUp

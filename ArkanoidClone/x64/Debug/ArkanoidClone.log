@@ -1,16 +1,4 @@
-﻿  ArkanoidClone.cpp
-  HealthManager.cpp
-  HighScoreManager.cpp
-  PowerUpManager.cpp
-  Stage.cpp
-  Ball.cpp
-  PowerUp.cpp
-  Program.cpp
-  GameScene.cpp
-  LevelSelectorScene.cpp
-  MenuScene.cpp
-  SceneManager.cpp
+﻿  PowerUpManager.cpp
   Button.cpp
-  UIElement.cpp
   Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

@@ -1,13 +1,17 @@
 #include "PowerUpManager.h"
 
-PowerUpManager::PowerUpManager(Program* _program) : program(_program)
+PowerUpManager::PowerUpManager(Program* _program) : program(_program), currentPowerUp(nullptr)
 {
 }
 
 void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 {
-	FreeMemory();
-	currentPowerUp = new AddHealth(program, position);
+	if (!blocked)
+	{
+		FreeMemory();
+		currentPowerUp = new AddHealth(program, position);
+		blocked = true;
+	}
 }
 
 void PowerUpManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -25,5 +29,9 @@ void PowerUpManager::Update(float& dt)
 void PowerUpManager::FreeMemory()
 {
 	if (currentPowerUp != nullptr)
+	{
 		delete currentPowerUp;
+		currentPowerUp = nullptr;
+		blocked = false;
+	}
 }
