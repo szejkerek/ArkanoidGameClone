@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "../Entity/Stage.h"
+#include "../ArkanoidClone/SourceCode/Entity/Managers/Stage.h"
 #include "../UI/Button.h"
 #include "../UI/TextElement.h"
 

@@ -155,47 +155,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SourceCode\Entity\HighScoreManager.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\PowerUp.cpp" />
+    <ClCompile Include="SourceCode\Entity\Managers\PowerUpManager.cpp" />
+    <ClCompile Include="SourceCode\Entity\Managers\HighScoreManager.cpp" />
     <ClCompile Include="SourceCode\Scenes\LevelSelectorScene.cpp" />
     <ClCompile Include="SourceCode\Utility\Resources.cpp" />
     <ClCompile Include="SourceCode\UI\Button.cpp" />
     <ClCompile Include="SourceCode\Scenes\MenuScene.cpp" />
     <ClCompile Include="SourceCode\ArkanoidClone.cpp" />
-    <ClCompile Include="SourceCode\Entity\Ball.cpp" />
-    <ClCompile Include="SourceCode\Entity\Entity.cpp" />
-    <ClCompile Include="SourceCode\Entity\HealthManager.cpp" />
-    <ClCompile Include="SourceCode\Entity\Bricks.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\Ball.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\Entity.cpp" />
+    <ClCompile Include="SourceCode\Entity\Managers\HealthManager.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\Bricks.cpp" />
     <ClCompile Include="SourceCode\Scenes\Game.cpp" />
-    <ClCompile Include="SourceCode\Entity\Background.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\Background.cpp" />
     <ClCompile Include="SourceCode\Scenes\Scene.cpp" />
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp" />
-    <ClCompile Include="SourceCode\Entity\Stage.cpp" />
+    <ClCompile Include="SourceCode\Entity\Managers\Stage.cpp" />
     <ClCompile Include="SourceCode\Program.cpp" />
-    <ClCompile Include="SourceCode\Entity\Vaus.cpp" />
-    <ClCompile Include="SourceCode\Entity\VausPart.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\Vaus.cpp" />
+    <ClCompile Include="SourceCode\Entity\Objects\VausPart.cpp" />
     <ClCompile Include="SourceCode\UI\UIElement.cpp" />
     <ClCompile Include="SourceCode\UI\TextElement.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SourceCode\Entity\HighScoreManager.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\PowerUp.h" />
+    <ClInclude Include="SourceCode\Entity\Managers\PowerUpManager.h" />
+    <ClInclude Include="SourceCode\Entity\Managers\HighScoreManager.h" />
     <ClInclude Include="SourceCode\Scenes\LevelSelectorScene.h" />
     <ClInclude Include="SourceCode\Utility\Resources.h" />
     <ClInclude Include="SourceCode\UI\Button.h" />
     <ClInclude Include="SourceCode\Scenes\MenuScene.h" />
-    <ClInclude Include="SourceCode\Entity\Ball.h" />
-    <ClInclude Include="SourceCode\Entity\Entity.h" />
-    <ClInclude Include="SourceCode\Entity\HealthManager.h" />
-    <ClInclude Include="SourceCode\Entity\Bricks.h" />
-    <ClInclude Include="SourceCode\Entity\Background.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\Ball.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\Entity.h" />
+    <ClInclude Include="SourceCode\Entity\Managers\HealthManager.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\Bricks.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\Background.h" />
     <ClInclude Include="SourceCode\Scenes\Scene.h" />
     <ClInclude Include="SourceCode\Scenes\SceneManager.h" />
-    <ClInclude Include="SourceCode\Entity\Stage.h" />
+    <ClInclude Include="SourceCode\Entity\Managers\Stage.h" />
     <ClInclude Include="SourceCode\Utility\Utility.h" />
     <ClInclude Include="SourceCode\Scenes\Game.h" />
     <ClInclude Include="SourceCode\Program.h" />
     <ClInclude Include="SourceCode\Utility\Profiler.h" />
-    <ClInclude Include="SourceCode\Entity\Vaus.h" />
-    <ClInclude Include="SourceCode\Entity\VausPart.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\Vaus.h" />
+    <ClInclude Include="SourceCode\Entity\Objects\VausPart.h" />
     <ClInclude Include="SourceCode\UI\UIElement.h" />
     <ClInclude Include="SourceCode\UI\TextElement.h" />
   </ItemGroup>

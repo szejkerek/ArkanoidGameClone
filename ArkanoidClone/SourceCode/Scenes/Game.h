@@ -1,12 +1,12 @@
 #pragma once
 #include "Scene.h"
-#include "../Entity/Ball.h"
-#include "../Entity/Bricks.h"
-#include "../Entity/Stage.h"
-#include "../Entity/Background.h"
-#include "../Entity/Vaus.h"
-#include "../Entity/HealthManager.h"
-#include "../Entity/HighScoreManager.h"
+#include "../Entity/Objects/Ball.h"
+#include "../Entity/Objects/Bricks.h"
+#include "../Entity/Managers/Stage.h"
+#include "../Entity/Objects/Background.h"
+#include "../Entity/Objects/Vaus.h"
+#include "../Entity/Managers/HealthManager.h"
+#include "../Entity/Managers/HighScoreManager.h"
 #include "../ArkanoidClone/SourceCode/UI/TextElement.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
 class GameScene : public Scene
@@ -51,11 +51,11 @@ public:
 	//Methods
 	void StartGame();
 	void AddPoints(const int& brickPoint);
-	void SelectStage(Stage* _stage/*, Background* background*/);
+	void SelectStage(Stage* _stage);
 	void EndGame();
 
 	//SFML Methods
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update( float& dt);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

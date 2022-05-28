@@ -24,22 +24,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceCode\Entity\Ball.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\Ball.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\Entity.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\Entity.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\HealthManager.cpp">
+    <ClCompile Include="SourceCode\Entity\Managers\HealthManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\Bricks.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\Bricks.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\Scenes\Game.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\Background.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\Background.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\Scenes\Scene.cpp">
@@ -48,13 +48,13 @@
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\Stage.cpp">
+    <ClCompile Include="SourceCode\Entity\Managers\Stage.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\Vaus.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\Vaus.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\VausPart.cpp">
+    <ClCompile Include="SourceCode\Entity\Objects\VausPart.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\ArkanoidClone.cpp">
@@ -81,24 +81,30 @@
     <ClCompile Include="SourceCode\UI\TextElement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Entity\HighScoreManager.cpp">
+    <ClCompile Include="SourceCode\Entity\Managers\HighScoreManager.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\Entity\Managers\PowerUpManager.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\Entity\Objects\PowerUp.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SourceCode\Entity\Ball.h">
+    <ClInclude Include="SourceCode\Entity\Objects\Ball.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\Entity.h">
+    <ClInclude Include="SourceCode\Entity\Objects\Entity.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\HealthManager.h">
+    <ClInclude Include="SourceCode\Entity\Managers\HealthManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\Bricks.h">
+    <ClInclude Include="SourceCode\Entity\Objects\Bricks.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\Background.h">
+    <ClInclude Include="SourceCode\Entity\Objects\Background.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Scenes\Scene.h">
@@ -107,7 +113,7 @@
     <ClInclude Include="SourceCode\Scenes\SceneManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\Stage.h">
+    <ClInclude Include="SourceCode\Entity\Managers\Stage.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Utility\Utility.h">
@@ -119,10 +125,10 @@
     <ClInclude Include="SourceCode\Utility\Profiler.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\Vaus.h">
+    <ClInclude Include="SourceCode\Entity\Objects\Vaus.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\VausPart.h">
+    <ClInclude Include="SourceCode\Entity\Objects\VausPart.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Program.h">
@@ -146,7 +152,13 @@
     <ClInclude Include="SourceCode\UI\TextElement.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Entity\HighScoreManager.h">
+    <ClInclude Include="SourceCode\Entity\Managers\HighScoreManager.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\Entity\Managers\PowerUpManager.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\Entity\Objects\PowerUp.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
