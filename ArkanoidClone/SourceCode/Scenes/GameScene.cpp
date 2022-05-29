@@ -1,9 +1,17 @@
 #include "GameScene.h"
 #include "../Program.h"
+#include <ranges>
+#include <algorithm>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 #include <iostream>
 
-GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) { StartGame(); }
+GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) 
+{
+	srand(time(NULL));
+	StartGame(); 
+}
 
 void GameScene::StartGame() //Preload level
 {
@@ -21,10 +29,12 @@ void GameScene::StartGame() //Preload level
 	if (powerUpManager == nullptr)
 	powerUpManager = new PowerUpManager(program);
 
-	if (ball == nullptr)
-	ball = new Ball(this);
-
-	ball->SetPlaygroundConstrains(background->GetCollider());
+	if (balls.size() == 0)
+	{
+		balls.push_back(  new Ball(this) );
+		balls[0]->SetPlaygroundConstrains(background->GetCollider());
+		balls[0]->StickBallToVaus();
+	}
 
 	healthManager->RestoreFullHp();
 	playable = true;
@@ -33,9 +43,20 @@ void GameScene::StartGame() //Preload level
 
 void GameScene::FreeMemory()
 {
+	for (auto ball : ballsToDelete)
+	{
+		delete ball;
+		ball = nullptr;
+	}
+
+	for (size_t i = 0; i < balls.size(); i++)
+	{
+		delete balls[i];
+		balls[i] = nullptr;
+	}
+	balls.clear();
 
 	delete background;
-	delete ball;
 	delete vaus;
 	delete healthManager;
 	delete scoreCount;
@@ -46,7 +67,6 @@ void GameScene::FreeMemory()
 	delete powerUpManager;
 
 	background = nullptr;
-	ball = nullptr;
 	vaus = nullptr;
 	healthManager = nullptr;
 	scoreCount = nullptr;
@@ -55,6 +75,39 @@ void GameScene::FreeMemory()
 	scoreLabel = nullptr;
 	highScoreLabel = nullptr;
 	powerUpManager = nullptr;
+}
+
+void GameScene::AddBall()
+{
+	Ball* newBall = new Ball(this);
+	newBall->SetPlaygroundConstrains(background->GetCollider());
+	newBall->SetPosition(balls[0]->GetPosition());
+
+
+	float randomX= static_cast<float> (rand() % 30 + 10);
+	float randomY = static_cast<float> (rand() % 30 + 10);
+
+	sf::Vector2f newAngles = NormalizeVector({randomX, randomY });
+	sf::Vector2f newDirection =  MultipyVectors( balls[0]->GetDirection(), newAngles);
+
+	newBall->ChangeDirection(newDirection);
+	balls.push_back(newBall);
+}
+
+void GameScene::RemoveBall(Ball* ballToDelete)
+{
+	auto ret = std::ranges::remove_if(balls, [&](Ball* ball) { return ball == ballToDelete; });
+	balls.erase(ret.begin(), ret.end());
+
+	delete ballToDelete;
+	ballToDelete = nullptr;
+}
+
+void GameScene::RemoveBallNoDelete(Ball* ballToDelete)
+{
+	auto ret = std::ranges::remove_if(balls, [&](Ball* ball) { return ball == ballToDelete; });
+	balls.erase(ret.begin(), ret.end());
+	ballsToDelete.push_back(ballToDelete);
 }
 
 void GameScene::SetUpScoresText()
@@ -127,7 +180,9 @@ void GameScene::SelectStage(Stage* _stage)
 
 void GameScene::EndGame()
 {
-	ball->StickBallToVaus();
+	for (size_t i = 0; i < balls.size(); i++)
+		balls[i]->StickBallToVaus();
+
 	playable = false;
 	ballAirTime = 0;
 	program->highScoreManager->UpdateScore(currentStage, currentScore);
@@ -145,7 +200,13 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(*background);
 	target.draw(*currentStage);
 	target.draw(*vaus);
-	target.draw(*ball);
+
+	for (size_t i = 0; i < balls.size(); i++)
+	{
+		if (balls[i] != nullptr)
+			target.draw(*balls[i]);
+	}
+
 	target.draw(*healthManager);
 	target.draw(*powerUpManager);
 
@@ -161,12 +222,18 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void GameScene::Update( float& dt )
 {
-
+	//std::cout << balls.size() << std::endl;
 	if (!playable)
 		return;
 	
 	ballAirTime += dt; //GameTime
-	ball->Update(dt);	
+
+	for (size_t i = 0; i < balls.size(); i++)
+	{
+		if(balls[i] != nullptr)
+			balls[i]->Update(dt);
+	}
+
 	vaus->Update(dt);	
 	powerUpManager->Update(dt);
 	

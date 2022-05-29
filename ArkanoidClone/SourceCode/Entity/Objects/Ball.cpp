@@ -3,12 +3,11 @@
 #include "../ArkanoidClone/SourceCode/Scenes/GameScene.h"
 #include <iostream>
 
-Ball::Ball(GameScene* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f) ,stickedToVaus(true)
+Ball::Ball(GameScene* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f), stickedToVaus (false)
 {
 	SetOriginCenter();
 	SetFillColor(sf::Color::White);
 	ballToVausOffset = {0,-21};
-	StickBallToVaus();
 }
 
 void Ball::UpdateWallCollisions()
@@ -27,30 +26,48 @@ void Ball::UpdateWallCollisions()
 	{
 		newPosition = { left , GetPosition().y};
 		newDirection = MultipyVectors(direction, changeX);
+		SetPosition(newPosition);
+		ChangeDirection(newDirection);
 	}
 	else if (GetPosition().y <= top)
 	{
 		newPosition = { GetPosition().x, top };
 		newDirection = MultipyVectors(direction, changeY);
+		SetPosition(newPosition);
+		ChangeDirection(newDirection);
 	}
 	else if (gameObject.getPosition().x >= right)
 	{
 		newPosition = { right, GetPosition().y };
 		newDirection = MultipyVectors(direction, changeX);
+		SetPosition(newPosition);
+		ChangeDirection(newDirection);
 	}
 	else if (gameObject.getPosition().y >= down)
 	{
-		gameScene->healthManager->TakeHit();
-		gameScene->powerUpManager->FreeMemory();
-		StickBallToVaus();
+
+		if (gameScene->balls.size() == 1)
+		{
+			gameScene->powerUpManager->FreeMemory();
+			gameScene->healthManager->TakeHit();
+			SetPosition({ -200, -200 });
+			ChangeDirection({ 0,0 });
+			StickBallToVaus();
+		}
+		else
+		{
+			gameScene->RemoveBallNoDelete(this);
+			SetPosition({ -200, -200 });
+			ChangeDirection({ 0,0 });
+		}
+		return;
 	}
 	else
 	{
 		return;
 	}
 
-	SetPosition(newPosition);
-	ChangeDirection(newDirection);
+	
 
 }
 
@@ -150,13 +167,19 @@ void Ball::SetPlaygroundConstrains(const sf::FloatRect& _playgroundConstrains)
 
 void Ball::ChangeDirection(sf::Vector2f _direction)
 {
-	direction = _direction;
+
+	direction = NormalizeVector( _direction );
 }
 
 void Ball::StickBallToVaus()
 {
 	stickedToVaus = true;
 	gameScene->ballAirTime = 0;
+}
+
+sf::Vector2f Ball::GetDirection()
+{
+	return direction;
 }
 
 void Ball::InitGameObject(const float& _speed)

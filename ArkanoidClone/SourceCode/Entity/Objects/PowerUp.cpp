@@ -71,5 +71,6 @@ SplitBall::SplitBall(Program* _program, const sf::Vector2f& position) : IPowerUp
 
 void SplitBall::ApplyEffect()
 {
-
+	program->game->AddBall();
+	program->game->AddBall();
 }

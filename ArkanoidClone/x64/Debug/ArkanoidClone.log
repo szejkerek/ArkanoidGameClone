@@ -1,2 +1,5 @@
 ﻿  GameScene.cpp
+  The contents of <ranges> are available only in c++latest mode with concepts support;
+  see https://github.com/microsoft/STL/issues/1814 for details.
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(12,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

@@ -35,7 +35,7 @@ public:
 	//Methods
 	void ChangeDirection(sf::Vector2f newDirection);
 	void StickBallToVaus();
-	
+	sf::Vector2f GetDirection();
 	void InitGameObject(const float& _speed);
 
 	//SFML Methods

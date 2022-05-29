@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include <vector>
 #include "../Entity/Objects/Ball.h"
 #include "../Entity/Objects/Bricks.h"
 #include "../Entity/Managers/Stage.h"
@@ -26,6 +27,8 @@ private:
 	//Methods
 	void FreeMemory();
 
+	
+
 	void SetUpScoresText();
 	void UpdateScores();
 
@@ -34,7 +37,9 @@ public:
 
 	//GameObjects
 	Background* background;
-	Ball* ball;
+
+	std::vector<Ball*> balls;
+	std::vector<Ball*> ballsToDelete;
 	Vaus* vaus;
 	Stage* currentStage;
 	HealthManager* healthManager;
@@ -52,6 +57,10 @@ public:
 	void SelectStage(Stage* _stage);
 	void StartGame();	
 	void EndGame();
+
+	void AddBall();
+	void RemoveBall(Ball* ballToDelete);
+	void RemoveBallNoDelete(Ball* ballToDelete);
 
 	//SFML Methods
 	void Update( float& dt);
