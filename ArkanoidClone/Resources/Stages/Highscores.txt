@@ -1,6 +1,6 @@
-Stage_0 47310
-Stage_1 12880
+Stage_0 58140
 dup1 0
-Stage_2 0
+Stage_1 4250
+Stage_2 2700
 Stage_3 0
-12345 18670
+12345 0

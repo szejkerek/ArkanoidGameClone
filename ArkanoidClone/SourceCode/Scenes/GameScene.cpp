@@ -45,8 +45,11 @@ void GameScene::FreeMemory()
 {
 	for (auto ball : ballsToDelete)
 	{
-		delete ball;
-		ball = nullptr;
+		if (ball != nullptr)
+		{
+			delete ball;
+			ball = nullptr;
+		}
 	}
 
 	for (size_t i = 0; i < balls.size(); i++)
