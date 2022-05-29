@@ -36,5 +36,5 @@ class SplitBall : public IPowerUp
 {
 public:
 	SplitBall(Program* _program, const sf::Vector2f& position);
-	void ApplyEffect() { std::cout << "SPLIT BALL" << std::endl; }
+	void ApplyEffect();
 };

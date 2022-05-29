@@ -14,11 +14,23 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update(float& dt);
 private:
-	float powerUpChance = 75;  // x%
 	
 	IPowerUp* currentPowerUp;
 	bool blocked = false;
 	Program* program;
 
+	int powerUpChance = 25;  // x%
+	int healChance = 3; 
+	int splitChance = 6;  
+	int slowChance = 10;  
+	int enlargeChance = 5;  
+	int stickChance = 10;  
+	
+
+	//int healC = 0;
+	//int splitC = 0;
+	//int slowC = 0;
+	//int enlargeC = 0;
+	//int stickC = 0;
 };
 

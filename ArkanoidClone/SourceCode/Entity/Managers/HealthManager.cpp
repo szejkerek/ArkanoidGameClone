@@ -52,7 +52,7 @@ void HealthManager::HealOneHealth()
 {
 	if (health == maxHealth)
 	{
-		//ADD 1000 POINTS
+		gameScene->AddPoints(5000, 1);
 	}
 	else
 	{

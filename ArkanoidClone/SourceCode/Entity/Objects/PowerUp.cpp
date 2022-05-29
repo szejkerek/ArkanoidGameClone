@@ -56,6 +56,7 @@ void IPowerUp::CheckForCollisions()
 
 AddHealth::AddHealth(Program* _program, const sf::Vector2f& position) : IPowerUp(_program, position)
 {
+	SetFillColor(sf::Color::Red);
 }
 
 void AddHealth::ApplyEffect()
@@ -65,4 +66,10 @@ void AddHealth::ApplyEffect()
 
 SplitBall::SplitBall(Program* _program, const sf::Vector2f& position) : IPowerUp(_program, position)
 {
+	SetFillColor(sf::Color::Blue);
+}
+
+void SplitBall::ApplyEffect()
+{
+
 }

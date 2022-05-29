@@ -48,7 +48,7 @@ public:
 	virtual ~GameScene();
 
 	//Methods
-	void AddPoints(const int& brickPoint);
+	void AddPoints(const int& brickPoint, const int& multiplyier);
 	void SelectStage(Stage* _stage);
 	void StartGame();	
 	void EndGame();
