@@ -1,9 +1,15 @@
 #include "PowerUpManager.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include "../ArkanoidClone/SourceCode/Program.h"
 
 PowerUpManager::PowerUpManager(Program* _program) : program(_program), currentPowerUp(nullptr)
 {
+}
+
+PowerUpManager::~PowerUpManager()
+{
+	FreeMemory();
 }
 
 void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
@@ -18,8 +24,9 @@ void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 			int firstRand = rand() % 100 + 1;
 			int secondRand = rand() % (splitChance + healChance /*+ slowChance + stickChance + enlargeChance*/) + 1;
 
-			if (firstRand <= 100)
+			if (firstRand <= powerUpChance)
 			{
+				FreeMemory();
 				if (secondRand <= healChance)
 				{
 					currentPowerUp = new AddHealth(program, position);
@@ -51,7 +58,7 @@ void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 				}
 				blocked = true;
 			}
-		//}
+	}
 			
 			
 
@@ -63,17 +70,17 @@ void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 			//std::cout << "enlargeC: " << ((float)enlargeC) / 10000 << "%" << std::endl;
 			//std::cout << "stickC: " << ((float)stickC) / 10000 << "%" << std::endl;
 			//std::cout << std::endl << std::endl << std::endl;
-	}
-			
-
-
+			// 
 	//healC = 0;
 	//splitC = 0;
 	//slowC = 0;
 	//enlargeC = 0;
 	//stickC = 0;
 }
+			
 
+
+	
 
 
 void PowerUpManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -86,6 +93,25 @@ void PowerUpManager::Update(float& dt)
 {
 	if (currentPowerUp != nullptr)
 		currentPowerUp->Update(dt);
+
+
+
+	if (blockedForTime)
+	{
+		powerUpTimer -= dt;
+		if (powerUpTimer <= 0)
+		{
+			powerUpTimer = 0;
+			powerUpTimer = defaultPowerUpTimer;
+			blockedForTime = false;
+			blocked = false;
+		}
+	}
+
+
+
+	std::cout << blocked << "  "<<blockedForTime<<"  " << powerUpTimer << std::endl;
+
 }
 
 void PowerUpManager::FreeMemory()
@@ -94,6 +120,16 @@ void PowerUpManager::FreeMemory()
 		delete currentPowerUp;
 
 	currentPowerUp = nullptr;
-	blocked = false;
 
+	if(!blockedForTime)
+		blocked = false;
+
+}
+
+void PowerUpManager::BlockPowerUpsForTime(const float& time)
+{
+	defaultPowerUpTimer = time;
+	powerUpTimer = defaultPowerUpTimer;
+	blockedForTime = true;
+	blocked = true;
 }

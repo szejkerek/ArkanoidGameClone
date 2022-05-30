@@ -2,8 +2,8 @@
 #include "../Program.h"
 #include <ranges>
 #include <algorithm>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <stdlib.h>
+#include <time.h>
 
 #include <iostream>
 
@@ -43,12 +43,12 @@ void GameScene::StartGame() //Preload level
 
 void GameScene::FreeMemory()
 {
-	for (auto ball : ballsToDelete)
+	for (size_t i = 0; i < balls.size(); i++)
 	{
-		if (ball != nullptr)
+		if (balls[i] != nullptr)
 		{
-			delete ball;
-			ball = nullptr;
+			delete balls[i];
+			balls[i] = nullptr;
 		}
 	}
 
