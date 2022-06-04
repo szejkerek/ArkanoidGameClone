@@ -94,8 +94,8 @@ inline bool Stage::ValidateVector(const std::vector<char>& brickChars)
 		return false;
 	}
 
-	std::regex validate("[sxwotgrbpy\\*]");
-	std::vector<char> validSymbols{ '*','s','x','w','o','t','g','r','b','p','y' };
+	std::regex validate("[sxwotgrbpyi\\*]");
+	std::vector<char> validSymbols{ '*','s','x','w','o','t','g','r','b','p','y','i'};
 
 	for (char brickChar : brickChars)
 	{
@@ -147,6 +147,9 @@ inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char&
 	case 'x':
 		temp = new GoldBrick();
 		break;
+	case 'i':
+		temp = new BossBrick();
+		break;
 	case 'w':
 		temp = new ColorBrick(ColorsEnum::white);
 		break;
@@ -171,6 +174,7 @@ inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char&
 	case 'y':
 		temp = new ColorBrick(ColorsEnum::yelow);
 		break;
+
 		
 	default:
 		std::cerr << "Error: Internal switch failure." << std::endl;
@@ -178,7 +182,7 @@ inline IBrick* Stage::SetUpBrick(const int& row, const int& collumn, const char&
 		break;
 	}
 
-	if (temp != nullptr)
+	if (temp != nullptr && brickChar != 'i')
 		temp->SetRelativePosition(row, collumn);
 
 	return temp;
@@ -200,6 +204,11 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 			}
 			continue;
 		}
+		else
+		{
+			if (brickToDelete->GetHp() > 1)
+				destructibleBlocks++;
+		}
 
 		if (brickToDelete->OnCollisionEnter())
 		{
@@ -211,7 +220,9 @@ void Stage::CollisionDetected(IBrick* brickToDelete)
 	}
 
 	if (destructibleBlocks == 0)
+	{
 		WinStage();
+	}
 	
 }
 

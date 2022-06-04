@@ -1,10 +1,12 @@
 #include "Bricks.h"
 #include "../ArkanoidClone/SourceCode/Utility/Resources.h"
+#include "../ArkanoidClone/SourceCode/Utility/Utility.h"
+
 
 IBrick::IBrick(bool destructible, GameScene* _game): points(0), EntityRectangle(_game,{0,0}), destructible(true)
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
-	gameObject.setTexture(ResourceManager::Get().GetTexture("brick"));
+	//gameObject.setTexture(ResourceManager::Get().GetTexture("brick"));
 }
 
 sf::Vector2f IBrick::GetCenterPoint()
@@ -17,7 +19,7 @@ sf::Vector2f IBrick::GetCenterPoint()
 inline void IBrick::SetRelativePosition(int row, int collumn)
 {
 	sf::Vector2f init = PixelSizes::GetInstance().backgroundPosition;
-	SetPosition({ init.x + GetSize().x * collumn, init.y + GetSize().y * row, });
+	SetPosition({ init.x + GetSize().x * collumn, init.y + GetSize().y * row });
 }
 
 void IBrick::SetPoints(const int& _points)
@@ -28,6 +30,11 @@ void IBrick::SetPoints(const int& _points)
 int IBrick::GetPoints()
 {
 	return points;
+}
+
+int IBrick::GetHp()
+{
+	return 1;
 }
 
 inline bool IBrick::IsDestructible()
@@ -129,4 +136,25 @@ ColorBrick::ColorBrick(ColorsEnum color) : IBrick(true, gameScene)
 	default:
 		break;
 	}
+}
+
+BossBrick::BossBrick() : IBrick(true, gameScene), hp(16)
+{
+	sf::Vector2f s = PixelSizes::GetInstance().backgroundSize;
+	sf::Vector2f p = PixelSizes::GetInstance().backgroundPosition;
+
+	destructible = true;
+	SetPoints(100000);
+
+	SetSize({400,400});
+	SetPosition({p.x + s.x/2 - GetSize().x/2, p.y + s.y / 2 - GetSize().y/2 });
+	SetFillColor(sf::Color::Red);
+	
+	
+}
+
+bool BossBrick::OnCollisionEnter()
+{
+	hp--;
+	return DecideIfBrickDestroyed(hp);
 }

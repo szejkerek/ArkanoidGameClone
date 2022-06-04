@@ -20,6 +20,7 @@ public:
 	virtual bool OnCollisionEnter() = 0;  //Returns true when brick is to be destroyed
 	virtual void SetPoints(const int& points);
 	virtual int GetPoints();
+	virtual int GetHp();
 	inline virtual bool IsDestructible();
 
 	//SFML Methods
@@ -40,6 +41,7 @@ private:
 	int hp;
 public:
 	SilverBrick(int stageNumber);
+	int GetHp() { return hp; }
 	bool OnCollisionEnter();
 
 };
@@ -48,6 +50,17 @@ class ColorBrick : public IBrick
 {
 public:
 	ColorBrick(ColorsEnum color);
+	bool OnCollisionEnter();
+
+};
+
+class BossBrick : public IBrick
+{
+private:
+	int hp;
+public:
+	BossBrick();
+	int GetHp() { return hp; }
 	bool OnCollisionEnter();
 
 };
