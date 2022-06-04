@@ -1,3 +1,2 @@
-﻿  PowerUpManager.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(21,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+﻿  SceneManager.cpp
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

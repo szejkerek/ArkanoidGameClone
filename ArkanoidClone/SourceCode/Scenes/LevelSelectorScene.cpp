@@ -132,7 +132,7 @@ void LevelSelectorOriginal::LoadStages()
 	}
 	stages.clear();
 
-	levelsCount = 4; //TODO change to 33 or 32 (boss fight included)
+	levelsCount = 33; //TODO change to 33 or 32 (boss fight included)
 
 	for (int i = 0; i < levelsCount; i++) 
 	{
