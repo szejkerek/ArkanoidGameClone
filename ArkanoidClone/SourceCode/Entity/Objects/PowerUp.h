@@ -44,7 +44,7 @@ class SlowDown : public IPowerUp
 public:
 	SlowDown(Program* _program, const sf::Vector2f& position);
 	void ApplyEffect();
-};
+}; 
 
 class EnlargeVaus : public IPowerUp
 {

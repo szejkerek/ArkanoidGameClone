@@ -188,6 +188,11 @@ void Ball::InitGameObject(const float& _speed)
 	StickBallToVaus();
 }
 
+void Ball::ChangeBallSpeed(const float& newSpeed)
+{
+	speed = newSpeed;
+}
+
 void Ball::UpdateCollistions()
 {
 	UpdateWallCollisions();

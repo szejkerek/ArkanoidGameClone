@@ -16,6 +16,8 @@ public:
 	void BlockPowerUps();
 	void UnblockPowerUps();
 
+	void ChangeAllBallsSpeed(const float& newSpeed);
+
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update(float& dt);
 private:
@@ -25,20 +27,16 @@ private:
 	bool blockedForTime = false;
 	float defaultPowerUpTimer = 8.f;
 	float powerUpTimer = 8.f;
+
+
+
 	Program* program;
 
 	int powerUpChance = 100;  // x%
-	int healChance = 1; 
-	int splitChance = 1;  
-	int slowChance = 10;  
-	int enlargeChance = 5;  
-	int stickChance = 10;  
-	
-
-	//int healC = 0;
-	//int splitC = 0;
-	//int slowC = 0;
-	//int enlargeC = 0;
-	//int stickC = 0;
+	int healChance = 33; 
+	int splitChance = 33;  
+	int slowChance = 33;  
+	int enlargeChance = 20;  
+	int stickChance = 20;  
 };
 

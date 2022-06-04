@@ -74,3 +74,13 @@ void SplitBall::ApplyEffect()
 	program->game->AddBall();
 	program->game->AddBall();
 }
+
+SlowDown::SlowDown(Program* _program, const sf::Vector2f& position) : IPowerUp(_program, position)
+{
+	SetFillColor(sf::Color(255,165,0));
+}
+
+void SlowDown::ApplyEffect()
+{
+	program->game->powerUpManager->ChangeAllBallsSpeed(450);
+}

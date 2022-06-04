@@ -37,6 +37,7 @@ public:
 	void StickBallToVaus();
 	sf::Vector2f GetDirection();
 	void InitGameObject(const float& _speed);
+	void ChangeBallSpeed(const float& newSpeed);
 
 	//SFML Methods
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

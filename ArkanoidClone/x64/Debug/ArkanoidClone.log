@@ -1,20 +1,3 @@
-﻿  ArkanoidClone.cpp
-  HealthManager.cpp
-  HighScoreManager.cpp
-  PowerUpManager.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(19,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  Stage.cpp
-  Ball.cpp
-  PowerUp.cpp
-  Program.cpp
-  GameScene.cpp
-  The contents of <ranges> are available only in c++latest mode with concepts support;
-  see https://github.com/microsoft/STL/issues/1814 for details.
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(12,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  LevelSelectorScene.cpp
-  MenuScene.cpp
-  SceneManager.cpp
-  Button.cpp
-  UIElement.cpp
-  Generowanie kodu...
+﻿  PowerUpManager.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(21,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe
