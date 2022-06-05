@@ -37,6 +37,7 @@ public:
 
 	virtual void LoadStages() = 0;
 	virtual void ResetIndex();
+	virtual int GetIndex();
 	LevelSelectorScene(Program* _program);
 	~LevelSelectorScene();
 

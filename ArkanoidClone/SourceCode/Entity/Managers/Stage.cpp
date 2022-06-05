@@ -265,4 +265,9 @@ void Stage::WinStage()
 	program->game->EndGame();
 }
 
+int Stage::GetStageNumber()
+{
+	return stageNumber;
+}
+
 

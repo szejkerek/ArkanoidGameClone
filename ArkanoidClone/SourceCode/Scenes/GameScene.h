@@ -18,6 +18,8 @@ private:
 	int currentHighscore = 0;
 	bool playable;
 
+
+	
 	TextElement* highScoreLabel;
 	TextElement* scoreLabel;
 	TextElement* scoreCount;
@@ -37,6 +39,7 @@ public:
 
 	//GameObjects
 	Background* background;
+	sf::RectangleShape backgroundBehind;
 
 	std::vector<Ball*> balls;
 	std::vector<Ball*> ballsToDelete;

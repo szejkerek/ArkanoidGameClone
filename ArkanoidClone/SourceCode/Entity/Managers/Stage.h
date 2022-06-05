@@ -45,6 +45,7 @@ public:
 	sf::Texture* GetPreview();
 	std::string GetStageName();
 	void WinStage();
+	int GetStageNumber();
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

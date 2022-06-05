@@ -9,6 +9,10 @@
 
 GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) 
 {
+	
+	backgroundBehind.setSize(static_cast<sf::Vector2f>( PixelSizes::GetInstance().windowResolution ));
+	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("behindGame"));
+
 	srand(time(NULL));
 	StartGame(); 
 }
@@ -39,6 +43,7 @@ void GameScene::StartGame() //Preload level
 	healthManager->RestoreFullHp();
 	playable = true;
 	SetUpScoresText();
+	background->PickBackground(program->levelSelectorOriginal->GetIndex());
 }
 
 void GameScene::FreeMemory()
@@ -179,6 +184,7 @@ void GameScene::SelectStage(Stage* _stage)
 	currentStage = _stage;
 	currentHighscore = program->highScoreManager->GetCurrentHighscore(currentStage);
 	SetUpScoresText();
+	
 }
 
 void GameScene::EndGame()
@@ -199,7 +205,7 @@ void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (!playable)
 		return;
-
+	target.draw(backgroundBehind);
 	target.draw(*background);
 	target.draw(*currentStage);
 	target.draw(*vaus);

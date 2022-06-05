@@ -240,3 +240,8 @@ void LevelSelectorScene::ResetIndex()
 	currentIndex = 0;
 	ChoosePreviewImage();
 }
+
+int LevelSelectorScene::GetIndex()
+{
+	return currentIndex;
+}
