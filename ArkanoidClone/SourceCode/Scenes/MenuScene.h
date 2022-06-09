@@ -4,6 +4,7 @@
 
 class MenuScene : public Scene
 {
+	sf::RectangleShape backgroundBehind;
 	Button* levelSelectorBtn;
 
 public:

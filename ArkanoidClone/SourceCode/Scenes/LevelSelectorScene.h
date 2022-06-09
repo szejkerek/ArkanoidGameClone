@@ -8,6 +8,7 @@ class LevelSelectorScene : public Scene
 {
 protected:
 	sf::RectangleShape preview;
+	sf::RectangleShape backgroundBehind;
 	int currentIndex = 0;
 	int levelsCount = 0;
 	

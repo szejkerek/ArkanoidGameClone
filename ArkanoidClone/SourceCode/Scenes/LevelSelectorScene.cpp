@@ -40,6 +40,8 @@ void LevelSelectorScene::LayoutText()
 
 LevelSelectorScene::LevelSelectorScene(Program* _program) : Scene(_program)
 {
+	backgroundBehind.setSize(static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution));
+	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("backgroundMenu"));
 	CreateButtnos();
 	LayoutText();
 }
@@ -207,6 +209,7 @@ void LevelSelectorScene::Update(float& dt)
 
 void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(backgroundBehind);
 	target.draw(*backToMenuBtn);
 	target.draw(*playBtn);
 	target.draw(*nextStageBtn);
