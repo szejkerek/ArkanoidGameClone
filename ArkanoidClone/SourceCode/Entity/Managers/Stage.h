@@ -49,4 +49,5 @@ public:
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void Update(float& dt);
 };

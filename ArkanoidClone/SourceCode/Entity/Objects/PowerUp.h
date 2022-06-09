@@ -26,6 +26,8 @@ protected:
 	float timer = 0.06f;
 	float defaultTimer = 0.06f;
 
+
+
 	void MoveDown(float& dt);
 	void CheckForCollisions();
 	void Animate(float& dt);

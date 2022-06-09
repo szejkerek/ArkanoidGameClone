@@ -245,6 +245,7 @@ void GameScene::Update( float& dt )
 
 	vaus->Update(dt);	
 	powerUpManager->Update(dt);
+	currentStage->Update(dt);
 	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		EndGame();

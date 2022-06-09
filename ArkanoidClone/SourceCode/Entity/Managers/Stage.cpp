@@ -260,6 +260,15 @@ void Stage::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 }
 
+void Stage::Update(float& dt)
+{
+	for (auto brick : playableBricks)
+	{
+		if(brick != nullptr)
+			brick->Update(dt);
+	}
+}
+
 void Stage::WinStage()
 {
 	program->game->EndGame();

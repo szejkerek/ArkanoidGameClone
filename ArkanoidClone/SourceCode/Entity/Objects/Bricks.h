@@ -22,6 +22,7 @@ public:
 	virtual int GetPoints();
 	virtual int GetHp();
 	inline virtual bool IsDestructible();
+	virtual void Update(float& dt) {};
 
 	//SFML Methods
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -29,10 +30,19 @@ public:
 
 class GoldBrick : public IBrick
 {
+private:
+	sf::Texture* goldTexture;
+	sf::IntRect textureRect;
+
+	float timer = 0.02f;
+	float defaultTimer = 0.02f;
+	bool doAnimate = false;
 public:
 	GoldBrick();
+	void Animate();
+	void PickNextTexture();
 	bool OnCollisionEnter(); //Can never be destroyed
-
+	void Update(float& dt);
 };
 
 class SilverBrick : public IBrick
@@ -55,7 +65,6 @@ class ColorBrick : public IBrick
 public:
 	ColorBrick(ColorsEnum color);
 	bool OnCollisionEnter();
-
 };
 
 class BossBrick : public IBrick
@@ -66,5 +75,4 @@ public:
 	BossBrick();
 	int GetHp() { return hp; }
 	bool OnCollisionEnter();
-
 };

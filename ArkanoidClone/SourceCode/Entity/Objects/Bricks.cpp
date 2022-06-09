@@ -50,14 +50,59 @@ void IBrick::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 GoldBrick::GoldBrick() : IBrick(false,gameScene)
 {
+	goldTexture = ResourceManager::Get().GetTexture("goldBricks");
 	destructible = false;
-	SetFillColor(sf::Color::Color(181, 166, 66, 255));
+	textureRect.width = GetSize().x;
+	textureRect.height = GetSize().y;
+
+	SetTexture(goldTexture);
+	gameObject.setTextureRect(textureRect);
 }
 
+void GoldBrick::Animate()
+{
+	if (doAnimate)
+		return;
+
+	doAnimate = true;
+	timer = defaultTimer;
+	textureRect.left = 0;
+}
+
+void GoldBrick::PickNextTexture()
+{
+	if (textureRect.left >= textureRect.width * 11)
+	{
+		doAnimate = false;
+		textureRect.left = 0;
+	}
+	else
+	{
+		textureRect.left += GetSize().x;
+	}
+
+		gameObject.setTextureRect(textureRect);
+}
+
+void GoldBrick::Update(float& dt)
+{
+	if (!doAnimate)
+		return;
+
+	timer -= dt;
+
+	if (timer <= 0)
+	{
+		PickNextTexture();
+		timer = defaultTimer;
+	}
+}
 bool GoldBrick::OnCollisionEnter()
 {
+	Animate();
 	return false; //Never gets destroyed
 }
+
 
 bool DecideIfBrickDestroyed(int hp)
 {
