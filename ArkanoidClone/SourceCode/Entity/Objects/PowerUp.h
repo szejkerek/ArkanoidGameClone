@@ -20,9 +20,16 @@ protected:
 	float speed = 250.f;
 	float bottomCollider = 0;
 	bool effectApplied = false;
+	sf::Texture* powerUpTexture;
+	sf::IntRect textureRect;
+
+	float timer = 0.06f;
+	float defaultTimer = 0.06f;
 
 	void MoveDown(float& dt);
 	void CheckForCollisions();
+	void Animate(float& dt);
+	void ChangeTexture();
 };
 
 class AddHealth : public IPowerUp

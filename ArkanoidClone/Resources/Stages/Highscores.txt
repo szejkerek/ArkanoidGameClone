@@ -9,7 +9,7 @@ Stage_4 159430
 Stage_5 26630
 Stage_6 29420
 Stage_7 1510
-Stage_31 7730
+Stage_31 103400
 Stage_8 6180
 Stage_30 96600
 Stage_9 16490
@@ -29,7 +29,7 @@ Stage_23 13950
 Stage_24 21000
 Stage_25 0
 Stage_26 29160
-Stage_27 1530
-Stage_28 66330
-Stage_29 0
+Stage_27 25670
+Stage_28 87330
+Stage_29 3050
 Stage_32 10000000

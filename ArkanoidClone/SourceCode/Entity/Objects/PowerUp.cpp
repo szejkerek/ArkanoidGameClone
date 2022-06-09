@@ -4,10 +4,17 @@
 
 IPowerUp::IPowerUp(Program* _program, const sf::Vector2f& position) : program(_program), EntityRectangle(_program->game, PixelSizes::GetInstance().powerUpSize)
 {
+	powerUpTexture = ResourceManager::Get().GetTexture("powerUpTexture");
 	sf::Vector2f brickSize = PixelSizes::GetInstance().brickSize;
 	SetOriginCenter();
 	SetPosition({ position.x - 1.5f + brickSize.x / 2,  position.y - 1.5f + brickSize.y / 2 });
-	bottomCollider = program->game->background->GetCollider().top + program->game->background->GetCollider().height - GetSize().y/2;
+	bottomCollider = program->game->background->GetCollider().top + program->game->background->GetCollider().height - GetSize().y / 2;
+
+	textureRect.width = GetSize().x;
+	textureRect.height = GetSize().y;
+
+	SetTexture(powerUpTexture);
+	gameObject.setTextureRect(textureRect);
 }
 
 void IPowerUp::Hide()
@@ -24,6 +31,7 @@ void IPowerUp::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void IPowerUp::Update(float& dt)
 {
 	MoveDown(dt);
+	Animate(dt);
 	CheckForCollisions();
 
 }
@@ -52,6 +60,27 @@ void IPowerUp::CheckForCollisions()
 			return;
 		}
 	}
+}
+
+void IPowerUp::Animate(float& dt)
+{
+	timer -= dt;
+
+	if (timer <= 0)
+	{
+		ChangeTexture();
+		timer = defaultTimer;
+	}
+}
+
+void IPowerUp::ChangeTexture()
+{
+	if (textureRect.left >= textureRect.width * 15)
+		textureRect.left = 0;
+	else
+		textureRect.left += GetSize().x;
+
+	gameObject.setTextureRect(textureRect);
 }
 
 AddHealth::AddHealth(Program* _program, const sf::Vector2f& position) : IPowerUp(_program, position)

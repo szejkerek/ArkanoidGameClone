@@ -23,6 +23,7 @@ public:
 private:
 	
 	IPowerUp* currentPowerUp;
+
 	bool blocked = false;
 	bool blockedForTime = false;
 	float defaultPowerUpTimer = 8.f;
