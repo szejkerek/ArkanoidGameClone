@@ -4,7 +4,7 @@ dup1 16190
 Stage_1 38330
 Stage_2 7230
 Stage_3 2250
-12345 0
+12345 23590
 Stage_4 159430
 Stage_5 26630
 Stage_6 29420
@@ -21,7 +21,7 @@ Stage_15 31010
 Stage_16 10940
 Stage_17 810
 Stage_18 4250
-Stage_19 1760
+Stage_19 3100
 Stage_20 4610
 Stage_21 0
 Stage_22 32970

@@ -39,9 +39,13 @@ class SilverBrick : public IBrick
 {
 private:
 	int hp;
+	int maxHp;
+	sf::IntRect textureRect;
 public:
 	SilverBrick(int stageNumber);
 	int GetHp() { return hp; }
+	void PickBrokenTexutre();
+	void ApplyTexture(int textureIndex);
 	bool OnCollisionEnter();
 
 };

@@ -6,7 +6,7 @@
 IBrick::IBrick(bool destructible, GameScene* _game): points(0), EntityRectangle(_game,{0,0}), destructible(true)
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
-	gameObject.setTexture(ResourceManager::Get().GetTexture("brick"));
+	SetTexture(ResourceManager::Get().GetTexture("brick"));
 }
 
 sf::Vector2f IBrick::GetCenterPoint()
@@ -64,9 +64,73 @@ bool DecideIfBrickDestroyed(int hp)
 	return (hp <= 0);
 }
 
+inline int CalculateHealth(int stageNumber)
+{
+	return static_cast<int>(2 + (stageNumber / 8)); //2hp at the beginning, then each 8lvls +1hp
+}
+
+
+SilverBrick::SilverBrick(int stageNumber) : IBrick(true, gameScene), hp(CalculateHealth(stageNumber))
+{
+	maxHp = hp;
+	destructible = true;
+	SetPoints(stageNumber * 50);
+
+	textureRect.width = PixelSizes::GetInstance().brickSize.x;
+	textureRect.height = PixelSizes::GetInstance().brickSize.y;
+
+	SetTexture(ResourceManager::Get().GetTexture("silverBricks"));
+	ApplyTexture(0);
+
+}
+
+void SilverBrick::PickBrokenTexutre()
+{
+	float f_maxHp = static_cast<float>(maxHp);
+	float f_hp = static_cast<float>(hp);
+	float destroyPercent = (f_hp / f_maxHp) * 100;
+
+	if (destroyPercent == 100)
+	{
+		ApplyTexture(0);
+	}
+	else if (destroyPercent >= 83.2f)
+	{
+		ApplyTexture(1);
+	}
+	else if (destroyPercent >= 66.5f)
+	{
+		ApplyTexture(2);
+	}
+	else if (destroyPercent >= 50.f)
+	{
+		ApplyTexture(3);
+	}
+	else if (destroyPercent >= 33.2f)
+	{
+		ApplyTexture(4);
+	}
+	else if (destroyPercent >= 16.5f)
+	{
+		ApplyTexture(5);
+	}
+}
+
+void SilverBrick::ApplyTexture(int textureIndex)
+{
+	if (textureIndex <= 0)
+		textureIndex = 0;
+	else if (textureIndex >= 5)
+		textureIndex = 5;
+
+	textureRect.left = GetSize().x * textureIndex;
+	gameObject.setTextureRect(textureRect);
+}
+
 bool SilverBrick::OnCollisionEnter()
 {
 	hp--;
+	PickBrokenTexutre();
 	return DecideIfBrickDestroyed(hp);
 }
 bool ColorBrick::OnCollisionEnter()
@@ -74,18 +138,7 @@ bool ColorBrick::OnCollisionEnter()
 	return true; //Always gets destroyed
 }
 
-inline int CalculateHealth(int stageNumber)
-{
-	return 2 + (stageNumber >> 3); //2hp at the beginning, then each 8lvls +1hp
-}
 
-SilverBrick::SilverBrick(int stageNumber) : IBrick(true, gameScene), hp(CalculateHealth(stageNumber))
-{
-	destructible = true;
-	SetPoints(stageNumber * 50);
-
-	SetFillColor(sf::Color::Color(196, 202, 206));
-}
 
 ColorBrick::ColorBrick(ColorsEnum color) : IBrick(true, gameScene)
 {
@@ -119,7 +172,7 @@ ColorBrick::ColorBrick(ColorsEnum color) : IBrick(true, gameScene)
 
 		break;
 	case ColorsEnum::white:
-		SetFillColor(sf::Color::White);
+		SetTexture(ResourceManager::Get().GetTexture("whiteBrick"));
 		SetPoints(50);
 
 		break;
