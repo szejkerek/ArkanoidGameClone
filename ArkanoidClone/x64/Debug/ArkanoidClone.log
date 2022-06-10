@@ -1,3 +1,5 @@
 ﻿  EndScreen.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\EndScreen.cpp(15,110): warning C4244: "argument": konwersja z "float" do "const int", możliwa utrata danych
+  Program.cpp
+  UIElement.cpp
+  Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

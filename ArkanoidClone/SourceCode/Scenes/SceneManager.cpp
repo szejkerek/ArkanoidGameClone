@@ -26,12 +26,6 @@ void SceneManager::LoadScene(const Scenes& sceneToLoad)
 		currentScene = program->levelSelectorOriginal;
 		break;
 	}
-	case Scenes::LevelSelectorCustom:
-	{
-		//program->levelSelectorCustom->ResetIndex();
-		currentScene = program->levelSelectorCustom;
-		break;
-	}
 	case Scenes::none:
 	{
 		break;

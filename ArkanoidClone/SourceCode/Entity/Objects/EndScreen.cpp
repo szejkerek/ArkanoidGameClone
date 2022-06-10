@@ -12,7 +12,7 @@ EndScreen::EndScreen(Program* _program): program(_program)
 	background.setPosition(windowCenter);
 
 	continueBtn = new Button(_program);
-	continueBtn->PlaceOnScene({ windowCenter.x, windowCenter.y + 75 }, ButtonType::RectangleMedium, "Continue", 18.f, Scenes::LevelSelectorOriginal);
+	continueBtn->PlaceOnScene({ windowCenter.x, windowCenter.y + 75 }, ButtonType::RectangleMedium, "Continue", 18, Scenes::Menu);
 
 	text = new TextElement(_program);
 	text->SetTextPosition({ windowCenter.x, windowCenter.y - 75 });

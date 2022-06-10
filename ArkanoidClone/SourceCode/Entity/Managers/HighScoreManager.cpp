@@ -66,9 +66,4 @@ void HighScoreManager::LoadScoresFromProgram()
 		if(!scoreMap.contains(originalStep->stageName))
 			scoreMap.insert(std::make_pair(originalStep->stageName, 0));
 	}
-	for (auto customStep : program->levelSelectorCustom->stages)
-	{
-		if (!scoreMap.contains(customStep->stageName))
-			scoreMap.insert(std::make_pair(customStep->stageName, 0));
-	}
 }

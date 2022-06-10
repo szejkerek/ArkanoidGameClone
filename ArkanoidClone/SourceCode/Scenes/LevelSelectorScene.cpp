@@ -8,7 +8,6 @@ void LevelSelectorScene::CreateButtnos()
 	playBtn = new Button(program);
 	nextStageBtn = new Button(program);
 	previousStageBtn = new Button(program);
-	programableSwapStageBtn = new Button(program);
 }
 
 void LevelSelectorScene::LayoutButtons()
@@ -19,8 +18,6 @@ void LevelSelectorScene::LayoutButtons()
 
 	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Back", 30, Scenes::Menu);
 	playBtn->PlaceOnScene({ window.x / 2, window.y - playBtn->GetSize().y - screenMargin }, ButtonType::RectangleBig, "Play", 55);
-	programableSwapStageBtn->PlaceOnScene({ window.x - screenMargin - programableSwapStageBtn->GetSize().x, window.y - programableSwapStageBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium);
-
 	nextStageBtn->PlaceOnScene({ window.x / 2 + buttonPadding, screenMargin + nextStageBtn->GetSize().y }, ButtonType::squareMedium, ">", 25);
 	previousStageBtn->PlaceOnScene({ window.x / 2 - buttonPadding,screenMargin + previousStageBtn->GetSize().y }, ButtonType::squareMedium, "<", 25);
 
@@ -134,7 +131,7 @@ void LevelSelectorOriginal::LoadStages()
 	}
 	stages.clear();
 
-	levelsCount = 33; //TODO change to 33 or 32 (boss fight included)
+	levelsCount = 33; 
 
 	for (int i = 0; i < levelsCount; i++) 
 	{
@@ -152,16 +149,6 @@ void LevelSelectorOriginal::LoadStages()
 
 }
 
-LevelSelectorCustom::LevelSelectorCustom(Program* _program) : LevelSelectorScene(_program)
-{
-	LoadStages();
-	SetUpScene();
-	indexText->SetText("Custom stages", 12, sf::Color::White);
-	stageTypeText->SetText(std::to_string(1) +"/" + std::to_string(levelsCount), 20, sf::Color::White);
-	programableSwapStageBtn->SetText("Original", 21);
-	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorOriginal);
-
-}
 
 LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorScene(_program)
 {
@@ -169,33 +156,7 @@ LevelSelectorOriginal::LevelSelectorOriginal(Program* _program) : LevelSelectorS
 	SetUpScene();
 	indexText->SetText("Original stages", 12, sf::Color::White);
 	stageTypeText->SetText(std::to_string(1) + "/" + std::to_string(levelsCount), 20, sf::Color::White);
-	programableSwapStageBtn->SetText("Custom", 21);
-	programableSwapStageBtn->LoadSceneOnClick(Scenes::LevelSelectorCustom);
 
-}
-
-void LevelSelectorCustom::LoadStages()
-{
-	std::filesystem::path current = std::filesystem::current_path().append("Resources/Stages/Custom");
-
-	int i = 0;
-	for (std::filesystem::directory_entry entry : std::filesystem::directory_iterator(current))
-	{	
-		Stage* tempStage = new Stage(i, entry.path().stem().string(), StageType::custom, program);
-		if (tempStage->LoadedSucessfuly())
-		{
-			stages.push_back(tempStage);
-		}
-		else
-		{
-			stages.push_back(nullptr);
-			delete tempStage;
-		}
-
-		i++;
-	}
-
-	levelsCount = i;
 }
 
 void LevelSelectorScene::Update(float& dt)
@@ -204,7 +165,6 @@ void LevelSelectorScene::Update(float& dt)
 	playBtn->Update(dt);
 	nextStageBtn->Update(dt);
 	previousStageBtn->Update(dt);
-	programableSwapStageBtn->Update(dt);
 }
 
 void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -214,7 +174,6 @@ void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states)
 	target.draw(*playBtn);
 	target.draw(*nextStageBtn);
 	target.draw(*previousStageBtn);
-	target.draw(*programableSwapStageBtn);
 	target.draw(preview);
 	target.draw(*indexText);
 	target.draw(*stageTypeText);
@@ -226,7 +185,6 @@ void LevelSelectorScene::FreeMemory()
 	delete playBtn;
 	delete nextStageBtn;
 	delete previousStageBtn;
-	delete programableSwapStageBtn;
 	delete indexText;
 	delete stageTypeText;
 

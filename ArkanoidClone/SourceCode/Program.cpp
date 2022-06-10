@@ -2,7 +2,7 @@
 #include "Utility/Utility.h"
 Program::Program() 
 	: highScoreManager(new HighScoreManager(this)), game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
-	, levelSelectorOriginal(new LevelSelectorOriginal(this)), levelSelectorCustom(new LevelSelectorCustom(this))
+	, levelSelectorOriginal(new LevelSelectorOriginal(this))
 		
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
@@ -16,7 +16,6 @@ Program::~Program()
 {
 	delete sceneManager;
 	delete levelSelectorOriginal;
-	delete levelSelectorCustom;
 	delete menu;
 	delete game;
 	delete window;

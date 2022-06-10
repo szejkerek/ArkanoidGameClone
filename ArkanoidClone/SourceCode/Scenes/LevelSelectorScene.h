@@ -20,7 +20,7 @@ protected:
 	Button* playBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
-	Button* programableSwapStageBtn;
+	//Button* programableSwapStageBtn;
 
 	TextElement* indexText;
 	TextElement* stageTypeText;
@@ -50,12 +50,5 @@ class LevelSelectorOriginal : public LevelSelectorScene
 {
 public:
 	LevelSelectorOriginal(Program* _program);
-	virtual void LoadStages();
-};
-
-class LevelSelectorCustom : public LevelSelectorScene
-{
-public:
-	LevelSelectorCustom(Program* _program);
 	virtual void LoadStages();
 };

@@ -262,24 +262,26 @@ void GameScene::Update( float& dt )
 		powerUpManager->Update(dt);
 		currentStage->Update(dt);
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		{
-			for (size_t i = 0; i < balls.size(); i++)
-				balls[i]->StickBallToVaus();
-
-			playable = false;
-			ballAirTime = 0;
-			program->highScoreManager->UpdateScore(currentStage, currentScore);
-			program->highScoreManager->SaveScores();
-			currentScore = 0;
-			powerUpManager->FreeMemory();
-			program->sceneManager->LoadScene(Scenes::Menu);
-		}
 	}
 	else
 	{
 		vaus->Update(dt);
 		endScreen->Update(dt);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		for (size_t i = 0; i < balls.size(); i++)
+			balls[i]->StickBallToVaus();
+
+		playable = false;
+		ballAirTime = 0;
+		program->highScoreManager->UpdateScore(currentStage, currentScore);
+		program->highScoreManager->SaveScores();
+		currentScore = 0;
+		powerUpManager->FreeMemory();
+		FreeMemory();
+		program->sceneManager->LoadScene(Scenes::Menu);
 	}
 }
 
