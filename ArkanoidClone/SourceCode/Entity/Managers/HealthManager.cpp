@@ -25,10 +25,10 @@ void HealthManager::InitializePlacements()
 	}
 }
 
-HealthManager::HealthManager(GameScene* game) : health(3), maxHealth(11), EntityRectangle(game, PixelSizes::GetInstance().healthSize)
+HealthManager::HealthManager(GameScene* game) : health(3), maxHealth(17), EntityRectangle(game, PixelSizes::GetInstance().healthSize)
 {
 	SetPosition(PixelSizes::GetInstance().healthPosition);
-	SetFillColor(sf::Color::Red);
+	gameObject.setTexture(ResourceManager::Get().GetTexture("heart"));
 	InitializePlacements();
 }
 
