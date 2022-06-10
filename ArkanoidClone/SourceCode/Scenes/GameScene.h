@@ -5,6 +5,7 @@
 #include "../Entity/Objects/Bricks.h"
 #include "../Entity/Managers/Stage.h"
 #include "../Entity/Objects/Background.h"
+#include "../Entity/Objects/EndScreen.h"
 #include "../Entity/Objects/Vaus.h"
 #include "../Entity/Managers/HealthManager.h"
 #include "../Entity/Managers/PowerUpManager.h"
@@ -47,6 +48,7 @@ public:
 	Stage* currentStage;
 	HealthManager* healthManager;
 	PowerUpManager* powerUpManager;
+	EndScreen* endScreen;
 
 	//Variables
 	float ballAirTime = 0;
@@ -59,7 +61,7 @@ public:
 	void AddPoints(const int& brickPoint, const int& multiplyier);
 	void SelectStage(Stage* _stage);
 	void StartGame();	
-	void EndGame();
+	void EndGame(bool win);
 
 	void AddBall();
 	void RemoveBall(Ball* ballToDelete);

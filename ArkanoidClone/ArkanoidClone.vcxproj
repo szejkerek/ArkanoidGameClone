@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Entity\Objects\EndScreen.cpp" />
     <ClCompile Include="SourceCode\Entity\Objects\PowerUp.cpp" />
     <ClCompile Include="SourceCode\Entity\Managers\PowerUpManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Managers\HighScoreManager.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="SourceCode\UI\TextElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SourceCode\Entity\Objects\EndScreen.h" />
     <ClInclude Include="SourceCode\Entity\Objects\PowerUp.h" />
     <ClInclude Include="SourceCode\Entity\Managers\PowerUpManager.h" />
     <ClInclude Include="SourceCode\Entity\Managers\HighScoreManager.h" />

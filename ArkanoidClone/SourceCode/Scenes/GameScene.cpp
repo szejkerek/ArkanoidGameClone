@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <stdlib.h>
 #include <time.h>
-
 #include <iostream>
 
 GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) 
@@ -12,6 +11,8 @@ GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), 
 	
 	backgroundBehind.setSize(static_cast<sf::Vector2f>( PixelSizes::GetInstance().windowResolution ));
 	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("backgroundGame"));
+
+	
 
 	srand(time(NULL));
 	StartGame(); 
@@ -32,6 +33,9 @@ void GameScene::StartGame() //Preload level
 
 	if (powerUpManager == nullptr)
 	powerUpManager = new PowerUpManager(program);
+	
+	if (endScreen == nullptr)
+		endScreen = new EndScreen(program);
 
 	if (balls.size() == 0)
 	{
@@ -73,6 +77,7 @@ void GameScene::FreeMemory()
 	delete scoreLabel;
 	delete highScoreLabel;
 	delete powerUpManager;
+	delete endScreen;
 
 	background = nullptr;
 	vaus = nullptr;
@@ -83,6 +88,7 @@ void GameScene::FreeMemory()
 	scoreLabel = nullptr;
 	highScoreLabel = nullptr;
 	powerUpManager = nullptr;
+	endScreen = nullptr;
 }
 
 void GameScene::AddBall()
@@ -187,8 +193,11 @@ void GameScene::SelectStage(Stage* _stage)
 	
 }
 
-void GameScene::EndGame()
+void GameScene::EndGame(bool win)
 {
+	if (win)
+		endScreen->SetWinning();
+
 	for (size_t i = 0; i < balls.size(); i++)
 		balls[i]->StickBallToVaus();
 
@@ -198,56 +207,79 @@ void GameScene::EndGame()
 	program->highScoreManager->SaveScores();
 	currentScore = 0;
 	powerUpManager->FreeMemory();
-	program->sceneManager->LoadScene(Scenes::Menu);
+	
 }
 
 void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	if (!playable)
-		return;
-	target.draw(backgroundBehind);
-	target.draw(*background);
-	target.draw(*currentStage);
-	target.draw(*vaus);
+	
+	
+		target.draw(backgroundBehind);
+		target.draw(*background);
+		target.draw(*currentStage);
+		target.draw(*vaus);
+		target.draw(*healthManager);
 
-	for (size_t i = 0; i < balls.size(); i++)
-	{
-		if (balls[i] != nullptr)
-			target.draw(*balls[i]);
-	}
+		if (playable)
+			for (size_t i = 0; i < balls.size(); i++)
+			{
+				if (balls[i] != nullptr)
+					target.draw(*balls[i]);
+			}
 
-	target.draw(*healthManager);
-	target.draw(*powerUpManager);
+		
+		target.draw(*powerUpManager);
 
 
-	target.draw(*highScoreLabel);
-	target.draw(*scoreLabel);
-	target.draw(*highScoreCount);
-	target.draw(*highscoreNotification);
-	target.draw(*scoreCount);
+		target.draw(*highScoreLabel);
+		target.draw(*scoreLabel);
+		target.draw(*highScoreCount);
+		target.draw(*highscoreNotification);
+		target.draw(*scoreCount);
+
+
+		if(!playable)
+			target.draw(*endScreen);
+
 
 
 }
 
 void GameScene::Update( float& dt )
 {
-	//std::cout << balls.size() << std::endl;
-	if (!playable)
-		return;
-	
-	ballAirTime += dt; //GameTime
-
-	for (size_t i = 0; i < balls.size(); i++)
+	if (playable)
 	{
-		if(balls[i] != nullptr)
-			balls[i]->Update(dt);
-	}
 
-	vaus->Update(dt);	
-	powerUpManager->Update(dt);
-	currentStage->Update(dt);
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		EndGame();
+		ballAirTime += dt; //GameTime
+
+		for (size_t i = 0; i < balls.size(); i++)
+		{
+			if (balls[i] != nullptr)
+				balls[i]->Update(dt);
+		}
+
+		vaus->Update(dt);
+		powerUpManager->Update(dt);
+		currentStage->Update(dt);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			for (size_t i = 0; i < balls.size(); i++)
+				balls[i]->StickBallToVaus();
+
+			playable = false;
+			ballAirTime = 0;
+			program->highScoreManager->UpdateScore(currentStage, currentScore);
+			program->highScoreManager->SaveScores();
+			currentScore = 0;
+			powerUpManager->FreeMemory();
+			program->sceneManager->LoadScene(Scenes::Menu);
+		}
+	}
+	else
+	{
+		vaus->Update(dt);
+		endScreen->Update(dt);
+	}
 }
 

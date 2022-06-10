@@ -39,7 +39,7 @@ void HealthManager::TakeHit()
 	if (health <= 0)
 	{
 		health = 0;
-		gameScene->EndGame();
+		gameScene->EndGame(false);
 	}
 }
 

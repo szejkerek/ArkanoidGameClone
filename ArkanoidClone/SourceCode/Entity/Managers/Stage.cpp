@@ -271,7 +271,7 @@ void Stage::Update(float& dt)
 
 void Stage::WinStage()
 {
-	program->game->EndGame();
+	program->game->EndGame(true);
 }
 
 int Stage::GetStageNumber()
