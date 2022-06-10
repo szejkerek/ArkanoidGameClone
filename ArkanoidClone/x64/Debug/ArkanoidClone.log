@@ -1,13 +1,5 @@
-﻿  ArkanoidClone.cpp
-  HealthManager.cpp
-  HighScoreManager.cpp
-  PowerUpManager.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(21,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  Stage.cpp
-  Background.cpp
-  Ball.cpp
-  Bricks.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(55,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+﻿  Bricks.cpp
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(55,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -16,7 +8,7 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(56,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(56,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -25,7 +17,7 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -34,7 +26,7 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(124,57): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(124,57): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -43,7 +35,7 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(125,58): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(125,58): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -52,7 +44,7 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(171,33): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+C:\Projekty\Studia\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(171,33): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=float
@@ -61,41 +53,4 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bri
           [
               T=int
           ]
-  PowerUp.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(13,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(14,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-  Program.cpp
-  GameScene.cpp
-D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(16,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  LevelSelectorScene.cpp
-  MenuScene.cpp
-  SceneManager.cpp
-  Button.cpp
-  UIElement.cpp
-  Generowanie kodu...
-  ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe
+  ArkanoidClone.vcxproj -> C:\Projekty\Studia\ArkanoidClone\x64\Debug\ArkanoidClone.exe

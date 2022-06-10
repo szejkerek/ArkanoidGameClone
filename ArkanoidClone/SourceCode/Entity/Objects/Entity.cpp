@@ -73,8 +73,8 @@ inline void EntityCircle::InitGameObject()
 {
 	gameObject.setRadius( 10.f );
 	gameObject.setPosition(0, 0);
-	gameObject.setOutlineColor(sf::Color::Color(155, 135, 12));
-	gameObject.setOutlineThickness(1.f);
+	gameObject.setOutlineColor(sf::Color::Black);
+	gameObject.setOutlineThickness(2.f);
 }
 
 inline void EntityCircle::SetPosition(const sf::Vector2f& position)

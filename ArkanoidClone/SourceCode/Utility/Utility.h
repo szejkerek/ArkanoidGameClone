@@ -58,8 +58,7 @@ public:
 	float ballRadius = 7.f;
 
 	sf::Vector2f brickSize{ 55,28 };
-
-
+	sf::Vector2f bossSize{ 400,400 };
 	sf::Vector2f iVausCentralSize{23,28 };
 	sf::Vector2f iVausGreySize{ 17,28 };
 	sf::Vector2f iVausRedSize{ 17,28 };

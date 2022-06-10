@@ -34,8 +34,8 @@ private:
 	sf::Texture* goldTexture;
 	sf::IntRect textureRect;
 
-	float timer = 0.02f;
-	float defaultTimer = 0.02f;
+	float timer = 0.04f;
+	float defaultTimer = 0.04f;
 	bool doAnimate = false;
 public:
 	GoldBrick();

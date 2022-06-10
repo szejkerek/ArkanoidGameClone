@@ -244,11 +244,12 @@ BossBrick::BossBrick() : IBrick(true, gameScene), hp(64)
 	destructible = true;
 	SetPoints(10000000);
 
-	SetSize({400,400});
+	SetSize(PixelSizes::GetInstance().bossSize);
+	
 	SetPosition({p.x + s.x/2 - GetSize().x/2, p.y + s.y / 2 - GetSize().y/2 });
-	SetFillColor(sf::Color::Red);
+	//SetFillColor(sf::Color::Red);
 	
-	
+	SetTexture(ResourceManager::Get().GetTexture("bossBrick"));
 }
 
 bool BossBrick::OnCollisionEnter()
