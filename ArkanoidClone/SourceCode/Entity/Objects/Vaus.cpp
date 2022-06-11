@@ -62,10 +62,10 @@ void Vaus::InitParts()
 	redPartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LR"));
 
 	IVausPart* bluePartRight = new BluePart({ blueOffset,0 });
-	bluePartRight->SetTexture(ResourceManager::Get().GetTexture("Vaus_RB"));
+	bluePartRight->SetTexture(ResourceManager::Get().GetTexture("Vaus_RB_Anim"));
 
 	IVausPart* bluePartLeft = new BluePart({ -blueOffset,0 });
-	bluePartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LB"));
+	bluePartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LB_Anim"));
 
 	parts.push_back(greyPartCentral);
 	parts.push_back(greyPartRight);
@@ -104,11 +104,18 @@ void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Vaus::Update(float& dt)
 {
-	for (int i = 0; i < parts.size(); i++)
+
+	lightsAnimTimer -= dt;
+	if (lightsAnimTimer <= 0)
 	{
-		if (parts[i] != nullptr)
-			target.Update(dt);
+		for (int i = 0; i < parts.size(); i++)
+		{
+			if (parts[i] != nullptr)
+				parts[i]->PlayAnimation();
+		}
+		lightsAnimTimer = lightsAnimDefaultTimer;
 	}
+
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
@@ -119,5 +126,11 @@ void Vaus::Update(float& dt)
 	{
 		direction = { 1, 0 };
 		Move(dt);
+	}
+
+	for (int i = 0; i < parts.size(); i++)
+	{
+		if (parts[i] != nullptr)
+			parts[i]->Update(dt);
 	}
 }

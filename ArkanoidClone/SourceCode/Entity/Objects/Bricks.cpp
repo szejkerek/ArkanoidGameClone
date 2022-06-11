@@ -244,10 +244,8 @@ BossBrick::BossBrick() : IBrick(true, gameScene), hp(64)
 	destructible = true;
 	SetPoints(10000000);
 
-	
 	SetSize({ 400,400 });
 	SetPosition({p.x + s.x/2 - GetSize().x/2, p.y + s.y / 2 - GetSize().y/2 });
-	//SetFillColor(sf::Color::Red);
 	gameObject.setTextureRect(sf::IntRect(0, 0, 400, 400));
 	gameObject.setTexture(ResourceManager::Get().GetTexture("bossBrick"));
 }

@@ -8,6 +8,10 @@ class Vaus :public sf::Drawable
 	sf::Vector2f direction;
 	sf::Vector2f position;
 	float speed = 110.f;
+
+	float lightsAnimTimer = 3.5f;
+	float lightsAnimDefaultTimer = 3.5f;
+
 	void Move(float& dt);
 	void SetPosition(const sf::Vector2f& position);
 	void InitParts();

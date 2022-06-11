@@ -1,5 +1,48 @@
-﻿  Program.cpp
-  VausPart.cpp
+﻿  ArkanoidClone.cpp
+  HealthManager.cpp
+  HighScoreManager.cpp
+  PowerUpManager.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(21,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  Stage.cpp
+  Background.cpp
+  Ball.cpp
+  EndScreen.cpp
+  PowerUp.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(13,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(14,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Vaus.cpp
+  Program.cpp
+  GameScene.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(17,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  LevelSelectorScene.cpp
+  MenuScene.cpp
+  SceneManager.cpp
+  Button.cpp
   UIElement.cpp
   Generowanie kodu...
   ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe

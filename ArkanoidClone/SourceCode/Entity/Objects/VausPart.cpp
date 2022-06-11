@@ -61,14 +61,59 @@ RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _po
 
 BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
+	timer = defaultTimer;
+
 	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausBlueSize;
 	InitGameObject(_positionOffset, sizeOfPart);
+	textureRect.height = 28;
+	textureRect.width = 10;
+
+	gameObject.setTextureRect(textureRect);
 }
 
 inline sf::Vector2f BluePart::GetReflectionVector()
 {
 	float x = 81 * static_cast<float>(directionSign);
 	return NormalizeVector({ x, -49});
+}
+
+void BluePart::PlayAnimation()
+{
+	if (doAnimate)
+		return;
+
+	doAnimate = true;
+	timer = defaultTimer;
+	textureRect.left = 0;
+}
+
+void BluePart::Update(float& dt)
+{
+	if (doAnimate)
+	{
+		timer -= dt;
+
+		if (timer <= 0)
+		{
+			NextTexture();
+			timer = defaultTimer;
+		}
+	}
+}
+
+void BluePart::NextTexture()
+{
+	if (textureRect.left >= textureRect.width * 15)
+	{
+		doAnimate = false;
+		textureRect.left = 0;
+	}
+	else
+	{
+		textureRect.left += GetSize().x;
+	}
+
+	gameObject.setTextureRect(textureRect);
 }
 
 inline sf::Vector2f RedPart::GetReflectionVector()
