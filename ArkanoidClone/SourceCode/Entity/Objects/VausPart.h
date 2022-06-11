@@ -10,7 +10,7 @@ protected:
 
 	//virtual void SetTexture(const sf::Texture& texture) = 0;
 	virtual sf::Vector2f GetReflectionVector() = 0;
-	virtual void InitGameObject(const sf::Vector2f& startingPositon, const sf::Vector2f& size, const sf::Color& color);
+	virtual void InitGameObject(const sf::Vector2f& startingPositon, const sf::Vector2f& size);
 
 public:
 	//Constructors

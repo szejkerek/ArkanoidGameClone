@@ -1,9 +1,8 @@
 #include "VausPart.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
-void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vector2f& size, const sf::Color& color)
+void IVausPart::InitGameObject(const sf::Vector2f& positionOffset, const sf::Vector2f& size)
 {
 	SetSize(size);
-	SetFillColor(color);
 	SetOriginCenter();
 	this->positionOffset = positionOffset;
 }
@@ -45,25 +44,25 @@ void IVausPart::draw(sf::RenderTarget& target, sf::RenderStates states) const
 CentralPart::CentralPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene,_positionOffset)
 {
 	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausCentralSize;
-	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Color(72, 72, 72));
+	InitGameObject(_positionOffset, sizeOfPart);
 }
 
 GreyPart::GreyPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausGreySize;
-	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Color(107, 107, 107));
+	InitGameObject(_positionOffset, sizeOfPart);
 }
 
 RedPart::RedPart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausRedSize;
-	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Red);
+	InitGameObject(_positionOffset, sizeOfPart);
 }
 
 BluePart::BluePart(const sf::Vector2f& _positionOffset) : IVausPart(gameScene, _positionOffset)
 {
 	sf::Vector2f sizeOfPart = PixelSizes::GetInstance().iVausBlueSize;
-	InitGameObject(_positionOffset, sizeOfPart, sf::Color::Blue);
+	InitGameObject(_positionOffset, sizeOfPart);
 }
 
 inline sf::Vector2f BluePart::GetReflectionVector()
@@ -86,6 +85,5 @@ inline sf::Vector2f GreyPart::GetReflectionVector()
 
 sf::Vector2f CentralPart::GetReflectionVector()
 {
-	//Should never be called
 	return {0,0};
 }

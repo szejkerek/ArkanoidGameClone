@@ -1,5 +1,6 @@
 #include "Vaus.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
+#include "../ArkanoidClone/SourceCode/Utility/Resources.h"
 float ValidatePosition(const sf::Vector2f& position) 
 {
 	float playgroundPosition = PixelSizes::GetInstance().backgroundPosition.x;
@@ -45,13 +46,34 @@ void Vaus::InitParts()
 	float redOffset = greySize + redSize / 2 + centerSize / 2;
 	float blueOffset = greySize + redSize + blueSize / 2 + centerSize / 2;
 
-	parts.push_back(new CentralPart({ centerOffset,0 }));
-	parts.push_back(new GreyPart({ greyOffset,0 }));
-	parts.push_back(new GreyPart({ -greyOffset,0 }));
-	parts.push_back(new RedPart({ redOffset,0 }));
-	parts.push_back(new RedPart({ -redOffset,0 }));
-	parts.push_back(new BluePart({ blueOffset,0 }));
-	parts.push_back(new BluePart({ -blueOffset,0 }));
+	IVausPart* greyPartCentral = new CentralPart({ centerOffset,0 });
+	greyPartCentral->SetTexture(ResourceManager::Get().GetTexture("Vaus_CG"));
+
+	IVausPart* greyPartRight = new GreyPart({ greyOffset,0 });
+	greyPartRight->SetTexture(ResourceManager::Get().GetTexture("Vaus_RG"));
+
+	IVausPart* greyPartLeft = new GreyPart({ -greyOffset,0 });
+	greyPartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LG"));
+
+	IVausPart* redPartRight = new RedPart({ redOffset,0 });
+	redPartRight->SetTexture(ResourceManager::Get().GetTexture("Vaus_RR"));
+
+	IVausPart* redPartLeft = new RedPart({ -redOffset,0 });
+	redPartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LR"));
+
+	IVausPart* bluePartRight = new BluePart({ blueOffset,0 });
+	bluePartRight->SetTexture(ResourceManager::Get().GetTexture("Vaus_RB"));
+
+	IVausPart* bluePartLeft = new BluePart({ -blueOffset,0 });
+	bluePartLeft->SetTexture(ResourceManager::Get().GetTexture("Vaus_LB"));
+
+	parts.push_back(greyPartCentral);
+	parts.push_back(greyPartRight);
+	parts.push_back(greyPartLeft);
+	parts.push_back(redPartRight);
+	parts.push_back(redPartLeft);
+	parts.push_back(bluePartRight);
+	parts.push_back(bluePartLeft);
 	 
 	SetPosition(position);
 }
@@ -63,14 +85,21 @@ Vaus::Vaus()
 
 Vaus::~Vaus()
 {
-	for (auto part : parts)
-		delete part;
+	for (int i = 0; i < parts.size(); i++)
+	{
+		if (parts[i] != nullptr)
+			delete parts[i];
+	}
 }
 
 void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto part : parts)
-		target.draw(*part);
+
+	for (int i = 0; i < parts.size(); i++)
+	{
+		if (parts[i] != nullptr)
+			target.draw(*parts[i]);
+	}		
 }
 
 void Vaus::Update(float& dt)
