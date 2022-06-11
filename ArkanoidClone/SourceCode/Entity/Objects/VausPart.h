@@ -23,6 +23,7 @@ public:
 	virtual sf::Vector2f GetPositionOffset();
 
 	//SFML Methods
+	virtual void Update(float& dt) {};
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

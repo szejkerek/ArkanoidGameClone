@@ -104,6 +104,12 @@ void Vaus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Vaus::Update(float& dt)
 {
+	for (int i = 0; i < parts.size(); i++)
+	{
+		if (parts[i] != nullptr)
+			target.Update(dt);
+	}
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
 		direction = { -1, 0 };

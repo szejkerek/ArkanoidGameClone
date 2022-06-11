@@ -8,7 +8,7 @@ oneBlock 270
 Stage_6 27490
 Stage_7 1680
 Stage_31 138700
-Stage_8 0
+Stage_8 1680
 Stage_30 469480
 Stage_9 0
 Stage_10 255750
