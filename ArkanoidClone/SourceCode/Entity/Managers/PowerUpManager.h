@@ -33,11 +33,9 @@ private:
 
 	Program* program;
 
-	int powerUpChance = 100;  // x%
-	int healChance = 33; 
-	int splitChance = 33;  
-	int slowChance = 33;  
-	int enlargeChance = 20;  
-	int stickChance = 20;  
+	int powerUpChance = 45;  // x%
+	int healChance = 35; 
+	int splitChance = 30;  
+	int slowChance = 25;  
 };
 

@@ -22,8 +22,7 @@ void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 		FreeMemory();
 			
 			int firstRand = rand() % 100 + 1;
-			int secondRand = rand() % (splitChance + healChance + slowChance/* + stickChance + enlargeChance*/) + 1;
-
+			int secondRand = rand() % (splitChance + healChance + slowChance) + 1;
 			if (firstRand <= powerUpChance)
 			{
 				FreeMemory();
@@ -40,24 +39,11 @@ void PowerUpManager::PickRandomPowerUp(const sf::Vector2f& position)
 					currentPowerUp = new SlowDown(program, position);
 
 				}
-				else if (secondRand <= healChance + splitChance + slowChance + stickChance)
-				{
-
-				}
-				else if (secondRand <= healChance + splitChance + slowChance + stickChance + enlargeChance)
-				{
-
-				}
 				blocked = true;
 			}
 	}
 
 }
-			
-
-
-	
-
 
 void PowerUpManager::ChangeAllBallsSpeed(const float& newSpeed)
 {
