@@ -16,6 +16,7 @@ public:
 private:
 	
 	Program* program;
+	sf::RectangleShape endscreen;
 	sf::RectangleShape background;
 	TextElement* text;
 	Button* continueBtn;

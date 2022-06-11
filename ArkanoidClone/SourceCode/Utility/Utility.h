@@ -52,7 +52,7 @@ public:
 public:
 
 	sf::Vector2f healthPosition{ 199, 881.5f };
-	sf::Vector2f healthSize{ 30, 30 };
+	sf::Vector2f healthSize{ 35, 35 };
 	int healtSpacing = 11;
 
 	float ballRadius = 7.f;
