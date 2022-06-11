@@ -52,7 +52,9 @@ LevelSelectorScene::~LevelSelectorScene()
 void LevelSelectorScene::SetUpScene()
 {
 	sf::Vector2f window = static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution);
-	preview.setSize({ 500, 660 });
+	preview.setSize({ 733, 876 });
+	preview.setTextureRect(sf::IntRect({ 0,0 }, { 733, 876 }));
+	preview.setScale(preview.getScale() * 0.8f);
 	preview.setOrigin(preview.getSize().x / 2, preview.getSize().y / 2);
 	preview.setPosition({ window.x / 2,window.y / 2 });
 

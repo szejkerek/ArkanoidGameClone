@@ -91,12 +91,24 @@ D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Pow
           [
               T=int
           ]
+  Vaus.cpp
+  VausPart.cpp
+D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\VausPart.cpp(113,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
   Program.cpp
   GameScene.cpp
 D:\Projekty\Studia\PK4\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(17,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
   LevelSelectorScene.cpp
   MenuScene.cpp
   SceneManager.cpp
+  TutorialScene.cpp
   Button.cpp
   UIElement.cpp
   Generowanie kodu...
