@@ -6,6 +6,8 @@
 #include "Scenes/SceneManager.h"
 #include "Utility/Profiler.h"
 #include "Scenes/LevelSelectorScene.h"
+#include "Scenes/TutorialScene.h"
+
 
 #include "Utility/Resources.h"
 class Program
@@ -39,6 +41,7 @@ public:
 	LevelSelectorOriginal* levelSelectorOriginal;
 	SceneManager* sceneManager;
 	HighScoreManager* highScoreManager;
+	TutorialScene* tutorialScene;
 	GameScene* game;
 	MenuScene* menu;
 
@@ -46,6 +49,7 @@ public:
 	Program();
 	~Program();
 
+	void CloseWindow();
 	void Run();
 };
 

@@ -170,7 +170,6 @@
     <ClCompile Include="SourceCode\Entity\Objects\Bricks.cpp" />
     <ClCompile Include="SourceCode\Scenes\GameScene.cpp" />
     <ClCompile Include="SourceCode\Entity\Objects\Background.cpp" />
-    <ClCompile Include="SourceCode\Scenes\Scene.cpp" />
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Managers\Stage.cpp" />
     <ClCompile Include="SourceCode\Program.cpp" />
@@ -178,6 +177,7 @@
     <ClCompile Include="SourceCode\Entity\Objects\VausPart.cpp" />
     <ClCompile Include="SourceCode\UI\UIElement.cpp" />
     <ClCompile Include="SourceCode\UI\TextElement.cpp" />
+    <ClCompile Include="SourceCode\Scenes\TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Entity\Objects\EndScreen.h" />
@@ -204,6 +204,7 @@
     <ClInclude Include="SourceCode\Entity\Objects\VausPart.h" />
     <ClInclude Include="SourceCode\UI\UIElement.h" />
     <ClInclude Include="SourceCode\UI\TextElement.h" />
+    <ClInclude Include="SourceCode\Scenes\TutorialScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

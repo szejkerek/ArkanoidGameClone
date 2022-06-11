@@ -8,7 +8,6 @@ class Scene : public sf::Drawable
 public:
 	Program* program;
 	Scene(Program* _program) :program(_program) {}
-	~Scene();
 
 	//SFML
 	virtual void Update(float& dt) = 0;

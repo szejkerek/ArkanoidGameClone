@@ -42,9 +42,6 @@
     <ClCompile Include="SourceCode\Entity\Objects\Background.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Scenes\Scene.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="SourceCode\Scenes\SceneManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -91,6 +88,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\Entity\Objects\EndScreen.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\Scenes\TutorialScene.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -165,6 +165,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Entity\Objects\EndScreen.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\Scenes\TutorialScene.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

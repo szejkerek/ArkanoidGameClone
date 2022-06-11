@@ -2,7 +2,7 @@
 #include "Utility/Utility.h"
 Program::Program() 
 	: highScoreManager(new HighScoreManager(this)), game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
-	, levelSelectorOriginal(new LevelSelectorOriginal(this))
+	, levelSelectorOriginal(new LevelSelectorOriginal(this)), tutorialScene(new TutorialScene(this))
 		
 {
 	int screenWidth  = PixelSizes::GetInstance().windowResolution.x;
@@ -20,6 +20,7 @@ Program::~Program()
 	delete game;
 	delete window;
 	delete highScoreManager;
+	delete tutorialScene;
 }
 
 void Program::InitializeWindow(unsigned int width, unsigned int height, std::string title)
@@ -42,7 +43,7 @@ void Program::UpdateEvents()
 		if (sfEvent.type == sf::Event::Closed)
 		{
 			profiler.SaveProfile(); //REMOVE ON FINAL BUILD
-			window->close();
+			CloseWindow();
 		}
 	}
 }
@@ -62,6 +63,11 @@ void Program::Render()
 	window->draw(*sceneManager);
 	
 	window->display();
+}
+
+void Program::CloseWindow()
+{
+	window->close();
 }
 
 void Program::Run()

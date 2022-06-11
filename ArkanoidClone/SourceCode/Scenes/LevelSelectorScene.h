@@ -20,7 +20,6 @@ protected:
 	Button* playBtn;
 	Button* nextStageBtn;
 	Button* previousStageBtn;
-	//Button* programableSwapStageBtn;
 
 	TextElement* indexText;
 	TextElement* stageTypeText;

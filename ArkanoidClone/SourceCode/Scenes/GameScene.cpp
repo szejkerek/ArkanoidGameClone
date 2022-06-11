@@ -281,7 +281,7 @@ void GameScene::Update( float& dt )
 		currentScore = 0;
 		powerUpManager->FreeMemory();
 		FreeMemory();
-		program->sceneManager->LoadScene(Scenes::Menu);
+		program->sceneManager->LoadScene(Scenes::LevelSelectorOriginal);
 	}
 }
 
