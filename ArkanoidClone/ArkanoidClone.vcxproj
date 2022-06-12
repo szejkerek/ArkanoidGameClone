@@ -210,9 +210,6 @@
   <ItemGroup>
     <ResourceCompile Include="ArkanoidClone.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\Bartek\Desktop\icon.ico" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

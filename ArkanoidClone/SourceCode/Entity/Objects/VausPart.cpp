@@ -103,7 +103,7 @@ void BluePart::Update(float& dt)
 
 void BluePart::NextTexture()
 {
-	if (textureRect.left >= textureRect.width * 15)
+	if (textureRect.left >= textureRect.width * 31)
 	{
 		doAnimate = false;
 		textureRect.left = 0;

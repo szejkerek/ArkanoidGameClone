@@ -179,9 +179,4 @@
       <Filter>Pliki zasobów</Filter>
     </ResourceCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\Bartek\Desktop\icon.ico">
-      <Filter>Pliki zasobów</Filter>
-    </Image>
-  </ItemGroup>
 </Project>

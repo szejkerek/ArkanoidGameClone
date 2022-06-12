@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
+#include "SFML/Audio.hpp"
 
 class IBrick : public EntityRectangle
 {
@@ -9,6 +10,8 @@ protected:
 	bool destructible;
 
 public:
+
+
 
 	//Constructors & Destructors
 	IBrick(bool destructible, GameScene* gameScene);

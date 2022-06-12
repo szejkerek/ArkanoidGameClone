@@ -3,10 +3,13 @@
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
 
 
+
 IBrick::IBrick(bool destructible, GameScene* _game): points(0), EntityRectangle(_game,{0,0}), destructible(true)
 {
 	SetSize(PixelSizes::GetInstance().brickSize); //BLOCK SIZE
 	SetTexture(ResourceManager::Get().GetTexture("brick"));
+
+
 }
 
 sf::Vector2f IBrick::GetCenterPoint()
@@ -57,6 +60,8 @@ GoldBrick::GoldBrick() : IBrick(false,gameScene)
 
 	SetTexture(goldTexture);
 	gameObject.setTextureRect(textureRect);
+
+	
 }
 
 void GoldBrick::Animate()
@@ -99,6 +104,7 @@ void GoldBrick::Update(float& dt)
 }
 bool GoldBrick::OnCollisionEnter()
 {
+	
 	Animate();
 	return false; //Never gets destroyed
 }
