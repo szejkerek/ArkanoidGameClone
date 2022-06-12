@@ -6,7 +6,7 @@
 Ball::Ball(GameScene* _game): EntityCircle(_game, PixelSizes::GetInstance().ballRadius),speed(800.f), stickedToVaus (false)
 {
 	SetOriginCenter();
-	SetFillColor(sf::Color::White);
+	gameObject.setTexture(ResourceManager::Get().GetTexture("ball"));
 	ballToVausOffset = {0,-21};
 }
 

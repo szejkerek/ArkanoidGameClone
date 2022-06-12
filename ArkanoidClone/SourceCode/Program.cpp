@@ -1,5 +1,6 @@
 #include "Program.h"
 #include "Utility/Utility.h"
+#include "Utility/Resources.h"
 Program::Program() 
 	: highScoreManager(new HighScoreManager(this)), game (new GameScene(this, deltaTime)), sceneManager(new SceneManager(this)), menu (new MenuScene(this))
 	, levelSelectorOriginal(new LevelSelectorOriginal(this)), tutorialScene(new TutorialScene(this))

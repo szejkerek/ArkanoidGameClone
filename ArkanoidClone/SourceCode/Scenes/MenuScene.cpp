@@ -19,6 +19,11 @@ MenuScene::MenuScene(Program* _program) : Scene(_program), program(_program)
 
 	backgroundBehind.setSize(static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution));
 	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("backgroundMenu"));
+
+	logo.setSize({780,292});
+	logo.setOrigin(logo.getSize().x / 2, logo.getSize().y / 2);
+	logo.setPosition(window.x / 2, window.y / 2 - 254);
+	logo.setTexture(ResourceManager::Get().GetTexture("menuLogo"));
 }
 
 MenuScene::~MenuScene()
@@ -42,6 +47,7 @@ void MenuScene::Update(float& dt)
 void MenuScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(backgroundBehind);
+	target.draw(logo);
 	target.draw(*levelSelectorBtn);
 	target.draw(*tutorialSceneBtn);
 	target.draw(*exitBtn);

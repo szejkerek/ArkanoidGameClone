@@ -5,6 +5,7 @@ class Program;
 class MenuScene : public Scene
 {
 	sf::RectangleShape backgroundBehind;
+	sf::RectangleShape logo;
 	Button* levelSelectorBtn;
 	Button* tutorialSceneBtn;
 	Button* exitBtn;

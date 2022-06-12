@@ -180,6 +180,7 @@
     <ClCompile Include="SourceCode\Scenes\TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SourceCode\Entity\Objects\EndScreen.h" />
     <ClInclude Include="SourceCode\Entity\Objects\PowerUp.h" />
     <ClInclude Include="SourceCode\Entity\Managers\PowerUpManager.h" />
@@ -205,6 +206,12 @@
     <ClInclude Include="SourceCode\UI\UIElement.h" />
     <ClInclude Include="SourceCode\UI\TextElement.h" />
     <ClInclude Include="SourceCode\Scenes\TutorialScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ArkanoidClone.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Bartek\Desktop\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
