@@ -167,6 +167,9 @@ void LevelSelectorScene::Update(float& dt)
 	playBtn->Update(dt);
 	nextStageBtn->Update(dt);
 	previousStageBtn->Update(dt);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		LoadGame();
 }
 
 void LevelSelectorScene::draw(sf::RenderTarget& target, sf::RenderStates states) const

@@ -1,2 +1,2 @@
-﻿ArkanoidClone.rc(3): fatal error RC1015: cannot open include file 'resource.h'.
-  
+﻿  LevelSelectorScene.cpp
+  ArkanoidClone.vcxproj -> D:\Projekty\ArkanoidClone\x64\Debug\ArkanoidClone.exe

@@ -14,6 +14,9 @@ TutorialScene::TutorialScene(Program* _program) : Scene(_program)
 	backToMenuBtn->PlaceOnScene({ screenMargin + backToMenuBtn->GetSize().x, window.y - backToMenuBtn->GetSize().y - screenMargin }, ButtonType::RectangleMedium, "Back", 30, Scenes::Menu);
 	backgroundBehind.setSize(static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution));
 	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("backgroundMenu"));
+
+	tutorialBehind.setSize(static_cast<sf::Vector2f>(PixelSizes::GetInstance().windowResolution));
+	tutorialBehind.setTexture(ResourceManager::Get().GetTexture("tutorial"));
 }
 
 TutorialScene::~TutorialScene()
@@ -29,5 +32,6 @@ void TutorialScene::Update(float& dt)
 void TutorialScene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(backgroundBehind);
+	target.draw(tutorialBehind);
 	target.draw(*backToMenuBtn);
 }

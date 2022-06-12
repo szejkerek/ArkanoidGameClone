@@ -5,6 +5,7 @@
 class TutorialScene : public Scene
 {
 	sf::RectangleShape backgroundBehind;
+	sf::RectangleShape tutorialBehind;
 	Button* backToMenuBtn;
 
 public:
