@@ -1,2 +1,121 @@
-﻿  MenuScene.cpp
-  ArkanoidClone.vcxproj -> D:\Projekty\Studia\PK4\ArkanoidClone\x64\Debug\ArkanoidClone.exe
+﻿  EndScreen.cpp
+  PowerUp.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(13,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(14,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\PowerUp.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  PowerUpManager.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\PowerUpManager.cpp(21,13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  HighScoreManager.cpp
+  LevelSelectorScene.cpp
+  Resources.cpp
+  Button.cpp
+  MenuScene.cpp
+  ArkanoidClone.cpp
+  Ball.cpp
+  Entity.cpp
+  HealthManager.cpp
+  Bricks.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(55,31): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(56,32): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(81,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(124,57): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(125,58): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\Bricks.cpp(171,33): warning C4244: "=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  GameScene.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Scenes\GameScene.cpp(17,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  Background.cpp
+  SceneManager.cpp
+  Stage.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Managers\Stage.cpp(215,139): warning C4267: "argument": konwersja z "size_t" do "const int", możliwa utrata danych
+  Program.cpp
+  Vaus.cpp
+  VausPart.cpp
+D:\Projekty\ArkanoidClone\ArkanoidClone\SourceCode\Entity\Objects\VausPart.cpp(113,32): warning C4244: "+=": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Generowanie kodu...
+  Trwa kompilowanie...
+  UIElement.cpp
+  TextElement.cpp
+  TutorialScene.cpp
+  Generowanie kodu...
+  LINK : nie znaleziono elementu D:\Projekty\ArkanoidClone\x64\Debug\ArkanoidClone.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+  ArkanoidClone.vcxproj -> D:\Projekty\ArkanoidClone\x64\Debug\ArkanoidClone.exe
