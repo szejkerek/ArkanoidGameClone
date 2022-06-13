@@ -28,8 +28,6 @@ void Program::InitializeWindow(unsigned int width, unsigned int height, std::str
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close);
 	window->setPosition(PixelSizes::GetInstance().windowPosition);
-	//window->setVerticalSyncEnabled(false); - ENABLE ONLY WHEN BOOST GAMEPLAY
-	//window->setFramerateLimit(60 or 144); - ENABLE THIS ON FINAL BUILD
 }
 
 void Program::CalculateDeltaTime()
@@ -43,7 +41,7 @@ void Program::UpdateEvents()
 	{
 		if (sfEvent.type == sf::Event::Closed)
 		{
-			profiler.SaveProfile(); //REMOVE ON FINAL BUILD
+			profiler.SaveProfile(); 
 			CloseWindow();
 		}
 	}
@@ -73,11 +71,10 @@ void Program::CloseWindow()
 
 void Program::Run()
 {
-	//Main game loop
 	while (window->isOpen())
 	{
 		Update();
 		Render();
-		profiler.Update(); //REMOVE ON FINAL BUILD
+		profiler.Update();
 	}
 }

@@ -6,16 +6,24 @@
 
 class LevelSelectorScene : public Scene
 {
+public:
+	std::vector<Stage*> stages;
+
+	LevelSelectorScene(Program* _program);
+	~LevelSelectorScene();
+
+	virtual void LoadStages() = 0;
+	virtual void ResetIndex();
+	virtual int GetIndex();
+	virtual void Update(float& dt);
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
 protected:
 	sf::RectangleShape preview;
 	sf::RectangleShape backgroundBehind;
 	int currentIndex = 0;
 	int levelsCount = 0;
-	
-	void IncrementIndex();
-	void DecrementIndex();
-	void LoadGame();
-	 
+
 	Button* backToMenuBtn;
 	Button* playBtn;
 	Button* nextStageBtn;
@@ -23,31 +31,22 @@ protected:
 
 	TextElement* indexText;
 	TextElement* stageTypeText;
-	
+
 	void SetUpScene();
 	void ChoosePreviewImage();
 	void CreateButtnos();
 	void LayoutButtons();
 	void LayoutText();
 	void FreeMemory();
-
-
-public:
-	std::vector<Stage*> stages;
-
-	virtual void LoadStages() = 0;
-	virtual void ResetIndex();
-	virtual int GetIndex();
-	LevelSelectorScene(Program* _program);
-	~LevelSelectorScene();
-
-	virtual void Update(float& dt);
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void IncrementIndex();
+	void DecrementIndex();
+	void LoadGame();
 };
 
 class LevelSelectorOriginal : public LevelSelectorScene
 {
 public:
 	LevelSelectorOriginal(Program* _program);
+
 	virtual void LoadStages();
 };

@@ -8,11 +8,8 @@
 
 GameScene::GameScene(Program* _program, float& _deltaTime) : program(_program), Scene(_program) 
 {
-	
 	backgroundBehind.setSize(static_cast<sf::Vector2f>( PixelSizes::GetInstance().windowResolution ));
 	backgroundBehind.setTexture(ResourceManager::Get().GetTexture("backgroundGame"));
-
-	
 
 	srand(time(NULL));
 	StartGame(); 

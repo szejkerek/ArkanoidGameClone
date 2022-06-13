@@ -8,6 +8,7 @@ class HighScoreManager
 {
 public:
 	HighScoreManager(Program* _program);
+
 	void LoadScores();
 	void UpdateScore(Stage* currentStage, int currentScore);
 	void SaveScores();

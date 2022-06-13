@@ -7,13 +7,13 @@ Stage_5 2030
 oneBlock 270
 Stage_6 27490
 Stage_7 2250
-Stage_31 138700
 Stage_8 1680
-Stage_30 469480
+Stage_31 138700
 Stage_9 0
+Stage_30 469480
 Stage_10 255750
 Stage_11 1350
-Stage_12 13260
+Stage_12 49390
 Stage_13 4050
 Stage_14 101650
 Stage_15 1270
@@ -21,7 +21,7 @@ Stage_16 390
 Stage_17 15570
 Stage_18 2280
 Stage_19 2210
-Stage_20 0
+Stage_20 3200
 Stage_21 650
 Stage_22 0
 Stage_23 4900

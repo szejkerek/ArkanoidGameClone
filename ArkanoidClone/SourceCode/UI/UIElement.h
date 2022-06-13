@@ -6,23 +6,12 @@ class Program;
 
 class UIElement : public sf::Drawable
 {
-private:
-
-protected:
-	//Gameobject
-	sf::RectangleShape gameObject;
-	bool isDisabled = false;
-
 public:
 	Program* program;
-	//Constructors&Destructors
 	UIElement(Program* program);
 	virtual ~UIElement() = default;
 
-	//Methods
 	virtual inline void InitGameObject();
-
-	///Getters&Setters
 	virtual inline void SetTexture(sf::Texture * texture);
 	virtual inline void SetPosition(const sf::Vector2f & position);
 	virtual inline void SetSize(const sf::Vector2f & size);
@@ -36,11 +25,11 @@ public:
 	virtual inline sf::Vector2f GetSize();
 	virtual inline void Disable();
 	virtual inline void Enable();
-
-
-
-	//SFML methods
 	virtual void Update(float& dt);
 	virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override = 0;
+
+protected:
+	sf::RectangleShape gameObject;
+	bool isDisabled = false;
 };
 

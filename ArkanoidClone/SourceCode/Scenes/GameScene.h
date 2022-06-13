@@ -14,34 +14,11 @@
 #include "../ArkanoidClone/SourceCode/Utility/Utility.h"
 class GameScene : public Scene
 {
-private:
-	int currentScore = 0;
-	int currentHighscore = 0;
-	bool playable;
-
-
-	
-	TextElement* highScoreLabel;
-	TextElement* scoreLabel;
-	TextElement* scoreCount;
-	TextElement* highScoreCount;
-	TextElement* highscoreNotification;
-
-	//Methods
-	void FreeMemory();
-
-	
-
-	void SetUpScoresText();
-	void UpdateScores();
-
 public:
 	Program* program;
 
-	//GameObjects
 	Background* background;
 	sf::RectangleShape backgroundBehind;
-
 	std::vector<Ball*> balls;
 	std::vector<Ball*> ballsToDelete;
 	Vaus* vaus;
@@ -49,26 +26,35 @@ public:
 	HealthManager* healthManager;
 	PowerUpManager* powerUpManager;
 	EndScreen* endScreen;
-
-	//Variables
 	float ballAirTime = 0;
 
-	//Constructors & Destructors
 	GameScene(Program* _program, float& deltaTime);
 	virtual ~GameScene();
 
-	//Methods
 	void AddPoints(const int& brickPoint, const int& multiplyier);
 	void SelectStage(Stage* _stage);
 	void StartGame();	
 	void EndGame(bool win);
-
 	void AddBall();
 	void RemoveBall(Ball* ballToDelete);
 	void RemoveBallNoDelete(Ball* ballToDelete);
-
-	//SFML Methods
 	void Update( float& dt);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+private:
+	int currentScore = 0;
+	int currentHighscore = 0;
+	bool playable;
+
+	TextElement* highScoreLabel;
+	TextElement* scoreLabel;
+	TextElement* scoreCount;
+	TextElement* highScoreCount;
+	TextElement* highscoreNotification;
+
+	void FreeMemory();
+	void SetUpScoresText();
+	void UpdateScores();
+
 };
 

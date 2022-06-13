@@ -4,21 +4,8 @@
 #include <vector>
 class Vaus :public sf::Drawable
 {
-	//Variables
-	sf::Vector2f direction;
-	sf::Vector2f position;
-	float speed = 110.f;
-
-	float lightsAnimTimer = 2.f;
-	float lightsAnimDefaultTimer = 2.f;
-
-	void Move(float& dt);
-	void SetPosition(const sf::Vector2f& position);
-	void InitParts();
-
 public:
-	//GameObjects
-	std::vector<IVausPart*> parts;    //Central,grey R, grey L, red R, red L, blue R, blue L 
+	std::vector<IVausPart*> parts;
 
 	Vaus();
 	~Vaus();
@@ -26,5 +13,18 @@ public:
 	//SFML methods
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update(float& dt);
+
+private:
+	sf::Vector2f direction;
+	sf::Vector2f position;
+	float speed = 110.f;
+	float lightsAnimTimer = 2.f;
+	float lightsAnimDefaultTimer = 2.f;
+
+	void Move(float& dt);
+	void SetPosition(const sf::Vector2f& position);
+	void InitParts();
+
+
 };
 

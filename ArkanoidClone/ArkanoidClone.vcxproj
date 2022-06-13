@@ -160,7 +160,6 @@
     <ClCompile Include="SourceCode\Entity\Managers\PowerUpManager.cpp" />
     <ClCompile Include="SourceCode\Entity\Managers\HighScoreManager.cpp" />
     <ClCompile Include="SourceCode\Scenes\LevelSelectorScene.cpp" />
-    <ClCompile Include="SourceCode\Utility\Resources.cpp" />
     <ClCompile Include="SourceCode\UI\Button.cpp" />
     <ClCompile Include="SourceCode\Scenes\MenuScene.cpp" />
     <ClCompile Include="SourceCode\ArkanoidClone.cpp" />

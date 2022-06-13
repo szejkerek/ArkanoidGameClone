@@ -11,7 +11,6 @@ public:
 
 	virtual void ApplyEffect() = 0;
 	void Hide();
-
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void Update(float& dt);
 	
@@ -22,11 +21,8 @@ protected:
 	bool effectApplied = false;
 	sf::Texture* powerUpTexture;
 	sf::IntRect textureRect;
-
 	float timer = 0.06f;
 	float defaultTimer = 0.06f;
-
-
 
 	void MoveDown(float& dt);
 	void CheckForCollisions();
@@ -38,6 +34,7 @@ class AddHealth : public IPowerUp
 {
 public:
 	AddHealth(Program* _program, const sf::Vector2f& position);
+
 	void ApplyEffect();
 };
 
@@ -45,6 +42,7 @@ class SplitBall : public IPowerUp
 {
 public:
 	SplitBall(Program* _program, const sf::Vector2f& position);
+
 	void ApplyEffect();
 };
 
@@ -52,12 +50,6 @@ class SlowDown : public IPowerUp
 {
 public:
 	SlowDown(Program* _program, const sf::Vector2f& position);
+
 	void ApplyEffect();
 }; 
-
-class EnlargeVaus : public IPowerUp
-{
-public:
-	EnlargeVaus(Program* _program, const sf::Vector2f& position);
-	void ApplyEffect();
-};

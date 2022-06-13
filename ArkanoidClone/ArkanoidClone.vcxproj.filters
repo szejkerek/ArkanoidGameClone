@@ -69,9 +69,6 @@
     <ClCompile Include="SourceCode\UI\Button.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\Utility\Resources.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="SourceCode\Scenes\LevelSelectorScene.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>

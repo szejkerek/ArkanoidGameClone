@@ -75,8 +75,18 @@ private:
 	Resource<sf::SoundBuffer>	soundBuffers;
 		
 public:
-	sf::Font*			GetFont(const std::string& name);
-	sf::Texture*		GetTexture(const std::string& name);
-	sf::SoundBuffer*	GetAudio(const std::string& name);
+	sf::Font* GetFont(const std::string& name)
+	{
+		return fonts.GetResource(name);  
+	}
+	sf::Texture* GetTexture(const std::string& name)
+	{
+		return textures.GetResource(name);
+	}
+	sf::SoundBuffer* GetAudio(const std::string& name)
+	{
+		return soundBuffers.GetResource(name);
+	}
 
 };
+
