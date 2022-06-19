@@ -5,7 +5,9 @@
 
 ⭐ Do not forget to give a star on GitHub!
 
-This is a project that I made for the university. It allows you to play all 33 original Arkanoid levels, an arcade game from 1986, created and published by Taito.
+This is a project that I made for the university. **It allows you to play all 33 original Arkanoid levels!!!**
+
+Arkanoid is an arcade game from 1986, created and published by Taito.
 
 ## Gameplay preview
 
