@@ -1,5 +1,5 @@
 
-![menuLogo](https://user-images.githubusercontent.com/69083596/174481235-cb66dd92-4461-4eea-8f0f-5064ff7cf8cb.png)
+![logo](https://user-images.githubusercontent.com/69083596/174481427-7b57bf4a-0865-41d7-8184-5d752f455e90.png)
 
 # Arkanoid Clone
 
@@ -28,11 +28,10 @@ This is a project that I made for the university. It allows you to play all 33 o
 
 ### Windows
 - Install C++ in Visual Studio 2022.
-- Clone git repo
+- Clone GitHub repository
 
 ```
 git clone https://github.com/szejkerek/ArkanoidClone.git
-
 ```
 - Open project in Visual Studio 2022
 - Compile and run project
