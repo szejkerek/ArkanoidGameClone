@@ -1,6 +1,4 @@
 
-![logo](https://user-images.githubusercontent.com/69083596/174481427-7b57bf4a-0865-41d7-8184-5d752f455e90.png)
-
 # Arkanoid Clone
 
 ⭐ Do not forget to give a star on GitHub!
