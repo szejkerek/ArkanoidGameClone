@@ -5,9 +5,9 @@
 
 ⭐ Do not forget to give a star on GitHub!
 
-This is a project that I made for the university with C++ and SFML library - https://www.sfml-dev.org/. 
+This is a project I have made for an university assignment using C++ and SFML library - https://www.sfml-dev.org/. 
 
-**It allows you to play all 33 Arkanoid's original levels with additional boss fight in the end!!!**
+**It allows you to play all 33 Arkanoid's original levels with an additional Boss fight in the end!!!**
 
 Arkanoid is an arcade game from 1986, created and published by Taito.
 
